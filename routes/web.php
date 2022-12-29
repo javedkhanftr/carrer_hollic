@@ -34,9 +34,6 @@ Route::get('user_edit/{id}',[UserController::class,'edit']);
 Route::post('user_edit/{id}',[UserController::class,'update']);
 Route::get('delete/{id}',[UserController::class,'delete']);
 
-// job Post Data Start
-Route::get('job_post/create',[JobPostController::class,'jobPost_show']);
-Route::post('job_post/create',[JobPostController::class,'jobPostCreate']);
 
 //candidates data start
 Route::get('candidates',[CandidateController::class,'candidates_list']);
@@ -96,3 +93,21 @@ Route::get('job-setting',[JobSettingController::class,'index']);
 
     // application
     Route::post('job-setting/get_application/',[JobSettingController::class,'get_application']);
+
+
+    Route::group(['prefix'=>'dashboard'],function(){
+        Route::get('job_post/create',[JobPostController::class,'jobPost_show']);
+        Route::post('job_post/create',[JobPostController::class,'jobPostCreate']);
+        Route::get('preview/{id}',[JobPostController::class,'preview']);
+        Route::get('job_post/edit/{id}',[JobPostController::class,'edit']);
+        Route::post('job_post/update/{id}',[JobPostController::class,'update']);
+        Route::get('job_post/edit_data/{id}',[JobPostController::class,'edit_data']);
+        Route::get('job_post/overview/{id}',[JobPostController::class,'overview']);
+
+
+        // attendace
+
+        Route::post('attendace/store',[CustomAuthController::class,'attendance'])->name('attendance');
+
+
+    });

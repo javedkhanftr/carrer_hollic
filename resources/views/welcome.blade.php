@@ -11,7 +11,7 @@
                     <h3>Dashboard</h3>
                 </div>
                 <div class="col-md-3">
-                    <a href="{{url('job_post/create')}}" class="btn btn-sm btn-success "><i class="fa fa-plus"></i>
+                    <a href="{{url('dashboard/job_post/create')}}" class="btn btn-sm btn-success "><i class="fa fa-plus"></i>
                         Create new job</a>
                 </div>
                 <div class="col-md-8 mt-3">
@@ -50,10 +50,10 @@
                                             aria-expanded="false"></div>
                                         <div class="dropdown">
                                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                                <li><a class="dropdown-item" href="#">Preview</a></li>
-                                                <li><a class="dropdown-item" href="#">Edit</a></li>
-                                                <li><a class="dropdown-item" href="#">Edit job post</a></li>
-                                                <li><a class="dropdown-item" href="#">Setting</a></li>
+                                                <li><a class="dropdown-item" href="{{url('dashboard/preview/'.$job->id)}}">Preview</a></li>
+                                                <li><a class="dropdown-item" href="{{url('dashboard/job_post/edit/'.$job->id)}}">Edit</a></li>
+                                                <li><a class="dropdown-item" href="{{url('dashboard/job_post/edit_data/'.$job->id)}}">Edit job post</a></li>
+                                                <li><a class="dropdown-item" href="">Setting</a></li>
                                                 <li><a class="dropdown-item" href="#">Sharable Link</a></li>
                                                 <li><a class="dropdown-item" href="#">Deactivate</a></li>
                                                 <li><a class="dropdown-item" href="#">Delete</a></li>
@@ -120,7 +120,7 @@
 
                                     </div>
                                     <div class="col-md-12">
-                                        <a href="" class="btn btn-outline-primary btn-sm mt-3">Overview</a>
+                                        <a href="{{url('dashboard/job_post/overview/'.$job->id)}}" class="btn btn-outline-primary btn-sm mt-3">Overview</a>
                                     </div>
                                 </div>
                             </div>
@@ -380,6 +380,49 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="col-md-12 mt-2">
+                    <h3>your to-dos</h3>
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row text-center mb-5">
+                                <div class="col-md-12">
+                                    <div class="search1">
+                                        <h5>Today Attendance</h5>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12 mt-5">
+
+                                     <form method="POST" action="{{ route('attendance') }}">
+                                     {{ csrf_field() }}
+                                            @if(!empty($attendance))
+
+                                            @if($attendance->checkout != null)
+                                             <button type="submit" name="checkin" value="1" class="btn btn-primary">Check In</button>
+                                            @else
+                                                <button type="submit" name="checkout" value="2" class="btn btn-primary">Check out</button>
+                                            
+                                            @endif
+                                            
+                                            @endif
+                                            
+                                            @if(empty($attendance))
+                                            <button type="submit" name="checkin" value="1" class="btn btn-primary">Check In</button>
+                                            @endif
+
+
+                                         
+
+                                      </form>
+                                </div>
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
             </div>
         </div>
         <!-- events part end  -->

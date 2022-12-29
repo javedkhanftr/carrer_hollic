@@ -8,6 +8,7 @@ use App\Models\JobType;
 use App\Models\JobPost;
 use App\Models\Department;
 use App\Models\CompanyLocation;
+use DB;
 use Illuminate\Support\Facades\Auth;
 class CustomAuthController extends Controller
 {
@@ -67,13 +68,59 @@ class CustomAuthController extends Controller
         $department=Department::all();
         $Company_location=CompanyLocation::all();
 
+
+        $date = date('Y-m-d ');
+        $attendance = DB::table('attendance')
+                         ->where('date',$date)
+                        ->where('checkout',NULL)
+                        ->select('checkout')
+                        ->first();
+        // dd($attendance);
+
         // return $job_posts;
         if(Auth::check()){
           
-            return view('welcome',compact('job_posts','Job_type','department','Company_location'));
+            return view('welcome',compact('job_posts','Job_type','department','Company_location','attendance'));
         }
   
         return redirect("login")->withSuccess('You are not allowed to access');
+    }
+
+    public function attendance(Request $request){
+        
+        $id = Auth::user()->id;
+        $checkinDate = date('Y-m-d H:i:s');
+        $date = date('Y-m-d');
+
+        if($request->checkin ==1){
+            $user['user_id'] = $id;
+            $user['checkin'] = $checkinDate;
+            $user['date'] = $date;
+
+        DB::table('attendance')->insert($user);
+        return back();
+        
+        }
+
+        if($request->checkout ==2){
+
+            $user['checkout'] = $checkinDate;
+
+            DB::table('attendance')
+                ->where('user_id',$id)
+                ->where('date',$date)
+                ->update($user);
+        return back();
+        
+        }
+        
+
+        
+            
+
+    
+        
+        
     }
     
     public function signOut() {
