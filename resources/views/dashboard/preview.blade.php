@@ -78,7 +78,7 @@
                                                             <h4>Apply for the post Back office</h4>
                                                         </div>
                                                         <div class="col-md-2 text-center">
-                                                            <a href="" class="btn btn-sm btn-outline-primary " style="border-radius: 1.0rem;">Apply now</a>
+                                                            <a href="{{url('dashboard/job_post/applyjob/')}}" class="btn btn-sm btn-outline-primary " style="border-radius: 1.0rem;">Apply now</a>
                                                         </div>
                                                     </div>
                                                 </div>

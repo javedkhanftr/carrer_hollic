@@ -37,9 +37,9 @@ class JobPostController extends Controller
             // return $Company_location;
         return view('dashboard/jobPost_show',\compact('Job_type','department','Company_location'));
     }
-    public function preview($id){
-        $jobpost=JobPost::find($id);
-        // return $jobpost;
+    public function preview($slug){
+        $data=JobPost::where('slug',$slug)->get();
+         $jobpost=$data[0];
        return view('dashboard/preview',\compact('jobpost'));
        
     }
@@ -78,4 +78,25 @@ class JobPostController extends Controller
         // return $overview;
         return view('dashboard/overview',compact('condidate_data','overview','email'));
     }
+    public function status($id){
+        $condidate_data =JobPost::find($id);
+        if ($condidate_data == '1') {
+            $condidate_data->status_id=2;
+        } else {
+            $condidate_data->status_id=1;
+            
+        }
+        $condidate_data->update();
+        
+        return redirect('dashboard');
+    }
+    public function delete($id){
+        $condidate_data =JobPost::find($id);
+        $condidate_data->delete();
+        return redirect('dashboard');
+    }
+    public function applyjob(){
+        return view('dashboard/apply');
+    }
+    
 }

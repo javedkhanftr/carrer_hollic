@@ -98,11 +98,15 @@ Route::get('job-setting',[JobSettingController::class,'index']);
     Route::group(['prefix'=>'dashboard'],function(){
         Route::get('job_post/create',[JobPostController::class,'jobPost_show']);
         Route::post('job_post/create',[JobPostController::class,'jobPostCreate']);
-        Route::get('preview/{id}',[JobPostController::class,'preview']);
+        Route::get('preview/{slug}/display',[JobPostController::class,'preview']);
         Route::get('job_post/edit/{id}',[JobPostController::class,'edit']);
         Route::post('job_post/update/{id}',[JobPostController::class,'update']);
         Route::get('job_post/edit_data/{id}',[JobPostController::class,'edit_data']);
         Route::get('job_post/overview/{id}',[JobPostController::class,'overview']);
+        Route::post('job_post/slugdata/',[JobPostController::class,'slugdata']);
+        Route::get('job_post/status/{id}',[JobPostController::class,'status']);
+        Route::get('job_post/delete/{id}',[JobPostController::class,'delete']);
+        Route::get('job_post/applyjob',[JobPostController::class,'applyjob']);
 
 
         // attendace
@@ -110,4 +114,10 @@ Route::get('job-setting',[JobSettingController::class,'index']);
         Route::post('attendace/store',[CustomAuthController::class,'attendance'])->name('attendance');
 
 
+    });
+    Route::group(['prefix'=>'user'],function(){
+
+        Route::get('home',[UserController::class,'index']);
+        Route::get('career',[UserController::class,'career']);
+        
     });

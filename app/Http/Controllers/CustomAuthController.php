@@ -8,6 +8,7 @@ use App\Models\JobType;
 use App\Models\JobPost;
 use App\Models\Department;
 use App\Models\CompanyLocation;
+use Carbon\Carbon;
 use DB;
 use Illuminate\Support\Facades\Auth;
 class CustomAuthController extends Controller
@@ -86,10 +87,48 @@ class CustomAuthController extends Controller
         return redirect("login")->withSuccess('You are not allowed to access');
     }
 
+    // public function attendance(Request $request){
+        
+    //     $id = Auth::user()->id;
+    //     $checkinDate = date('Y-m-d H:i:s');
+    //     $date = date('Y-m-d');
+
+    //     if($request->checkin ==1){
+    //         $user['user_id'] = $id;
+    //         $user['checkin'] = $checkinDate;
+    //         $user['date'] = $date;
+
+    //     DB::table('attendance')->insert($user);
+    //     return back();
+        
+    //     }
+
+    //     if($request->checkout ==2){
+
+    //         $user['checkout'] = $checkinDate;
+
+    //         DB::table('attendance')
+    //             ->where('user_id',$id)
+    //             ->where('date',$date)
+    //             ->update($user);
+    //     return back();
+        
+    //     }
+        
+
+        
+            
+
+    
+        
+        
+    // }
     public function attendance(Request $request){
         
         $id = Auth::user()->id;
-        $checkinDate = date('Y-m-d H:i:s');
+        // date_default_timezone_set('Asia/Kolkata');
+
+        $checkinDate = date('Y-m-d h:i:s');
         $date = date('Y-m-d');
 
         if($request->checkin ==1){
@@ -99,18 +138,31 @@ class CustomAuthController extends Controller
 
         DB::table('attendance')->insert($user);
         return back();
-        
         }
 
-        if($request->checkout ==2){
 
+
+        if($request->checkout ==2){
+            // dd($checkinDate);
+            $minute = DB::table('attendance')
+                      ->where('date',$date)
+
+                      ->select('checkin')
+                      ->first();
+
+            $GetMin = $minute->checkin;
+            $to = Carbon::createFromFormat('Y-m-d h:i:s', $GetMin);
+            $from = Carbon::createFromFormat('Y-m-d h:i:s', $checkinDate);
+            $diff_in_hours = $to->diffInMinutes($from);
+             // dd($diff_in_hours);
             $user['checkout'] = $checkinDate;
+            $user['minute'] = $diff_in_hours;
 
             DB::table('attendance')
                 ->where('user_id',$id)
                 ->where('date',$date)
                 ->update($user);
-        return back();
+            return back();
         
         }
         
@@ -119,9 +171,7 @@ class CustomAuthController extends Controller
             
 
     
-        
-        
-    }
+       }
     
     public function signOut() {
         Session::flush();

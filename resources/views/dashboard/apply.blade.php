@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous">
+    </script>
+    <title>Document</title>
+</head>
+<style>
+.apply li span {
+    color: black !important;
+    text-decoration: none !important;
+    border: 1px solid black !important;
+    padding: 10px;
+    margin-right: 10px;
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 40px;
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+
+
+}
+
+.apply li p font {
+    background-color: #4466f2;
+    border: 2px solid #4466f2;
+    margin-left: 20px;
+    padding-bottom: 39px;
+}
+.complete-icon {
+    /* align-items: center; */
+    /* background-color: #46c35f; */
+    /* border-radius: 50%; */
+    /* color: #fff; */
+    /* display: inline-flex; */
+    height: 16px;
+    /* justify-content: center; */
+    position: absolute;
+    left: 100px;
+    top: 80px;
+    width: 16px;
+}
+</style>
+
+<body>
+    <div class="container-fluid">
+        <div class="row ">
+            <div class="col-md-3 bg-light p-5" height="auto">
+                <ul class="apply mb-4 ml-3 mt-5" style="list-style: none; margin-top:50px;">
+                    <li class="">
+                        <span class="mr-2">01 </span> Basic Information
+                        <p>
+                            <font></font>
+                            <span class="complete-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg"  width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                            </span>
+                        </p>
+                    </li>
+                    <li class=" mt-5 ml-3">
+                        <span class="mr-2">02 </span> Contact Details
+                        <p>
+                            <font></font>
+                        </p>
+                    </li>
+                    <li class="mt-5 ml-3">
+                        <span class="mr-2">03 </span> Resume
+                        <p>
+                            <font></font>
+                        </p>
+                    </li>
+                    <li class="mt-5 ml-3">
+                        <span class="mr-2">04 </span> Submit Application
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-1"></div>
+            <div class="col-md-4">
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active mt-5" id="basicInformaction" role="tabpanel"
+                        aria-labelledby="home-tab">
+                        <h2>Basic Information</h2>
+                        <form action="">
+                            <div class="row">
+                                <div class="col-md-12 mt-4">
+                                    <label for="">First Name</label>
+                                    <input type="text" name="first_name" id="" class="form-control"
+                                        placeholder="First Name">
+                                </div>
+                                <div class="col-md-12 mt-4">
+                                    <label for="">Last Name</label>
+                                    <input type="text" name="last_name" id="" class="form-control"
+                                        placeholder="Last Name">
+                                </div>
+                                <div class="col-md-12 mt-4">
+                                    <label for="">Email</label>
+                                    <input type="text" name="email" id="" class="form-control" placeholder="Email">
+                                </div>
+                                <div class="col-md-12 mt-4">
+                                    <div class="row ">
+                                        <div class="col-12"><label for="gender">Gender<sup>*</sup></label>
+                                            <div>
+                                                <div class="app-radio-group">
+                                                    <label
+                                                        class="customized-radio radio-default custom-radio-default ml-4">
+                                                        <input type="radio"
+                                                            name="submitData_basic_information[nameGen(field_name)]"
+                                                            id="submitData_basic_information[nameGen(field_name)]-0"
+                                                            required="required" class="radio-inline" value="male">
+                                                        <span class="outside"><span class="inside"></span></span>
+                                                        Male
+                                                    </label>
+                                                    <label
+                                                        class="customized-radio radio-default custom-radio-default ml-4">
+                                                        <input type="radio"
+                                                            name="submitData_basic_information[nameGen(field_name)]"
+                                                            id="submitData_basic_information[nameGen(field_name)]-1"
+                                                            required="required" class="radio-inline" value="female">
+                                                        <span class="outside"><span class="inside"></span></span>
+                                                        Female
+                                                    </label>
+                                                    <label
+                                                        class="customized-radio radio-default custom-radio-default ml-4">
+                                                        <input type="radio"
+                                                            name="submitData_basic_information[nameGen(field_name)]"
+                                                            id="submitData_basic_information[nameGen(field_name)]-2"
+                                                            required="required" class="radio-inline" value="other">
+                                                        <span class="outside"><span class="inside"></span></span>
+                                                        Other
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 mt-4">
+                                    <label for="">Email</label>
+                                    <input type="date" name="dob" id="" class="form-control">
+                                </div>
+                                <div class="col-md-9"></div>
+                                <div class="col-md-3 mt-4 ">
+                                    <button
+                                        class="btn btn-sm btn-outline-primary rounded-pill form-control applybutton1">Next
+                                        ></button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="tab-pane fade show  mt-5" id="contactDetails" role="tabpanel"
+                        aria-labelledby="home-tab">
+                        <h2>Contact Details</h2>
+                        <form action="">
+                            <div class="row">
+                                <div class="col-md-12 mt-4">
+                                    <label for="">Phone</label>
+                                    <input type="number" name="number" id="" class="form-control">
+                                </div>
+                                <div class="col-md-12 mt-4">
+                                    <label for="">Address</label>
+                                    <textarea name="address" id="" cols="30" rows="3" class="form-control"></textarea>
+                                </div>
+                                <div class="col-md-3 mt-4">
+                                    <button
+                                        class="btn btn-sm btn-outline-primary rounded-pill form-control applybutton2">
+                                        < Previous </button>
+                                </div>
+                                <div class="col-md-6"></div>
+                                <div class="col-md-3 mt-4 ">
+                                    <button
+                                        class="btn btn-sm btn-outline-primary rounded-pill form-control applybutton3">Next
+                                        ></button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="tab-pane fade show  mt-5" id="resumeuplode" role="tabpanel" aria-labelledby="home-tab">
+                        <h2>Resume Upload</h2>
+                        <form action="">
+                            <div class="row">
+                                <div class="col-md-12 mt-4">
+                                    <label for="">Upload your resume here*</label>
+                                    <p class="mt-5 text-center">
+                                        <label for="attachment">
+                                            <a class="" role="button" aria-disabled="false">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                height="24" viewBox="0 0 24 24" fill="none"
+                                                                stroke="currentColor" stroke-width="2"
+                                                                stroke-linecap="round" stroke-linejoin="round"
+                                                                class="feather feather-upload-cloud text-primary">
+                                                                <polyline points="16 16 12 12 8 16"></polyline>
+                                                                <line x1="12" y1="12" x2="12" y2="21"></line>
+                                                                <path
+                                                                    d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3">
+                                                                </path>
+                                                                <polyline points="16 16 12 12 8 16"></polyline>
+                                                            </svg>
+                                            </a>
+
+                                        </label>
+                                        <input type="file" name="file[]" accept=".pdf" id="attachment"
+                                            style="visibility: hidden; position: absolute;" multiple class="form-control" />
+
+                                    </p>
+                                    <p id="files-area">
+                                        <span id="filesList">
+                                            <span id="files-names"></span>
+                                        </span>
+                                    </p>
+                                  
+                                </div>
+                                <div class="col-md-3 mt-4">
+                                    <button
+                                        class="btn btn-sm btn-outline-primary rounded-pill form-control applybutton4">
+                                        < Previous </button>
+                                </div>
+                                <div class="col-md-6"></div>
+                                <div class="col-md-3 mt-4 ">
+                                    <button
+                                        class="btn btn-sm btn-outline-primary rounded-pill form-control applybutton5">Next
+                                        ></button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<style>
+#files-area {
+    width: 30%;
+    margin: 0 auto;
+}
+
+.file-block {
+    border-radius: 10px;
+    background-color: rgba(144, 163, 203, 0.2);
+    margin: 5px;
+    color: initial;
+    display: inline-flex;
+
+    &>span.name {
+        padding-right: 10px;
+        width: max-content;
+        display: inline-flex;
+    }
+}
+
+.file-delete {
+    display: flex;
+    width: 24px;
+    color: initial;
+    background-color: #6eb4ff00;
+    font-size: large;
+    justify-content: center;
+    margin-right: 3px;
+    cursor: pointer;
+
+    &:hover {
+        background-color: rgba(144, 163, 203, 0.2);
+        border-radius: 10px;
+    }
+
+    &>span {
+        transform: rotate(45deg);
+    }
+}
+</style>
+
+</html>
+<script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+<script>
+$(document).ready(function() {
+    const dt = new DataTransfer(); // Permet de manipuler les fichiers de l'input file
+
+    $("#attachment").on('change', function(e) {
+        for (var i = 0; i < this.files.length; i++) {
+            let fileBloc = $('<span/>', {
+                    class: 'file-block'
+                }),
+                fileName = $('<span/>', {
+                    class: 'name',
+                    text: this.files.item(i).name
+                });
+            fileBloc.append('<span class="file-delete"><span>+</span></span>')
+                .append(fileName);
+            $("#filesList > #files-names").append(fileBloc);
+        };
+        // Ajout des fichiers dans l'objet DataTransfer
+        for (let file of this.files) {
+            dt.items.add(file);
+        }
+        // Mise à jour des fichiers de l'input file après ajout
+        this.files = dt.files;
+
+        // EventListener pour le bouton de suppression créé
+        $('span.file-delete').click(function() {
+            let name = $(this).next('span.name').text();
+            // Supprimer l'affichage du nom de fichier
+            $(this).parent().remove();
+            for (let i = 0; i < dt.items.length; i++) {
+                // Correspondance du fichier et du nom
+                if (name === dt.items[i].getAsFile().name) {
+                    // Suppression du fichier dans l'objet DataTransfer
+                    dt.items.remove(i);
+                    continue;
+                }
+            }
+            // Mise à jour des fichiers de l'input file après suppression
+            document.getElementById('attachment').files = dt.files;
+        });
+    });
+    $('.applybutton1').click(function() {
+        $('#basicInformaction').removeClass('active');
+        $('#contactDetails').addClass('active');
+        return false;
+    })
+    $('.applybutton2').click(function() {
+        $('#basicInformaction').addClass('active');
+        $('#contactDetails').removeClass('active');
+        return false;
+
+    })
+    $('.applybutton3').click(function() {
+        $('#basicInformaction').removeClass('active');
+        $('#contactDetails').removeClass('active');
+        $('#resumeuplode').addClass('active');
+        return false;
+
+    })
+})
+</script>>

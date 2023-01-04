@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-
+<meta name="csrf-token" content="{{ csrf_token() }}" />
 <div class="container-fluid">
     <div class="row">
         <!-- jobs part start  -->
@@ -11,7 +11,8 @@
                     <h3>Dashboard</h3>
                 </div>
                 <div class="col-md-3">
-                    <a href="{{url('dashboard/job_post/create')}}" class="btn btn-sm btn-success "><i class="fa fa-plus"></i>
+                    <a href="{{url('dashboard/job_post/create')}}" class="btn btn-sm btn-success "><i
+                            class="fa fa-plus"></i>
                         Create new job</a>
                 </div>
                 <div class="col-md-8 mt-3">
@@ -50,13 +51,28 @@
                                             aria-expanded="false"></div>
                                         <div class="dropdown">
                                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                                <li><a class="dropdown-item" href="{{url('dashboard/preview/'.$job->id)}}">Preview</a></li>
-                                                <li><a class="dropdown-item" href="{{url('dashboard/job_post/edit/'.$job->id)}}">Edit</a></li>
-                                                <li><a class="dropdown-item" href="{{url('dashboard/job_post/edit_data/'.$job->id)}}">Edit job post</a></li>
+                                                <li><a class="dropdown-item"
+                                                        href="{{url('dashboard/preview/'.$job->slug.'/display')}}">Preview</a>
+                                                </li>
+                                                <li><a class="dropdown-item"
+                                                        href="{{url('dashboard/job_post/edit/'.$job->id)}}">Edit</a>
+                                                </li>
+                                                <li><a class="dropdown-item"
+                                                        href="{{url('dashboard/job_post/edit_data/'.$job->id)}}">Edit
+                                                        job post</a></li>
                                                 <li><a class="dropdown-item" href="">Setting</a></li>
-                                                <li><a class="dropdown-item" href="#">Sharable Link</a></li>
-                                                <li><a class="dropdown-item" href="#">Deactivate</a></li>
-                                                <li><a class="dropdown-item" href="#">Delete</a></li>
+                                                <li><button class="dropdown-item sharalink"
+                                                        data-slug="{{$job->slug}}">Sharable Link</button></li>
+                                                <li>
+                                                    <a class="dropdown-item" href="{{url('dashboard/job_post/status/'.$job->id)}}">
+                                                        @if($job->status_id == 1)
+                                                            Deactivate
+                                                        @else
+                                                            Active
+                                                        @endif
+                                                    </a>
+                                                </li>
+                                                <li><a class="dropdown-item" href="{{url('dashboard/job_post/delete/'.$job->id)}}">Delete</a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -120,7 +136,8 @@
 
                                     </div>
                                     <div class="col-md-12">
-                                        <a href="{{url('dashboard/job_post/overview/'.$job->id)}}" class="btn btn-outline-primary btn-sm mt-3">Overview</a>
+                                        <a href="{{url('dashboard/job_post/overview/'.$job->id)}}"
+                                            class="btn btn-outline-primary btn-sm mt-3">Overview</a>
                                     </div>
                                 </div>
                             </div>
@@ -394,29 +411,32 @@
 
                                 <div class="col-md-12 mt-5">
 
-                                     <form method="POST" action="{{ route('attendance') }}">
-                                     {{ csrf_field() }}
-                                            @if(!empty($attendance))
+                                    <form method="POST" action="{{ route('attendance') }}">
+                                        {{ csrf_field() }}
+                                        @if(!empty($attendance))
 
-                                            @if($attendance->checkout != null)
-                                             <button type="submit" name="checkin" value="1" class="btn btn-primary">Check In</button>
-                                            @else
-                                                <button type="submit" name="checkout" value="2" class="btn btn-primary">Check out</button>
-                                            
-                                            @endif
-                                            
-                                            @endif
-                                            
-                                            @if(empty($attendance))
-                                            <button type="submit" name="checkin" value="1" class="btn btn-primary">Check In</button>
-                                            @endif
+                                        @if($attendance->checkout != null)
+                                        <button type="submit" name="checkin" value="1" class="btn btn-primary">Check
+                                            In</button>
+                                        @else
+                                        <button type="submit" name="checkout" value="2" class="btn btn-primary">Check
+                                            out</button>
+
+                                        @endif
+
+                                        @endif
+
+                                        @if(empty($attendance))
+                                        <button type="submit" name="checkin" value="1" class="btn btn-primary">Check
+                                            In</button>
+                                        @endif
 
 
-                                         
 
-                                      </form>
+
+                                    </form>
                                 </div>
-                               
+
                             </div>
                         </div>
                     </div>
@@ -426,6 +446,40 @@
             </div>
         </div>
         <!-- events part end  -->
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="sharemodel" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Shareable Link</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <p>Use this link to share this job with someone outside of application. Anyone with this link can apply to this job.</p>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-10">
+                                        <p class="sharelinkdata"></p>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <button class="btn btn-sm btn-primary copylinkdata">Copy</button>
+                                        <button class="btn  btn-primary displaynone copyedData"><i class="fa fa-check-circle" aria-hidden="true"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          
+        </div>
     </div>
 </div>
 
@@ -523,19 +577,46 @@
     </div>
 </div> -->
 @endsection
+<script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+$(document).ready(function() {
+    
+    $('.sharalink').click(function() {
+        let slug = $(this).attr('data-slug');
+        
+        let str=window.location;
+        let url=str+'/preview/'+slug+'/display';
+        $('.sharelinkdata').html(url);
+        $('#sharemodel').modal('show');
 
+    });
+    $('.copylinkdata').click(function(){
+        let data=$('.sharelinkdata').text();
+        navigator.clipboard.writeText(data)
+        $('.copylinkdata').addClass('displaynone');
+        $('.copyedData').removeClass('displaynone');
+        // alert(data);
+    })
+})
+</script>
 <style>
+    .displaynone{
+        display: none !important;
+    }
 .select2 .selection .select2-selection--single {
     width: 567px;
     height: 38px;
     border: 1px solid #d2d2e5;
 }
-.relative svg{
+
+.relative svg {
     width: 5%;
 }
-.justify-between div p{
+
+.justify-between div p {
     margin-top: 20px;
-  margin-left: 4px;
+    margin-left: 4px;
 
 }
 
