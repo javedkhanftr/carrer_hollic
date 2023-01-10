@@ -21,14 +21,14 @@ class CandidateController extends Controller
             ->get();
             $email = Auth::user()->email;
             // return $candidates_list;
-             return view('candidate/index',compact('candidates_list','email'));
+             return view('admin/candidate/index',compact('candidates_list','email'));
             
         }    
-        return Redirect('login');
+        return Redirect('admin/login');
     }
     public function candidates_show(){
         $email = Auth::user()->email;
-        return view('candidate/info',\compact('email'));
+        return view('admin/candidate/info',\compact('email'));
     }
     public function candidates_create(Request $request){
            $applicant=new Applicant();
@@ -46,7 +46,7 @@ class CandidateController extends Controller
             $jobApplicant->slug='93adb1ec-8013-'.$request->first_name.'-a5a5-5d66f9079889';
             $jobApplicant->save();
             
-            return redirect('candidates');
+            return redirect('admin/candidates');
     }
     public function candidates_edit(Request $request,$id){
         $applicant= Applicant::find($id);
@@ -58,7 +58,7 @@ class CandidateController extends Controller
         ->get();
         $data= $candidate[0];
         //  return $data;
-         return view('candidate/edit',\compact('data'));
+         return view('admin/candidate/edit',\compact('data'));
  }
     public function candidates_save(Request $request,$id){
         $applicant= Applicant::find($id);
@@ -74,14 +74,14 @@ class CandidateController extends Controller
          $jobApplicant->job_post_id =$request->job_post_id;
          $jobApplicant->update();
          
-         return redirect('candidates');
+         return redirect('admin/candidates');
     }
 
     public function candidates_delete($id){
         $applicant= Applicant::find($id);
         $applicant->delete();
         $jobApplicant =  JobApplicant::where('applicant_id',$id)->delete();
-        return redirect('candidates');
+        return redirect('admin/candidates');
     }
     public function condidate_data(Request $request,$id){
         $candidates_list = DB::table('applicants')
@@ -91,7 +91,7 @@ class CandidateController extends Controller
         ->where('job_applicants.id',$id)
         ->get();
         $data= $candidates_list[0];
-        return view('candidate/condidate_data',\compact('data'));
+        return view('admin/candidate/condidate_data',\compact('data'));
       
     }
 }

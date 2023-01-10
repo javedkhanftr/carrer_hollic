@@ -76,5 +76,12 @@ class MasterController extends Controller
         return $user->first_name.' '.$user->last_name;
 
     }
+    public static function getdate($date){
+        $date1= date('Y-m-d');
+        $datetime1 = date_create($date);
+        $datetime2 = date_create($date1);
+        $interval = date_diff($datetime1, $datetime2);
+        return $interval->format('%y years %m months');
+    }
 
 }

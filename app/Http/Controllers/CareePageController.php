@@ -15,7 +15,7 @@ class CareePageController extends Controller
         $carrer_page_data= \json_decode($setting[0]['value']);
         $data= $carrer_page_data->job_post_settings;
         // return $data;
-        return view('career_page/index',\compact('jobpost','data'));
+        return view('admin/career_page/index',\compact('jobpost','data'));
     }
     public function update(Request $request){
         $data=$request->all();

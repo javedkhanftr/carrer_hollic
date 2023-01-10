@@ -1,346 +1,497 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zxx">
+
+<!-- Mirrored from demo.dashboardpack.com/user-management-html/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 06 Jan 2023 11:35:25 GMT -->
 
 <head>
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>Career Hollic</title>
+    <link rel="icon"  class="rounded" width="100%" href="{{asset('img/favicon1.jpg')}}" type="image/png">
 
-    <title>Dashboard</title>
+    <link rel="stylesheet" href="{{asset('css/bootstrap1.min.css')}}" />
 
-    <!-- Custom fonts for this template-->
-    <link href="{{asset('vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
-    <link
-        href="{{asset('https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i')}}"
-        rel="stylesheet">
-    <link href="{{asset('https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css')}}" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <!-- Custom styles for this template-->
-    <link href="{{asset('css/sb-admin-2.min.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('vendors/themefy_icon/themify-icons.css')}}" />
 
+    <link rel="stylesheet" href="{{asset('vendors/niceselect/css/nice-select.css')}}" />
+
+    <link rel="stylesheet" href="{{asset('vendors/owl_carousel/css/owl.carousel.css')}}" />
+
+    <link rel="stylesheet" href="{{asset('vendors/gijgo/gijgo.min.css')}}" />
+
+    <link rel="stylesheet" href="{{asset('vendors/font_awesome/css/all.min.css')}}" />
+    <link rel="stylesheet" href="{{asset('vendors/tagsinput/tagsinput.css')}}" />
+
+    <link rel="stylesheet" href="{{asset('vendors/datepicker/date-picker.css')}}" />
+    <link rel="stylesheet" href="{{asset('vendors/vectormap-home/vectormap-2.0.2.css')}}" />
+
+    <link rel="stylesheet" href="{{asset('vendors/scroll/scrollable.css')}}" />
+
+    <link rel="stylesheet" href="{{asset('vendors/datatable/css/jquery.dataTables.min.css')}}" />
+    <link rel="stylesheet" href="{{asset('vendors/datatable/css/responsive.dataTables.min.css')}}" />
+    <link rel="stylesheet" href="{{asset('vendors/datatable/css/buttons.dataTables.min.css')}}" />
+
+    <link rel="stylesheet" href="{{asset('vendors/text_editor/summernote-bs4.css')}}" />
+
+    <link rel="stylesheet" href="{{asset('vendors/morris/morris.css')}}">
+
+    <link rel="stylesheet" href="{{asset('vendors/material_icon/material-icons.css')}}" />
+
+    <link rel="stylesheet" href="{{asset('css/metisMenu.css')}}">
+
+    <link rel="stylesheet" href="{{asset('css/style1.css')}}" />
+    <link rel="stylesheet" href="{{asset('css/colors/default.css')}}" id="colorSkinCSS">
 </head>
 
-<body id="page-top">
-
-    <!-- Page Wrapper -->
-    <div id="wrapper">
-
-        <!-- Sidebar -->
-        <!-- <ul class="navbar-nav bg-gradient-dark sidebar sidebar-dark accordion" id="accordionSidebar"> -->
-        <ul class="navbar-nav  sidebar sidebar-dark accordion" style="background-color:black;" id="accordionSidebar">
-
-            <!-- Sidebar - Brand -->
-            <!-- <a class="sidebar-brand d-flex align-items-center justify-content-center" href="">
-                <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-laugh-wink"></i>
-                </div>
-                <div class="sidebar-brand-text mx-3">Vijay Meena</div>
-            </a> -->
-            <a href="https://careerhollic.com/recruitment/" class="navbar-brand brand-logo">
-                <img class="img-fluid" src="{{asset('/image/logo.png')}}" alt="logo">
-            </a>
-
-            <!-- Divider -->
-            <hr class="sidebar-divider my-0">
-
-            <!-- Nav Item - Dashboard -->
-            <li class="nav-item ">
-                <a class="nav-link" href="{{url('dashboard')}}">
-                    <span class="icon-wrapper">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                            class="feather feather-pie-chart menu-icon">
-                            <path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path>
-                            <path d="M22 12A10 10 0 0 0 12 2v10z"></path>
-                        </svg>
-                    </span>
-                    <span>Dashboard</span></a>
-            </li>
-            <li class="nav-item ">
-                <a class="nav-link" href="{{url('candidates')}}">
-                    <span class="icon-wrapper">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                            class="feather feather-users menu-icon">
-                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                            <circle cx="9" cy="7" r="4"></circle>
-                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                        </svg>
-                    </span>
-                    <span>Candidates</span></a>
-            </li>
-            <li class="nav-item ">
-                <a class="nav-link" href="{{url('career_page')}}">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                        class="feather feather-layout menu-icon">
-                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-                        <line x1="3" y1="9" x2="21" y2="9"></line>
-                        <line x1="9" y1="21" x2="9" y2="9"></line>
-                    </svg>
-                    <span>Career Page</span></a>
-            </li>
-            <li class="nav-item">
-                <a href="users-and-roles" class="nav-link">
-                    <span class="icon-wrapper">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                            class="feather feather-user-check menu-icon">
-                            <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                            <circle cx="8.5" cy="7" r="4"></circle>
-                            <polyline points="17 11 19 13 23 9"></polyline>
-                        </svg>
-                    </span> <span class="menu-title">Users &amp; Roles</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="#settings" data-toggle="collapse" aria-expanded="false" aria-controls="settings"
-                    class="nav-link">
-                    <span class="icon-wrapper">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                            class="feather feather-settings menu-icon">
-                            <circle cx="12" cy="12" r="3"></circle>
-                            <path
-                                d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">
-                            </path>
-                        </svg>
-                    </span>
-                    <span class="menu-title">Settings</span>
-                    <i class="menu-arrow"></i>
-                </a>
-                <div id="settings" class="collapse">
-                    <ul class="nav flex-column sub-menu">
-                        <li class="nav-item">
-                            <a href="app-setting" class="nav-link">
-                                App Settings
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="job-setting" class="nav-link">
-                                Job Settings
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="integrations" class="nav-link">
-                                Integrations
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </li>
-
-            <!-- Divider -->
-            <hr class="sidebar-divider">
+<body class="crm_body_bg">
 
 
-            <!-- Nav Item - Pages Collapse Menu -->
-
-
-
-
-            <!-- Sidebar Toggler (Sidebar) -->
-            <div class="text-center d-none d-md-inline">
-                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+    <nav class="sidebar">
+        <div class="logo d-flex justify-content-between">
+            <a class="large_logo" href="{{url('admin/dashboard')}}"><img src="{{asset('https://careerhollic.com/recruitment/storage/logo/6317055e836fd.')}}" alt=""></a>
+            <a class="small_logo" href="{{url('admin/dashboard')}}">Vijay Meena</a>
+            <div class="sidebar_close_icon d-lg-none">
+                <i class="ti-close"></i>
             </div>
+        </div>
+        <ul id="sidebar_menu">
+            <li class="">
+                <a class="" href="{{url('admin/dashboard')}}" >
+                    <div class="nav_icon_small">
+                        <img src="{{asset('img/menu-icon/dashboard.svg')}}" alt="">
+                    </div>
+                    <div class="nav_title">
+                        <span>Dashboard</span>
+                    </div>
+                </a>
+            </li>
+            <li class="">
+                <a class="" href="{{url('admin/jobPost')}}" >
+                    <div class="nav_icon_small">
+                        <img src="{{asset('img/menu-icon/13.svg')}}" alt="">
+                    </div>
+                    <div class="nav_title">
+                        <span>Job Post</span>
+                    </div>
+                </a>
+                
+            </li>
+            <li class="">
+                <a class="" href="{{url('admin/candidates')}}" >
+                    <div class="nav_icon_small">
+                        <img src="{{asset('img/menu-icon/4.svg')}}" alt="">
+                    </div>
+                    <div class="nav_title">
+                        <span>Condidate</span>
+                    </div>
+                </a>
+                
+            </li>
+            <li class="">
+                <a class="" href="{{url('admin/career_page/')}}" >
+                    <div class="nav_icon_small">
+                        <img src="{{asset('img/menu-icon/20.svg')}}" alt="">
+                    </div>
+                    <div class="nav_title">
+                        <span>Career Page</span>
+                    </div>
+                </a>
+                
+            </li>
+            <li class="">
+                <a class="" href="#" >
+                    <div class="nav_icon_small">
+                        <img src="{{asset('img/menu-icon/11.svg')}}" alt="">
+                    </div>
+                    <div class="nav_title">
+                        <span>Role & Permissions</span>
+                    </div>
+                </a>
+               
+            </li>
+            <li class="">
+                <a class="" href="{{url('admin/users-and-roles')}}" >
+                    <div class="nav_icon_small">
+                        <img src="{{asset('img/menu-icon/5.svg')}}" alt="">
+                    </div>
+                    <div class="nav_title">
+                        <span>Users</span>
+                    </div>
+                </a>
+            </li>
 
-
+            <li class="">
+                <a class="" href="{{url('admin/wfh/list')}}" >
+                    <div class="nav_icon_small">
+                        <img src="{{asset('img/menu-icon/12.svg')}}" alt="">
+                    </div>
+                    <div class="nav_title">
+                        <span>Report</span>
+                    </div>
+                </a>
+                
+            </li>
+            <li class="">
+                <a class="" href="{{url('admin/calendar-event/')}}" >
+                    <div class="nav_icon_small">
+                        <img src="{{asset('img/menu-icon/3.svg')}}" alt="">
+                    </div>
+                    <div class="nav_title">
+                        <span>Event</span>
+                    </div>
+                </a>
+                
+            </li>
+            <li class="">
+                <a class="" href="{{url('admin/job-setting/')}}" >
+                    <div class="nav_icon_small">
+                        <img src="{{asset('img/menu-icon/18.svg')}}" alt="">
+                    </div>
+                    <div class="nav_title">
+                        <span>Setting</span>
+                    </div>
+                </a>
+                
+            </li>
 
         </ul>
-        <!-- End of Sidebar -->
+    </nav>
 
-        <!-- Content Wrapper -->
-        <div id="content-wrapper" class="d-flex flex-column">
+    <section class="main_content dashboard_part large_header_bg">
 
-            <!-- Main Content -->
-            <div id="content">
-
-                <!-- Topbar -->
-                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-
-
-                    <div class="row" style="margin-left:1100px">
-                        <div class="col-md-4">
-                           <ul style="list-style-type: none;">
-                           <li class="nav-item dropdown no-arrow">
-                                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <span class="mr-2 d-none d-lg-inline text-gray-600 small">Vijay Meena</span>
-                                    <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
-                                </a>
-                                <!-- Dropdown - User Information -->
-                                <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                    aria-labelledby="userDropdown">
-                                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                                        <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                        Logout
+        <div class="container-fluid g-0">
+            <div class="row">
+                <div class="col-lg-12 p-0 ">
+                    <div class="header_iner d-flex justify-content-between align-items-center">
+                        <div class="sidebar_icon d-lg-none">
+                            <i class="ti-menu"></i>
+                        </div>
+                        <div class="line_icon open_miniSide d-none d-lg-block">
+                            <img src="{{asset('img/line_img.png')}}" alt="">
+                        </div>
+                  
+                        <div class="header_right d-flex justify-content-between align-items-center">
+                            <!-- <div class="header_notification_warp d-flex align-items-center">
+                                <li>
+                                    <a class="bell_notification_clicker" href="#"> <img src="{{asset('img/icon/bell.svg')}}" alt="">
+                                        <span>2</span>
                                     </a>
+
+                                    <div class="Menu_NOtification_Wrap">
+                                        <div class="notification_Header">
+                                            <h4>Notifications</h4>
+                                        </div>
+                                        <div class="Notification_body">
+
+                                            <div class="single_notify d-flex align-items-center">
+                                                <div class="notify_thumb">
+                                                    <a href="#"><img src="img/staf/2.png" alt=""></a>
+                                                </div>
+                                                <div class="notify_content">
+                                                    <a href="#">
+                                                        <h5>Cool Marketing </h5>
+                                                    </a>
+                                                    <p>Lorem ipsum dolor sit amet</p>
+                                                </div>
+                                            </div>
+
+                                            <div class="single_notify d-flex align-items-center">
+                                                <div class="notify_thumb">
+                                                    <a href="#"><img src="img/staf/4.png" alt=""></a>
+                                                </div>
+                                                <div class="notify_content">
+                                                    <a href="#">
+                                                        <h5>Awesome packages</h5>
+                                                    </a>
+                                                    <p>Lorem ipsum dolor sit amet</p>
+                                                </div>
+                                            </div>
+
+                                            <div class="single_notify d-flex align-items-center">
+                                                <div class="notify_thumb">
+                                                    <a href="#"><img src="img/staf/3.png" alt=""></a>
+                                                </div>
+                                                <div class="notify_content">
+                                                    <a href="#">
+                                                        <h5>what a packages</h5>
+                                                    </a>
+                                                    <p>Lorem ipsum dolor sit amet</p>
+                                                </div>
+                                            </div>
+
+                                            <div class="single_notify d-flex align-items-center">
+                                                <div class="notify_thumb">
+                                                    <a href="#"><img src="img/staf/2.png" alt=""></a>
+                                                </div>
+                                                <div class="notify_content">
+                                                    <a href="#">
+                                                        <h5>Cool Marketing </h5>
+                                                    </a>
+                                                    <p>Lorem ipsum dolor sit amet</p>
+                                                </div>
+                                            </div>
+
+                                            <div class="single_notify d-flex align-items-center">
+                                                <div class="notify_thumb">
+                                                    <a href="#"><img src="img/staf/4.png" alt=""></a>
+                                                </div>
+                                                <div class="notify_content">
+                                                    <a href="#">
+                                                        <h5>Awesome packages</h5>
+                                                    </a>
+                                                    <p>Lorem ipsum dolor sit amet</p>
+                                                </div>
+                                            </div>
+
+                                            <div class="single_notify d-flex align-items-center">
+                                                <div class="notify_thumb">
+                                                    <a href="#"><img src="img/staf/3.png" alt=""></a>
+                                                </div>
+                                                <div class="notify_content">
+                                                    <a href="#">
+                                                        <h5>what a packages</h5>
+                                                    </a>
+                                                    <p>Lorem ipsum dolor sit amet</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="nofity_footer">
+                                            <div class="submit_button text-center pt_20">
+                                                <a href="#" class="btn_1">See More</a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </li>
+                                <li>
+                                    <a class="CHATBOX_open" href="#"> <img src="img/icon/msg.svg" alt=""> <span>2</span>
+                                    </a>
+                                </li>
+                            </div> -->
+                            <div class="profile_info">
+                                <img src="{{asset('img/client_img.png')}}" alt="#">
+                                <div class="profile_info_iner">
+                                    <div class="profile_author_name">
+                                        <p>Admin </p>
+                                        <h5>Vijay Menna</h5>
+                                    </div>
+                                    <div class="profile_info_details">
+                                        <!-- <a href="#">My Profile </a>
+                                        <a href="#">Settings</a> -->
+                                        <a href="#">Log Out </a>
+                                    </div>
                                 </div>
-                            </li>
-                           </ul>
+                            </div>
                         </div>
                     </div>
-
-                </nav>
-                <!-- End of Topbar -->
-
-                <!-- Begin Page Content -->
-                <div class="container-fluid">
-
-                    @yield('content')
-
-
                 </div>
-                <!-- /.container-fluid -->
-
             </div>
-            <!-- End of Main Content -->
+        </div>
 
-            <!-- Footer -->
-            <footer class="sticky-footer bg-white">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <span>Copyright @ 2021 by Career Hollic </span>
+        <div class="main_content_iner overly_inner ">
+            <div class="container-fluid p-0 ">
+
+               
+                @yield('content')
+            </div>
+        </div>
+
+        <div class="footer_part">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="footer_iner text-center">
+                            <p>2020 © Influence - Designed by <a href="#"> <i class="ti-heart"></i> </a><a href="#">
+                                    Dashboard</a></p>
+                        </div>
                     </div>
                 </div>
-            </footer>
-            <!-- End of Footer -->
-
+            </div>
         </div>
-        <!-- End of Content Wrapper -->
+    </section>
 
-    </div>
-    <!-- End of Page Wrapper -->
 
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fas fa-angle-up"></i>
-    </a>
-
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
+    <div class="CHAT_MESSAGE_POPUPBOX">
+        <div class="CHAT_POPUP_HEADER">
+            <div class="MSEESAGE_CHATBOX_CLOSE">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M7.09939 5.98831L11.772 10.661C12.076 10.965 12.076 11.4564 11.772 11.7603C11.468 12.0643 10.9766 12.0643 10.6726 11.7603L5.99994 7.08762L1.32737 11.7603C1.02329 12.0643 0.532002 12.0643 0.228062 11.7603C-0.0760207 11.4564 -0.0760207 10.965 0.228062 10.661L4.90063 5.98831L0.228062 1.3156C-0.0760207 1.01166 -0.0760207 0.520226 0.228062 0.216286C0.379534 0.0646715 0.578697 -0.0114918 0.777717 -0.0114918C0.976738 -0.0114918 1.17576 0.0646715 1.32737 0.216286L5.99994 4.889L10.6726 0.216286C10.8243 0.0646715 11.0233 -0.0114918 11.2223 -0.0114918C11.4213 -0.0114918 11.6203 0.0646715 11.772 0.216286C12.076 0.520226 12.076 1.01166 11.772 1.3156L7.09939 5.98831Z"
+                        fill="white" />
+                </svg>
+            </div>
+            <h3>Chat with us</h3>
+            <div class="Chat_Listed_member">
+                <ul>
+                    <li>
+                        <a href="#">
+                            <div class="member_thumb">
+                                <img src="img/staf/1.png" alt="">
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <div class="member_thumb">
+                                <img src="img/staf/2.png" alt="">
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <div class="member_thumb">
+                                <img src="img/staf/3.png" alt="">
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <div class="member_thumb">
+                                <img src="img/staf/4.png" alt="">
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <div class="member_thumb">
+                                <img src="img/staf/5.png" alt="">
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <div class="member_thumb">
+                                <div class="more_member_count">
+                                    <span>90+</span>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="CHAT_POPUP_BODY">
+            <p class="mesaged_send_date">
+                Sunday, 12 January
+            </p>
+            <div class="CHATING_SENDER">
+                <div class="SMS_thumb">
+                    <img src="img/staf/1.png" alt="">
                 </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="{{url('signout')}}">Logout</a>
+                <div class="SEND_SMS_VIEW">
+                    <P>Hi! Welcome .
+                        How can I help you?</P>
+                </div>
+            </div>
+            <div class="CHATING_SENDER CHATING_RECEIVEr">
+                <div class="SEND_SMS_VIEW">
+                    <P>Hello</P>
+                </div>
+                <div class="SMS_thumb">
+                    <img src="img/staf/1.png" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="CHAT_POPUP_BOTTOM">
+            <div class="chat_input_box d-flex align-items-center">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Write your message"
+                        aria-label="Recipient's username" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                        <button class="btn " type="button">
+
+                            <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M18.7821 3.21895C14.4908 -1.07281 7.50882 -1.07281 3.2183 3.21792C-1.07304 7.50864 -1.07263 14.4908 3.21872 18.7824C7.50882 23.0729 14.4908 23.0729 18.7817 18.7815C23.0726 14.4908 23.0724 7.50906 18.7821 3.21895ZM17.5813 17.5815C13.9525 21.2103 8.04773 21.2108 4.41871 17.5819C0.78907 13.9525 0.789485 8.04714 4.41871 4.41832C8.04752 0.789719 13.9521 0.789304 17.5817 4.41874C21.2105 8.04755 21.2101 13.9529 17.5813 17.5815ZM6.89503 8.02162C6.89503 7.31138 7.47107 6.73534 8.18131 6.73534C8.89135 6.73534 9.46739 7.31117 9.46739 8.02162C9.46739 8.73228 8.89135 9.30811 8.18131 9.30811C7.47107 9.30811 6.89503 8.73228 6.89503 8.02162ZM12.7274 8.02162C12.7274 7.31138 13.3038 6.73534 14.0141 6.73534C14.7241 6.73534 15.3002 7.31117 15.3002 8.02162C15.3002 8.73228 14.7243 9.30811 14.0141 9.30811C13.3038 9.30811 12.7274 8.73228 12.7274 8.02162ZM15.7683 13.2898C14.9712 15.1332 13.1043 16.3243 11.0126 16.3243C8.8758 16.3243 6.99792 15.1272 6.22834 13.2744C6.09642 12.9573 6.24681 12.593 6.56438 12.4611C6.64238 12.4289 6.72328 12.4136 6.80293 12.4136C7.04687 12.4136 7.27836 12.5577 7.37772 12.7973C7.95376 14.1842 9.38048 15.0799 11.0126 15.0799C12.6077 15.0799 14.0261 14.1836 14.626 12.7959C14.7625 12.4804 15.1288 12.335 15.4441 12.4717C15.7594 12.6084 15.9048 12.9745 15.7683 13.2898Z"
+                                    fill="#707DB7" />
+                            </svg>
+
+                        </button>
+                        <button class="btn" type="button">
+
+                            <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M11 0.289062C4.92455 0.289062 0 5.08402 0 10.9996C0 16.9152 4.92455 21.7101 11 21.7101C17.0755 21.7101 22 16.9145 22 10.9996C22 5.08472 17.0755 0.289062 11 0.289062ZM11 20.3713C5.68423 20.3713 1.375 16.1755 1.375 10.9996C1.375 5.82371 5.68423 1.62788 11 1.62788C16.3158 1.62788 20.625 5.82371 20.625 10.9996C20.625 16.1755 16.3158 20.3713 11 20.3713ZM15.125 10.3302H11.6875V6.98314C11.6875 6.61363 11.3795 6.31373 11 6.31373C10.6205 6.31373 10.3125 6.61363 10.3125 6.98314V10.3302H6.875C6.4955 10.3302 6.1875 10.6301 6.1875 10.9996C6.1875 11.3691 6.4955 11.669 6.875 11.669H10.3125V15.016C10.3125 15.3855 10.6205 15.6854 11 15.6854C11.3795 15.6854 11.6875 15.3855 11.6875 15.016V11.669H15.125C15.5045 11.669 15.8125 11.3691 15.8125 10.9996C15.8125 10.6301 15.5045 10.3302 15.125 10.3302Z"
+                                    fill="#707DB7" />
+                            </svg>
+
+                            <input type="file">
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Bootstrap core JavaScript-->
-    <script src="{{asset('https://code.jquery.com/jquery-3.6.1.min.js')}}"></script>
-    <script src="{{asset('vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+    <div id="back-top" style="display: none;">
+        <a title="Go to Top" href="#">
+            <i class="ti-angle-up"></i>
+        </a>
+    </div>
 
-    <!-- Core plugin JavaScript-->
-    <script src=" {{asset('vendor/jquery-easing/jquery.easing.min.js')}}""></script>
+    <!-- <script src="{{asset('js/jquery1-3.4.1.min.js')}}"></script> -->
 
-    <!-- Custom scripts for all pages-->
-    <script src="{{asset('js/sb-admin-2.min.js')}}""></script>
+    <script src="{{asset('js/popper1.min.js')}}"></script>
 
-    <!-- Page level plugins -->
-    <script src=" {{asset('vendor/chart.js/Chart.min.js')}}""></script>
+    <script src="{{asset('js/bootstrap1.min.js')}}"></script>
 
-    <!-- Page level custom scripts -->
-    <script src="{{asset('js/demo/chart-area-demo.js')}}""></script>
-    <script src=" {{asset('js/demo/chart-pie-demo.js')}}""></script>
-    <script src="{{asset('https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js')}}"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
-    </script>
-    <script src="{{asset('https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js')}}"
-        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous">
-    </script>
-    <script src="{{asset('https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js')}}"
-        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous">
-    </script>
-    <script src="{{asset('https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js')}}"></script>
-    <link href="{{asset('https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css')}}"
-        rel="stylesheet" />
+    <script src="{{asset('js/metisMenu.js')}}"></script>
 
+    <script src="{{asset('vendors/count_up/jquery.waypoints.min.js')}}"></script>
 
-    <script src="{{asset('https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js')}}"></script>
-    <!-- <script src="{{asset('https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js')}}"></script> -->
-    <script>
-    $(document).ready(function() {
-        $('#job_type').select2();
-        $('#department').select2();
-        $('#Company_location').select2();
-    });
-    </script>
-    <!-- // data table  -->
-    <link href="{{asset('https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css')}}"
-        rel="stylesheet" />
-    <link href="{{asset('https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap4.min.css')}}" rel="stylesheet" />
-    <script src="{{asset('https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js')}}"></script>
-    <script src="{{asset('https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap4.min.js')}}"></script>
+    <script src="{{asset('vendors/chartlist/Chart.min.js')}}"></script>
 
+    <script src="{{asset('vendors/count_up/jquery.counterup.min.js')}}"></script>
 
-    <script>
-    $(document).ready(function() {
+    <script src="{{asset('vendors/niceselect/js/jquery.nice-select.min.js')}}"></script>
 
-        $('#example').DataTable();
-        let email = $('#verifyEmail').val();
+    <script src="{{asset('vendors/owl_carousel/js/owl.carousel.min.js')}}"></script>
 
-        $('#EmailVerifyData').click(function() {
-            let em = $('#email').val();
-            if (em == email) {
-                window.location.href = "candidates/create/";
-            } else {
-                alert('unauthorized');
-                $('#verifyEmailData').modal('hide');
-            }
-        });
-        $('.deleteCondidate').click(function() {
-            let id = $(this).attr('data-id');
-            Swal.fire({
-                title: 'Are you sure?',
-                text: "You won't be able to revert this!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, delete it!'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    Swal.fire(
-                        'Deleted!',
-                        'Your file has been deleted.',
-                        'success'
-                    ),
-                    setTimeout(() => {
-                    window.location.href = "candidates/delete/" + id;
-                }, 1000);
+    <script src="{{asset('vendors/datatable/js/jquery.dataTables.min.js')}}"></script>
+    <script src="{{asset('vendors/datatable/js/dataTables.responsive.min.js')}}"></script>
+    <script src="{{asset('vendors/datatable/js/dataTables.buttons.min.js')}}"></script>
+    <script src="{{asset('vendors/datatable/js/buttons.flash.min.js')}}"></script>
+    <script src="{{asset('vendors/datatable/js/jszip.min.js')}}"></script>
+    <script src="{{asset('vendors/datatable/js/pdfmake.min.js')}}"></script>
+    <script src="{{asset('vendors/datatable/js/vfs_fonts.js')}}"></script>
+    <script src="{{asset('vendors/datatable/js/buttons.html5.min.js')}}"></script>
+    <script src="{{asset('vendors/datatable/js/buttons.print.min.js')}}"></script>
 
-                }
-               
-            });
-          
-        })
-        $('.editCondidate').click(function() {
-            let id = $(this).attr('data-id');
+    <script src="{{asset('vendors/datepicker/datepicker.js')}}"></script>
+    <script src="{{asset('vendors/datepicker/datepicker.en.js')}}"></script>
+    <script src="{{asset('vendors/datepicker/datepicker.custom.js')}}"></script>
+    <script src="{{asset('js/chart.min.js')}}"></script>
+    <script src="{{asset('vendors/chartjs/roundedBar.min.js')}}"></script>
 
-        })
-    })
-    </script>
+    <script src="{{asset('vendors/progressbar/jquery.barfiller.js')}}"></script>
 
-    <!-- sweet alert -->
-    <script src="{{asset('//cdn.jsdelivr.net/npm/sweetalert2@11')}}"></script>
-    <script src="{{asset('sweetalert2.all.min.js')}}"></script>
-    <script src="{{asset('sweetalert2.min.js')}}"></script>
-    <link rel="stylesheet" href="{{asset('sweetalert2.min.css')}}">
+    <script src="{{asset('vendors/tagsinput/tagsinput.js')}}"></script>
+
+    <script src="{{asset('vendors/text_editor/summernote-bs4.js')}}"></script>
+    <script src="{{asset('vendors/am_chart/amcharts.js')}}"></script>
+
+    <script src="{{asset('vendors/scroll/perfect-scrollbar.min.js')}}"></script>
+    <script src="{{asset('vendors/scroll/scrollable-custom.js')}}"></script>
+
+    <script src="{{asset('vendors/vectormap-home/vectormap-2.0.2.min.js')}}"></script>
+    <script src="{{asset('vendors/vectormap-home/vectormap-world-mill-en.js')}}"></script>
+
+    <script src="{{asset('vendors/apex_chart/apex-chart2.js')}}"></script>
+    <script src="{{asset('vendors/apex_chart/apex_dashboard.js')}}"></script>
+
+    <script src="{{asset('vendors/chart_am/core.js')}}"></script>
+    <script src="{{asset('vendors/chart_am/charts.js')}}"></script>
+    <script src="{{asset('vendors/chart_am/animated.js')}}"></script>
+    <script src="{{asset('vendors/chart_am/kelly.js')}}"></script>
+    <script src="{{asset('vendors/chart_am/chart-custom.js')}}"></script>
+
+    <script src="{{asset('js/dashboard_init.js')}}"></script>
+    <script src="{{asset('js/custom.js')}}"></script>
 </body>
+
+<!-- Mirrored from demo.dashboardpack.com/user-management-html/ by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 06 Jan 2023 11:36:25 GMT -->
 
 </html>

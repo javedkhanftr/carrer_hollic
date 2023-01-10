@@ -23,14 +23,14 @@ class JobSettingController extends Controller
         $setting=Setting::where('name','application_form')->get();
         $data_basic= \json_decode($setting[0]['value']);
         // return $data_basic;
-        return view('setting/index',compact('company_location','department','jobtype','eventtype','stage','data_basic'));
+        return view('admin/setting/index',compact('company_location','department','jobtype','eventtype','stage','data_basic'));
     }
     public function add_location(Request $request){
         $company_location=new CompanyLocation();
         $company_location->address=$request->address;
         $company_location->save();
         session()->put('message', 'Company Location Created Successfuly');   
-        return redirect('job-setting');
+        return redirect('admin/job-setting');
 
     }
     public function edit_location(Request $request){
@@ -39,14 +39,14 @@ class JobSettingController extends Controller
         $company_location->address=$request->address;
         $company_location->update();
         session()->put('message', 'Company Location Updated Successfuly');   
-        return redirect('job-setting');
+        return redirect('admin/job-setting');
 
     }
     public function delete_location(Request $request,$id){
         $company_location= CompanyLocation::find($id);
         $company_location->delete();
         session()->put('message', 'Company Location delete Successfuly');   
-        return redirect('job-setting');
+        return redirect('admin/job-setting');
 
     }
     public function get_location(Request $request){
@@ -61,7 +61,7 @@ class JobSettingController extends Controller
         $department->name=$request->department_name;
         $department->save();
         session()->put('message', 'Department Created Successfuly');   
-        return redirect('job-setting');
+        return redirect('admin/job-setting');
 
     }
     public function edit_department(Request $request){
@@ -70,14 +70,14 @@ class JobSettingController extends Controller
         $department->name=$request->department_name;
         $department->update();
         session()->put('message', 'Department Updated Successfuly');   
-        return redirect('job-setting');
+        return redirect('admin/job-setting');
 
     }
     public function delete_department(Request $request,$id){
         $department= Department::find($id);
         $department->delete();
         session()->put('message', 'Department delete Successfuly');   
-        return redirect('job-setting');
+        return redirect('admin/job-setting');
 
     }
     public function get_department(Request $request){
@@ -92,7 +92,7 @@ class JobSettingController extends Controller
         $jobtype->brief=$request->jobtype_brief;
         $jobtype->save();
         session()->put('message', 'Jobtype Created Successfuly');   
-        return redirect('job-setting');
+        return redirect('admin/job-setting');
 
     }
     public function edit_jobtype(Request $request){
@@ -102,14 +102,14 @@ class JobSettingController extends Controller
         $jobtype->brief=$request->jobtype_brief;
         $jobtype->update();
         session()->put('message', 'Jobtype Updated Successfuly');   
-        return redirect('job-setting');
+        return redirect('admin/job-setting');
 
     }
     public function delete_jobtype(Request $request,$id){
         $jobtype= JobType::find($id);
         $jobtype->delete();
         session()->put('message', 'Jobtype delete Successfuly');   
-        return redirect('job-setting');
+        return redirect('admin/job-setting');
 
     }
     public function get_jobtype(Request $request){
@@ -123,7 +123,7 @@ class JobSettingController extends Controller
         $eventtype->name=$request->eventtype_name;
         $eventtype->save();
         session()->put('message', 'Event Type Created Successfuly');   
-        return redirect('job-setting');
+        return redirect('admin/job-setting');
 
     }
     public function edit_eventtype(Request $request){
@@ -132,7 +132,7 @@ class JobSettingController extends Controller
         $eventtype->name=$request->eventtype_name;
         $eventtype->update();
         session()->put('message', 'Event Type Updated Successfuly');   
-        return redirect('job-setting');
+        return redirect('admin/job-setting');
 
     }
     public function delete_eventtype(Request $request,$id){
@@ -140,6 +140,7 @@ class JobSettingController extends Controller
         $eventtype->delete();
         session()->put('message', 'Event Type delete Successfuly');   
         return redirect('job-setting');
+        return redirect('admin/job-setting');
 
     }
     public function get_eventtype(Request $request){
@@ -155,7 +156,7 @@ class JobSettingController extends Controller
         $stage->name=$request->stage_name;
         $stage->save();
         session()->put('message', 'Stage Created Successfuly');   
-        return redirect('job-setting');
+        return redirect('admin/job-setting');
 
     }
     public function edit_stage(Request $request){
@@ -164,14 +165,14 @@ class JobSettingController extends Controller
         $stage->name=$request->stage_name;
         $stage->update();
         session()->put('message', 'Stage Updated Successfuly');   
-        return redirect('job-setting');
+        return redirect('admin/job-setting');
 
     }
     public function delete_stage(Request $request,$id){
         $stage= Stage::find($id);
         $stage->delete();
         session()->put('message', 'Stage delete Successfuly');   
-        return redirect('job-setting');
+        return redirect('admin/job-setting');
 
     }
     public function get_stage(Request $request){

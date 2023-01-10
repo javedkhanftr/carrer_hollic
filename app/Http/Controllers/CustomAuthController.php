@@ -8,6 +8,7 @@ use App\Models\JobType;
 use App\Models\JobPost;
 use App\Models\Department;
 use App\Models\CompanyLocation;
+use App\Models\Best_employee;
 use Carbon\Carbon;
 use DB;
 use Illuminate\Support\Facades\Auth;
@@ -27,11 +28,11 @@ class CustomAuthController extends Controller
    
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
-            return redirect()->intended('dashboard')
+            return redirect()->intended('admin/dashboard')
                         ->withSuccess('Signed in');
         }
   
-        return redirect("login")->withSuccess('Login details are not valid');
+        return redirect("admin/login")->withSuccess('Login details are not valid');
     }
 
     public function registration()
@@ -50,7 +51,7 @@ class CustomAuthController extends Controller
         $data = $request->all();
         $check = $this->create($data);
          
-        return redirect("dashboard")->withSuccess('You have signed-in');
+        return redirect("admin/dashboard")->withSuccess('You have signed-in');
     }
 
     public function create(array $data)
@@ -68,6 +69,32 @@ class CustomAuthController extends Controller
         $Job_type=JobType::all();
         $department=Department::all();
         $Company_location=CompanyLocation::all();
+        $user=User::all();
+
+        $date = date('Y-m-d ');
+        $attendance = DB::table('attendance')
+                         ->where('date',$date)
+                        ->where('checkout',NULL)
+                        ->select('checkout')
+                        ->first();
+        // dd($attendance);
+
+        // return $job_posts;
+        $best_employee=Best_employee::find(1);
+        $id=$best_employee->user_id;
+        $user_data=User::find($id);
+        if(Auth::check()){
+          
+            return view('admin/dashboard',compact('job_posts','Job_type','department','Company_location','attendance','user','user_data'));
+        }
+  
+        return redirect("admin/login")->withSuccess('You are not allowed to access');
+    }
+    public function jobPost(){
+        $job_posts=JobPost::all();
+        $Job_type=JobType::all();
+        $department=Department::all();
+        $Company_location=CompanyLocation::all();
 
 
         $date = date('Y-m-d ');
@@ -81,10 +108,10 @@ class CustomAuthController extends Controller
         // return $job_posts;
         if(Auth::check()){
           
-            return view('welcome',compact('job_posts','Job_type','department','Company_location','attendance'));
+            return view('admin/welcome',compact('job_posts','Job_type','department','Company_location','attendance'));
         }
   
-        return redirect("login")->withSuccess('You are not allowed to access');
+        return redirect("admin/login")->withSuccess('You are not allowed to access');
     }
 
     // public function attendance(Request $request){
@@ -177,6 +204,13 @@ class CustomAuthController extends Controller
         Session::flush();
         Auth::logout();
   
-        return Redirect('login');
+        return Redirect('admin/login');
+    }
+    public function best_employee(Request $request){
+        // return 'uuu';
+        $best_employee=Best_employee::find(1);
+        $best_employee->user_id=$request->user_id;
+        $best_employee->update();
+        return $best_employee;
     }
 }
