@@ -78,8 +78,8 @@ a:hover {
     display: none !important;
 }
 </style>
-<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
-<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script> -->
+<link rel="stylesheet"
+    href="{{asset('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css')}}">
 <script src="{{asset('https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js')}}"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <script src="{{asset('https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js')}}"></script>
@@ -102,13 +102,15 @@ $(document).ready(function() {
         <div class="main_content_iner ">
             <div class="container-fluid p-0">
                 <div class="row justify-content-center">
-                  
+
                     <div class="col-lg-12">
                         <div class="white_card card_height_100 mb_30">
                             <div class="white_card_body">
                                 <div class="QA_section">
                                     <div class="white_box_tittle list_header mt-5">
-                                        <h4>Users</h4>
+                                        <h4>Role
+                                            <!-- & Permissions -->
+                                        </h4>
                                         <div class="box_right d-flex lms_block">
                                             <div class="serach_field_2">
                                                 <div class="search_inner">
@@ -120,49 +122,93 @@ $(document).ready(function() {
                                                     </form>
                                                 </div>
                                             </div>
-                                          
+                                            <div class="add_button ms-2">
+                                                <a href="{{url('admin/role/create')}}" class="btn_1">Add
+                                                    New</a>
+                                            </div>
+
                                         </div>
                                     </div>
                                     <div class="QA_table mb_30">
 
                                         <table class="table lms_table_active ">
                                             <thead>
-                                                <th>Name</th>
-                                                <th>Email</th>
-                                                <th>Status</th>
-                                                <th>Action</th>
+                                                <tr>
+                                                    <th track-by="0" class="datatable-th pt-0">
+                                                        <span class="font-size-default">
+                                                            <span> Role name </span>
+                                                        </span>
+                                                    </th>
+                                                    <!-- <th track-by="1" class="datatable-th pt-0">
+                                                        <span class="font-size-default">
+                                                            <span>Permission</span>
+                                                        </span>
+                                                    </th> -->
+                                                    <th track-by="2" class="datatable-th pt-0">
+                                                        <span class="font-size-default">
+                                                            <span>Users</span>
+                                                        </span>
+                                                    </th>
+                                                    <th track-by="3" class="datatable-th pt-0 text-right">
+                                                        <span class="font-size-default">Action</span>
+                                                    </th>
+                                                </tr>
                                             </thead>
-                                        <tbody>
-                                                                @foreach($userRole as $role)
-                                                                <tr>
-                                                                    <td>
-                                                                    {{$role->first_name}} {{$role->last_name}}
-                                                                    </td>
-                                                                    <td>
-                                                                    {{$role->email}}
-                                                                    </td>
-                                                                    <td class="">
-                                                                        <span class="allbtn">
-                                                                        @if($role->status_id == 1)
-                                                                        <a href="{{url('admin/user/status_change/'.$role->id)}}" class="btn btn-sm btn-info badge"> Active
+                                            <tbody>
 
-                                                                        </a>
-                                                                        @else
-                                                                        <a href="{{url('admin/user/status_change/'.$role->id)}}" class="btn btn-sm btn-danger badge">Inactive</a>
-                                                                        @endif
+                                                @foreach($user_role as $role)
+                                                <tr>
+                                                    <td data-title="Role name" class="datatable-td">
+                                                        <span class="">{{$role->name}}</span>
+                                                    </td>
+                                                    <!-- <td data-title="Permission" class="datatable-td">
+                                                        <span>
+                                                            @if($role->is_admin == 0)
+                                                            <span>
+                                                                <button
+                                                                    class="btn btn-sm btn-primary rounded-pill px-3 py-1"
+                                                                    data-toggle="modal"
+                                                                    data-target="#exampleModaladdrolemange">Manage</button>
+                                                            </span>
+                                                            @endif
 
-                                                                        </span>
-                                                                    </td>
-                                                                    <td>
-                                                                    <a href="{{url('admin/user_edit/'.$role->id)}}" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>
-                                                                    <button data-id="{{$role->id}}" class="deleteuser  btb btn-sm btn-danger"><i class="fa fa-trash"></i></button>
-                                                                                  
-                                                                       
+                                                        </span>
+                                                    </td> -->
+                                                    <td data-title="Users" class="datatable-td">
+                                                        <span class="w-100">
+                                                            @inject('roles','App\Http\Controllers\MasterController')
+                                                            <div avatars-group-class="avatars-group-w-50"
+                                                                name="groupOfUsers2" table-id="roles-table">
+                                                                <div class="avatar-group avatars-group-w-50"
+                                                                    style="display: flex;">
+                                                                    @foreach($roles::getuserrole($role->id) as $item)
+                                                                    <div class="avatars-w-50 "
+                                                                        style="margin-left: -15px;">
+                                                                        <div
+                                                                            class="no-img rounded-circle allfirstlastname">
+                                                                            {{$item->first_name[0].$item->last_name[0]}}
+                                                                        </div>
+                                                                    </div>
+                                                                    @endforeach
+                                                                </div>
+                                                        </span>
+                                                    </td>
+                                                    <td>
+                                                        <a href="{{url('admin/role/edit/'.$role->id)}}" class="btn btn-sm btn-primary text-light"><i
+                                                                class="fa fa-edit"></i></a>
+                                                        <a href="{{url('admin/user-role/deleteData/'.$role->id)}}"
+                                                            class="btn btn-sm btn-danger text-light"><i
+                                                                class="fa fa-trash"></i></a>
+                                                        <a href="{{url('admin/role/manage_role/'.$role->id)}}"
+                                                            class=" btn btn-sm btn-info text-light mangeuser"><i
+                                                                class="fa fa-user"></i></a>
 
-                                                                    </td>
-                                                                </tr>
-                                                                @endforeach
-                                                            </tbody>
+
+                                                    </td>
+                                                </tr>
+                                                @endforeach
+
+                                            </tbody>
                                         </table>
                                     </div>
                                 </div>
@@ -172,115 +218,14 @@ $(document).ready(function() {
                 </div>
             </div>
         </div>
-       
-    </div>
-</div>
 
-<!-- module -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Edit User
-                </h5>
-
-            </div>
-
-            <form method="post" action="{{url('user_edit')}}">
-                @csrf
-                <input type="hidden" name="id" class="id">
-                <div class="row">
-                    <div class="col-md-3 text-center mt-4">
-                        <label for="recipient-name" class="col-form-label">First Name:</label>
-
-                    </div>
-                    <div class="col-md-8 mt-4">
-                        <input type="text" name="first_name" class="form-control first_name" id="recipient-name">
-
-                    </div>
-                    <div class="col-md-3 text-center mt-4">
-                        <label for="recipient-name" class=" col-form-label ">Last Name:</label>
-
-                    </div>
-                    <div class="col-md-8 mt-4">
-                        <input type="text" class="form-control last_name" name="last_name" id="recipient-name">
-
-                    </div>
-                </div>
-                <!-- <div class="form-group px-3">
-                    <label for="recipient-name" class="col-form-label">First Name:</label>
-                    <input type="text" name="first_name" class="form-control first_name" id="recipient-name">
-                </div>
-                <div class="form-group px-3">
-                    <label for="recipient-name" name="last_name" class=" col-form-label ">Last Name:</label>
-                    <input type="text" class="form-control last_name" id="recipient-name">
-
-                </div> -->
-
-
-                <div class="modal-footer mt-5 mb-2">
-                    <button type="button" class="btn btn-secondary cancelmodel">Cancel</button>
-                    <button type="submit" class="btn btn-primary">Save</button>
-                </div>
-            </form>
-
-        </div>
     </div>
 </div>
 
 
-<!-- invite module -->
-
-<div class="modal fade" id="exampleModalinvite" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Invite User
-                </h5>
-
-            </div>
-
-            <form method="post" action="">
-                @csrf
-                <input type="hidden" name="id" class="id">
-                <div class="row">
-                    <div class="col-md-3 text-center mt-4">
-                        <label for="recipient-name" class="col-form-label">Email:</label>
-
-                    </div>
-                    <div class="col-md-8 mt-4">
-                        <input type="email" name="email" class="form-control " placeholder="Enter Email"
-                            id="recipient-name">
-
-                    </div>
-                    <div class="col-md-3 text-center mt-4">
-                        <label>Role</label>
-
-                    </div>
-                    <div class="col-md-8 mt-4">
-                        <select class="form-control select2">
-                            <!-- <option>Select</option> -->
-                            <option>App Admin </option>
-                            <option>Vendor</option>
-                            <option>Recruiter</option>
-
-                        </select>
-                    </div>
-
-                </div>
 
 
-                <div class="modal-footer mt-5 mb-2">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn btn-primary">Save</button>
-                </div>
-            </form>
 
-        </div>
-    </div>
-</div>
 
 <div class="modal fade" id="exampleModaladdrole" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
@@ -2269,7 +2214,7 @@ $(document).ready(function() {
     })
     $('.deleteuser').click(function() {
         let id = $(this).attr('data-id');
-       
+
         Swal.fire({
             title: 'Are you sure?',
             text: "You won't be able to revert this!",

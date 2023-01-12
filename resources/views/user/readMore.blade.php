@@ -8,10 +8,31 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-        <title>Career Hollic</title>
-    <link rel="icon"  class="rounded" width="100%" href="{{asset('img/favicon1.jpg')}}" type="image/jpg">
+    <title>Career Hollic</title>
+    <link rel="icon" class="rounded" width="100%" href="{{asset('img/favicon1.jpg')}}" type="image/jpg">
 </head>
+<style>
+     .card2 {
+        background: #FFFFFF;
+        border:none;
+        box-shadow: 0px 0px 20px rgba(1, 123, 199, 0.17);
+    }
 
+    .findimagjob {
+        background: rgba(185, 187, 193, 0.25);
+        border-radius: 6px;
+    }
+
+    .namedata {
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 25px;
+        line-height: 38px;
+        text-decoration: none;
+        color: #000000;
+    }
+</style>
 <body>
     <div class="container">
         <div class="row mt-4 mb-3">
@@ -30,39 +51,52 @@
     </div>
     <div class="container">
         <div class="row ">
-        @inject('jobsData', 'App\Http\Controllers\MasterController')
-        @foreach($jobpost as $item)
-                <div class="col-md-6 mt-3  ">
-                    <div class="card shadow-lg p-2 mb-4 bg-body rounded ">
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-md-5">
-                                    <img width="70%" class="rounded" src="{{asset('img/Group 6@2x.png')}}" alt="">
+            @inject('jobsData', 'App\Http\Controllers\MasterController')
+            @foreach($jobpost as $item)
+            <div class="col-md-6 mt-3 ">
+                <div class="card card2 ">
+                    <div class="card-body">
+                        <div class="row mt-4 mb-4">
+                            <div class="col-md-2">
+                                <img width="100px" class="findimagjob" src="{{asset('img/Group 6@2x.png')}}" alt="">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <a href="{{url('admin/dashboard/preview/'.$item->slug.'/display')}}"
+                                            class="namedata">{{$item['name']}}</a>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <img src="{{asset('img/Vector.png')}}" alt="">
+                                        <font class="ml-4" style="margin-left:10px;">careerhollic@gmail.com
+                                        </font>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <img src="{{asset('img/Vector_sallary.png')}}" alt="">
+                                        <font style="margin-left:10px;"> <i class="fa fa-inr" aria-hidden="true"></i>
+                                            {{$item->salary}}</font>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <img src="{{asset('img/Vector_location.png')}}" alt="">
+                                        <font class="ml-3" style="margin-left:15px;">
+                                            {{ $jobsData::getLoation($item->company_location_id) }}</font>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <img src="{{asset('img/Vector_clander.png')}}" alt="">
+                                        <font class="ml-3" style="margin-left:10px;">
+                                            {{ $jobsData::getdate($item->last_submission_date) }} Ago</font>
+                                    </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <p><a href="{{url('admin/dashboard/preview/'.$item->slug.'/display')}}"
-                                                    class="text-size-18">{{$item['name']}}</a> </p>
-                                    <p><i class="fa fa-envelope-o text-primary " aria-hidden="true"></i>
-                                        <font class="ml-4" style="margin-left:10px;">careerhollic@gmail.com</font>
-                                    </p>
-                                    <p><i class="fa fa-money ml-3 text-primary" aria-hidden="true"></i>
-                                        <font style="margin-left:10px;">   <i class="fa fa-inr" aria-hidden="true"></i>  {{$item->salary}}</font>
-                                    </p>
-                                    <p><i class="fa fa-map-marker text-primary " aria-hidden="true"></i>
-                                        <font class="ml-3" style="margin-left:15px;">{{ $jobsData::getLoation($item->company_location_id) }}</font>
-                                    </p>
-                                    <p><i class="fa fa-calendar  text-primary" aria-hidden="true"></i>
-                                        <font class="ml-3" style="margin-left:10px;">{{ $jobsData::getdate($item->last_submission_date) }} Ago</font>
-                                    </p>
-                                </div>
-                                <div class="col-md-1">
-                                    <img src="{{asset('img/hart.png')}}" alt="" srcset="">
-                                </div>
+
+                            </div>
+                            <div class="col-md-1">
+                                <img src="{{asset('img/hart.png')}}" alt="" srcset="">
                             </div>
                         </div>
                     </div>
                 </div>
-                @endforeach
+            </div>
+            @endforeach
 
         </div>
     </div>

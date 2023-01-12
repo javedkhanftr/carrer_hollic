@@ -47,6 +47,8 @@ Route::post('admin/candidates/create',[CandidateController::class,'candidates_cr
 Route::get('admin/candidates/edit/{id}',[CandidateController::class,'candidates_edit']);
 Route::post('admin/candidates/edit/{id}',[CandidateController::class,'candidates_save']);
 Route::get('admin/candidates/delete/{id}',[CandidateController::class,'candidates_delete']);
+Route::get('admin/candidates/assign_job/{id}',[CandidateController::class,'assign_job']);
+
 
 
 //career Page 
@@ -54,16 +56,21 @@ Route::get('admin/career_page',[CareePageController::class, 'index']);
 Route::post('career_page/update',[CareePageController::class, 'update']);
 
 // user Roles
-Route::get('admin/users-and-roles',[User_RolesController::class,'index']);
+Route::get('admin/users',[User_RolesController::class,'index']);
+Route::get('admin/users-and-roles',[User_RolesController::class,'users_roles']);
 Route::post('admin/user-roleedit',[User_RolesController::class,'userEdit']);
 Route::get('admin/user_edit/{id}',[User_RolesController::class,'user_edit']);
 Route::post('admin/user_edit/{id}',[User_RolesController::class,'user_update']);
 Route::get('admin/user/delete/{id}',[User_RolesController::class,'delete']);
 Route::get('admin/user/status_change/{id}',[User_RolesController::class,'status_change']);
+Route::get('admin/role/create',[User_RolesController::class,'role_create']);
 Route::post('admin/user-role/create',[User_RolesController::class,'create']);
 Route::get('admin/user-role/deleteData/{id}',[User_RolesController::class,'deleteData']);
 Route::post('admin/user-role/mange-user',[User_RolesController::class,'mangeuser']);
-
+Route::get('admin/role/edit/{id}',[User_RolesController::class,'edit']);
+Route::post('admin/role/edit/{id}',[User_RolesController::class,'update']);
+Route::get('admin/role/manage_role/{id}',[User_RolesController::class,'manage_role']);
+Route::post('admin/role/manage_role/{id}',[User_RolesController::class,'manage_role_save']);
 
 
 //job setting 

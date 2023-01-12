@@ -56,23 +56,24 @@
     @inject('condidateData', 'App\Http\Controllers\MasterController')
     <div class="row mt-3 bg-white">
         <div class="col-md-1 mt-3 mb-3">
-            <h5 class=" text-light"
-                style="text-align: center;padding-left: 29px;padding-right: 58px;padding-top: 25px;padding-bottom: 25px; background-color:black;">
+            <h5 class=" text-light h2"
+                style="border-radius: 10%;text-align: center;padding-left: 29px;padding-right: 58px;padding-top: 25px;padding-bottom: 25px; background-color:black;">
                 {{$data->first_name[0].$data->last_name[0]}}
             </h5>
         </div>
         <div class="col-md-2 mt-4 mb-3">
             <h6 class="" id="staticBackdropLabel" style="color:black;">
 
-                <p class="ml-2">{{$data->first_name.' '.$data->last_name}} <br>
+                <p class="ml-2 h6">{{$data->first_name.' '.$data->last_name}} <br>
                     <font class="fonts pt-5">{{ $condidateData::getnamejobpost($data->job_post_id) }}</font> <br>
                     <font class="fonts">Applied {{ $condidateData::getapplydate($data->job_post_id) }}</font>
                 </p>
             </h6>
         </div>
-        <div class="col-md-2 mt-3 mb-3">
+        <div class="col-md-2 mt-4 mb-3">
             <h6>
                 <font class="">{{$data->email}}</font>
+                <font class="">{{$data->mobile_number}}</font> <br>
                 <font class="fonts">Gender-{{$data->gender}}</font><br>
                 <font class="fonts">Date of birth- {{date('d-m-Y', strtotime($data->date_of_birth))}}</font><br>
             </h6>

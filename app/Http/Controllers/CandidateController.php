@@ -7,6 +7,7 @@ use App\Models\Applicant;
 use App\Models\JobApplicant;
 use App\Models\App\Recruitment\JobStage;
 use Illuminate\Support\Facades\DB;
+use App\Models\JobPost;
 use Illuminate\Support\Facades\Auth;
 
 class CandidateController extends Controller
@@ -93,5 +94,11 @@ class CandidateController extends Controller
         $data= $candidates_list[0];
         return view('admin/candidate/condidate_data',\compact('data'));
       
+    }
+    public function assign_job($id){
+        $data=Applicant::find($id);
+        $jobpost=JobPost::all();
+        return view('admin/candidate/assign_job',compact('data','jobpost'));
+
     }
 }

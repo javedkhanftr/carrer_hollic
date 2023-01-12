@@ -33,13 +33,13 @@ class User_RolesController extends Controller
         $user->last_name=$request->last_name;
         $user->update();
         session()->put('message', 'User Updated Successfuly');   
-        return \redirect('admin/users-and-roles');
+        return \redirect('admin/users');
     }
     public function delete($id){
         $user=User::find($id);
         $user->delete();
         session()->put('message', 'User Delete Successfuly');   
-        return \redirect('admin/users-and-roles');
+        return \redirect('admin/users');
     }
     public function status_change($id){
         $user=User::find($id);
@@ -51,7 +51,7 @@ class User_RolesController extends Controller
         }
         $user->update();
         session()->put('message', 'User Staus Updated Successfuly');   
-        return \redirect('admin/users-and-roles');
+        return \redirect('admin/users');
     }
     public function create(Request $request){
         // return $request->all();
@@ -82,5 +82,43 @@ class User_RolesController extends Controller
         ->where('role_user.role_id',$id)
         ->get();
         return $allData;
+    }
+    public function users_roles(){
+        $userRole = DB::table('users')->get();
+
+        $user_role=Role::all();
+       
+        return view('admin/user_roles/role',compact('userRole','user_role'));
+    }
+    public function role_create(){
+        return view('admin/user_roles/role_create');
+    }
+    public function edit($id){
+        $role= Role::find($id);
+        return view('admin/user_roles/role_edit',compact('role'));
+    }
+    public function update(Request $request,$id){
+        $role= Role::find($id);
+        $role->name=$request->role;
+        $role->update();
+        return redirect('admin/users-and-roles');
+    }
+    public function manage_role(){
+        $user=User::all();
+        return view('admin/user_roles/manage_role',compact('user'));
+    }
+    public function manage_role_save(Request $request,$id){
+        // return $request->users;
+       
+        // return $role;
+        $data=$request->users;
+        foreach ($data as $item) {
+            $role= new Role_user();
+            $role->user_id=$item;
+            $role->role_id=$id;
+            // return $role;
+            $role->save();
+        }
+        return redirect('admin/users-and-roles');
     }
 }

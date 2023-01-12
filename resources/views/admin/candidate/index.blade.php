@@ -123,7 +123,7 @@
                                                 edit
                                                 <!-- <i class="fa fa-edit"></i> -->
                                             </a>
-                                            <a href="{{url('admin/candidates/edit/'.$candidates->applicant_id)}}"
+                                            <a href="{{url('admin/candidates/assign_job/'.$candidates->applicant_id)}}"
                                                 class="btn btn-sm btn-success  badge text-capitalize">
                                                 Assign
                                                 <!-- <i class="fa fa-edit"></i> -->

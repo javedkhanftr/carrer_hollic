@@ -100,18 +100,7 @@
                 
             </li>
             <li class="">
-                <a class="" href="#" >
-                    <div class="nav_icon_small">
-                        <img src="{{asset('img/menu-icon/11.svg')}}" alt="">
-                    </div>
-                    <div class="nav_title">
-                        <span>Role & Permissions</span>
-                    </div>
-                </a>
-               
-            </li>
-            <li class="">
-                <a class="" href="{{url('admin/users-and-roles')}}" >
+                <a class="" href="{{url('admin/users')}}" >
                     <div class="nav_icon_small">
                         <img src="{{asset('img/menu-icon/5.svg')}}" alt="">
                     </div>
@@ -120,6 +109,20 @@
                     </div>
                 </a>
             </li>
+            <li class="">
+                <a class="" href="{{url('admin/users-and-roles')}}" >
+                    <div class="nav_icon_small">
+                        <img src="{{asset('img/menu-icon/11.svg')}}" alt="">
+                    </div>
+                    <div class="nav_title">
+                        <span>Roles
+                             <!-- & Permissions -->
+                            </span>
+                    </div>
+                </a>
+               
+            </li>
+            
 
             <li class="">
                 <a class="" href="{{url('admin/wfh/list')}}" >
@@ -279,7 +282,7 @@
                                     <div class="profile_info_details">
                                         <!-- <a href="#">My Profile </a>
                                         <a href="#">Settings</a> -->
-                                        <a href="#">Log Out </a>
+                                        <a href="{{url('admin/signout')}}">Log Out </a>
                                     </div>
                                 </div>
                             </div>
@@ -300,7 +303,7 @@
         
     </section>
 <!-- <section class="mt-5">
-<div class="footer_part">
+        <div class="footer_part">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
