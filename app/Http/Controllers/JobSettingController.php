@@ -22,10 +22,16 @@ class JobSettingController extends Controller
         $stage=Stage::all();
         $setting=Setting::where('name','application_form')->get();
         $data_basic= \json_decode($setting[0]['value']);
-        // return $data_basic;
+        // return $data_basic[0];
         return view('admin/setting/index',compact('company_location','department','jobtype','eventtype','stage','data_basic'));
     }
-    public function add_location(Request $request){
+    public function application_form(){
+        return view('admin/setting/application_form');
+    }
+    public function add_location(){
+        return view('admin/setting/add_location');
+    }
+    public function save_location(Request $request){
         $company_location=new CompanyLocation();
         $company_location->address=$request->address;
         $company_location->save();
@@ -33,8 +39,13 @@ class JobSettingController extends Controller
         return redirect('admin/job-setting');
 
     }
-    public function edit_location(Request $request){
-        $id=$request->address_id;
+    public function edit_location($id){
+        $company_location= CompanyLocation::find($id);
+        return view('admin/setting/edit_location',compact('company_location'));
+
+    }
+    public function update_location(Request $request,$id){
+  
         $company_location= CompanyLocation::find($id);
         $company_location->address=$request->address;
         $company_location->update();
@@ -55,8 +66,10 @@ class JobSettingController extends Controller
         return response()->json(["company_location"=>$company_location]);
     }
 
-
-    public function add_department(Request $request){
+public function add_department(){
+    return view('admin/setting/add_department');
+}
+    public function save_department(Request $request){
         $department=new Department();
         $department->name=$request->department_name;
         $department->save();
@@ -64,8 +77,12 @@ class JobSettingController extends Controller
         return redirect('admin/job-setting');
 
     }
-    public function edit_department(Request $request){
-        $id=$request->department_id;
+    public function edit_department(Request $request,$id){
+        $department= Department::find($id);
+            return view('admin/setting/edit_department',compact('department'));
+    }
+    public function update_department(Request $request,$id){
+      
         $department= Department::find($id);
         $department->name=$request->department_name;
         $department->update();
@@ -85,8 +102,13 @@ class JobSettingController extends Controller
         $department= Department::find($id);
         return response()->json(["department"=>$department]);
     }
+    public function add_jobtype(){
+        
+        return view('admin/setting/add_jobtype');
 
-    public function add_jobtype(Request $request){
+    }
+
+    public function save_jobtype(Request $request){
         $jobtype=new JobType();
         $jobtype->name=$request->jobtype_name;
         $jobtype->brief=$request->jobtype_brief;
@@ -95,8 +117,13 @@ class JobSettingController extends Controller
         return redirect('admin/job-setting');
 
     }
-    public function edit_jobtype(Request $request){
-        $id=$request->jobtype_id;
+    public function edit_jobtype($id){
+        $jobtype=JobType::find($id);
+
+        return view('admin/setting/edit_jobtype',compact('jobtype'));
+    }
+    public function update_jobtype(Request $request,$id){
+        // $id=$request->jobtype_id;
         $jobtype= JobType::find($id);
         $jobtype->name=$request->jobtype_name;
         $jobtype->brief=$request->jobtype_brief;
@@ -126,8 +153,8 @@ class JobSettingController extends Controller
         return redirect('admin/job-setting');
 
     }
-    public function edit_eventtype(Request $request){
-        $id=$request->eventtype_id;
+    public function edit_eventtype(Request $request,$id){
+        // $id=$request->eventtype_id;
         $eventtype= EventType::find($id);
         $eventtype->name=$request->eventtype_name;
         $eventtype->update();
@@ -139,7 +166,6 @@ class JobSettingController extends Controller
         $eventtype= EventType::find($id);
         $eventtype->delete();
         session()->put('message', 'Event Type delete Successfuly');   
-        return redirect('job-setting');
         return redirect('admin/job-setting');
 
     }
@@ -159,8 +185,8 @@ class JobSettingController extends Controller
         return redirect('admin/job-setting');
 
     }
-    public function edit_stage(Request $request){
-        $id=$request->stage_id;
+    public function edit_stage(Request $request,$id){
+        // $id=$request->stage_id;
         $stage= Stage::find($id);
         $stage->name=$request->stage_name;
         $stage->update();
@@ -180,14 +206,26 @@ class JobSettingController extends Controller
         $stage= Stage::find($id);
         return response()->json(["stage"=>$stage]);
     }
-    public function get_application(Request $req){
+    public function get_application($key){
         $setting=Setting::where('name','application_form')->get();
         $data_basic= \json_decode($setting[0]['value']);
-        foreach ($data_basic as $item) {
-           if ($req->name == $item->title) {
-            return $item;
-           }
-        }
+        // return $data_basic;
+        return view('admin/setting/application_details')->with(['key'=>$key,'data_basic'=>$data_basic]);
        
+    }
+    public function add_hiring_stage(){
+        return view('admin/setting/add_hiring_stage');
+    }
+    public function edit_hiring_stage($id){
+        $stage= Stage::find($id);
+        return view('admin/setting/edit_hiring_stage',compact('stage'));
+
+    }
+    public function add_event(){
+        return view('admin/setting/add_event');
+    }
+    public function edit_event($id){
+        $eventtype= EventType::find($id);
+        return view('admin/setting/edit_event',compact('eventtype'));
     }
 }

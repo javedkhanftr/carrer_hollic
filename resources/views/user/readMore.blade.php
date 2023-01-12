@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <title>Read More</title>
+        <title>Career Hollic</title>
+    <link rel="icon"  class="rounded" width="100%" href="{{asset('img/favicon1.jpg')}}" type="image/jpg">
 </head>
 
 <body>
@@ -39,7 +40,8 @@
                                     <img width="70%" class="rounded" src="{{asset('img/Group 6@2x.png')}}" alt="">
                                 </div>
                                 <div class="col-md-6">
-                                    <p>{{$item->name}} </p>
+                                    <p><a href="{{url('admin/dashboard/preview/'.$item->slug.'/display')}}"
+                                                    class="text-size-18">{{$item['name']}}</a> </p>
                                     <p><i class="fa fa-envelope-o text-primary " aria-hidden="true"></i>
                                         <font class="ml-4" style="margin-left:10px;">careerhollic@gmail.com</font>
                                     </p>

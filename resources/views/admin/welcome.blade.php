@@ -97,7 +97,7 @@
                                                             <li><a class="dropdown-item"
                                                                     href="{{url('admin/dashboard/job_post/edit_data/'.$job->id)}}">Edit
                                                                     job post</a></li>
-                                                            <li><a class="dropdown-item" href="">Setting</a></li>
+                                                            <!-- <li><a class="dropdown-item" href="">Setting</a></li> -->
                                                             <li><button class="dropdown-item sharalink"
                                                                     data-slug="{{$job->slug}}">Sharable Link</button>
                                                             </li>
@@ -137,7 +137,7 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="sharemodel" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="sharemodel"  tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -272,14 +272,16 @@
 <script src="{{asset('https://unpkg.com/sweetalert/dist/sweetalert.min.js')}}"></script>
 <script>
 $(document).ready(function() {
+    let SITEURL="{{url('admin/dashboard/')}}";
 
     $('.sharalink').click(function() {
         let slug = $(this).attr('data-slug');
-
-        let str = window.location;
-        let url = str + '/preview/' + slug + '/display';
+        let url = SITEURL + '/preview/' + slug + '/display';
         $('.sharelinkdata').html(url);
         $('#sharemodel').modal('show');
+        $('.fade').removeClass('modal-backdrop');
+        $('.fade').addClass('modal');
+        $('.header_iner').addClass('showmodal');
 
     });
     $('.copylinkdata').click(function() {
@@ -295,6 +297,9 @@ $(document).ready(function() {
 <style>
 .displaynone {
     display: none !important;
+}
+.showmodal{
+    z-index: -1 !important;
 }
 
 .select2 .selection .select2-selection--single {

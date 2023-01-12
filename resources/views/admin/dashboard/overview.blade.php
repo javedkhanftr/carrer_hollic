@@ -10,26 +10,26 @@
             <h3>Overview - {{$condidate_data->name}}</h3>
         </div>
         <div class="col-md-2">
-            <button href="" class="btn btn-sm btn-primary form-control" data-bs-toggle="modal" data-bs-target="#verifyEmailData">Add Condidate</button>
+            <button  class="btn btn-sm btn-primary form-control addcondidate" >Add Condidate</button>
         </div>
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body">
                     <nav>
-                        <div class=" mb-5">
-                            <button class=" p-primary text-capitalize active Overview">
+                        <div class="alltab mb-5">
+                            <a class=" p-primary text-capitalize active Overview">
                                 <span class="mr-2 ">
                                     <i class="fa fa-th pl-3 pr-3"></i>
                                     Overview
                                 </span>
-                            </button>
-                            <a data-toggle="tab" href="#Candidates" class=" p-primary text-capitalize Candidates">
+                            </a>
+                            <a  class=" p-primary text-capitalize Candidates">
                                 <span class="mr-2"> <i class="fa fa-user pl-3 pr-3"></i> Candidates</span>
                             </a>
                         </div>
                     </nav>
-                    <div class="tab-content p-primary">
-                        <div id="Overview" class="tab-pane fade show active">
+                    <div class=" p-primary">
+                        <div id="Overview" class=" active">
                             <div class="p-primary">
                                 <div class="overview-wrapper min-height-400">
                                     <div class="kanban-wrapper custom-scrollbar overflow-auto pb-3">
@@ -61,7 +61,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div id="Candidates" class="tab-pane fade show ">
+                        <div id="Candidates" class=" displaynone">
                             <div class="table-responsive custom-scrollbar table-view-responsive py-primary">
                                 <table class="table mb-0">
                                     <thead>
@@ -135,7 +135,7 @@
     </div>
 </div>
 <style>
-.nav a {
+.alltab a {
     text-decoration: none;
     color: black;
     padding: 30px;
@@ -144,6 +144,7 @@
 .active {
     border-bottom: 1px solid #4466f2;
     color: #4466f2 !important;
+    
 }
 
 .spanData {
@@ -163,12 +164,35 @@
 <script src="{{asset('https://code.jquery.com/jquery-3.6.1.min.js')}}"></script>
 <script>
     $(document).ready(function(){
+        let SITEURL="{{url('admin/')}}";
         $('.Overview').click(function(){
             
             $('#Overview').removeClass('displaynone')
             $('#Candidates').addClass('active')
             $('#Candidates').addClass('displaynone')
 
-        })
+        });
+        $('.Candidates').click(function(){
+            
+            $('#Overview').addClass('displaynone')
+            $('#Candidates').addClass('active')
+            $('#Candidates').removeClass('displaynone')
+
+        });
+        $('.addcondidate').click(function(){
+            $('#verifyEmailData').modal('show');
+            $('.fade').removeClass('modal-backdrop')
+            $('.fade').addClass('modal')
+        });
+        $('#EmailVerifyData').click(function() {
+            let email = $('#verifyEmail').val();
+            let em = $('#email').val();
+            if (em == email) {
+                window.location.href = SITEURL+"/candidates/create/";
+            } else {
+                alert('unauthorized');
+                $('#verifyEmailData').modal('hide');
+            }
+        });
     })
 </script>

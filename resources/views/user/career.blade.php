@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <title>Document</title>
+    <title>Career Hollic</title>
+    <link rel="icon" class="rounded" width="100%" href="{{asset('img/favicon1.jpg')}}" type="image/jpg">
 </head>
 
 <body>
@@ -89,37 +90,77 @@
                                     </div> -->
                                     <div class="container">
                                         <div class="row">
-                                        @inject('jobsData', 'App\Http\Controllers\MasterController')
-                                        @foreach($jobpost as $post)
-                                            <div class="col-lg-3 mt-3">
-                                                <div class="card1 card-margin">
+                                            @inject('jobsData', 'App\Http\Controllers\MasterController')
+                                            @foreach($jobpost as $post)
+                                            <div class="col-lg-4 mt-3">
+                                                <div class="card1 card-margin bg-light">
                                                     <div class="card-header no-border">
-                                                        <h5 class="card-title"> <a href="{{url('dashboard/preview/'.$post->slug.'/display')}}"
-                                                    class="text-size-18">{{$post['name']}}</a></h5>
+                                                        <h5 class="card-title mt-2"> <a
+                                                                href="{{url('admin/dashboard/preview/'.$post->slug.'/display')}}"
+                                                                class="text-size-18">{{$post['name']}}</a></h5>
                                                     </div>
                                                     <div class="card-body pt-0">
                                                         <div class="widget-49">
-                                                            <div class="widget-49-title-wrapper">
-                                                                <div class="widget-49-date-primary">
-                                                                    <span class="widget-49-date-day"><i class="fa fa-user"></i></span>
-                                                                    
+                                                            <div class="row">
+                                                                <div class="col-md-6 mt-3">
+                                                                    <div class="widget-49-title-wrapper">
+                                                                        <div class="widget-49-date-primary">
+                                                                            <span class="widget-49-date-day"><i
+                                                                                    class="fa fa-user"></i></span>
+
+                                                                        </div>
+                                                                        <div class="widget-49-meeting-info">
+                                                                            <span
+                                                                                class="widget-49-pro-title">{{ $jobsData::getJobType($post->job_type_id) }}</span>
+                                                                            <!-- <span class="widget-49-meeting-time"></span> -->
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
-                                                                <div class="widget-49-meeting-info">
-                                                                    <span class="widget-49-pro-title">{{ $jobsData::getJobType($post->job_type_id) }}</span>
-                                                                    <!-- <span class="widget-49-meeting-time"></span> -->
+                                                                <div class="col-md-6 mt-3">
+                                                                    <div class="widget-49-title-wrapper ">
+                                                                        <div class="widget-49-date-primary">
+                                                                            <span class="widget-49-date-day"><i
+                                                                                    class="fa fa-map-marker  text-primary"
+                                                                                    aria-hidden="true"></i></span>
+
+                                                                        </div>
+                                                                        <div class="widget-49-meeting-info">
+                                                                            <span
+                                                                                class="widget-49-pro-title">{{ $jobsData::getLoation($post->company_location_id) }}</span>
+
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-6 mt-3">
+                                                                    <div class="widget-49-title-wrapper">
+                                                                        <div class="widget-49-date-primary">
+                                                                            <span class="widget-49-date-day"><i class="fa fa-inr" aria-hidden="true"></i></span>
+
+                                                                        </div>
+                                                                        <div class="widget-49-meeting-info">
+                                                                            <span
+                                                                                class="widget-49-pro-title">{{ $post->salary }}</span>
+                                                                            <!-- <span class="widget-49-meeting-time"></span> -->
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-6 mt-3">
+                                                                    <div class="widget-49-title-wrapper ">
+                                                                        <div class="widget-49-date-primary">
+                                                                            <span class="widget-49-date-day"><i class="fa fa-users" aria-hidden="true"></i></span>
+
+                                                                        </div>
+                                                                        <div class="widget-49-meeting-info">
+                                                                            <span
+                                                                                class="widget-49-pro-title">{{ $post->vacancy_count }}</span>
+
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
                                                             </div>
-                                                            <div class="widget-49-title-wrapper mt-3">
-                                                                <div class="widget-49-date-primary">
-                                                                    <span class="widget-49-date-day"><i class="fa fa-map-marker  text-primary" aria-hidden="true"></i></span>
-                                                                    
-                                                                </div>
-                                                                <div class="widget-49-meeting-info">
-                                                                    <span class="widget-49-pro-title">{{ $jobsData::getLoation($post->company_location_id) }}</span>
-                                                                    <!-- <span class="widget-49-meeting-time"></span> -->
-                                                                </div>
-                                                            </div>
-                                                            
+
+
+
                                                         </div>
                                                     </div>
                                                 </div>
@@ -203,8 +244,8 @@
         justify-content: center;
         flex-direction: column;
         background-color: #edf1fc;
-        width: 4rem;
-        height: 4rem;
+        width: 2rem;
+    height: 2rem;
         border-radius: 50%;
     }
 

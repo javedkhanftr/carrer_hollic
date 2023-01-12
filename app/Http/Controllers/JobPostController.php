@@ -85,14 +85,15 @@ class JobPostController extends Controller
     }
     public function status($id){
         $condidate_data =JobPost::find($id);
-        if ($condidate_data == '1') {
-            $condidate_data->status_id=2;
-        } else {
-            $condidate_data->status_id=1;
-            
+        $id=$condidate_data->status_id;
+        if (intval($id) == 1) {
+            $condidate_data->status_id='2';
+        }else{
+            $condidate_data->status_id='1';
+
         }
         $condidate_data->update();
-        
+     
         return redirect('admin/jobPost');
     }
     public function delete($id){

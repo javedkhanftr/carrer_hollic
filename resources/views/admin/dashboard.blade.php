@@ -29,7 +29,7 @@
             <div class="row">
                 <div class="col-lg-3">
                     <div class="single_crm">
-                        <div class="crm_head d-flex align-items-center justify-content-between">
+                        <div class="crm_head bg-primary d-flex align-items-center justify-content-between">
                             <div class="thumb">
                                 <img src="{{asset('img/crm/businessman.svg')}}" alt="">
                             </div>
@@ -37,13 +37,13 @@
                         </div>
                         <div class="crm_body">
                             <h4>2455</h4>
-                            <p>User Registrations</p>
+                            <p>Total User</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-3">
                     <div class="single_crm ">
-                        <div class="crm_head crm_bg_1 d-flex align-items-center justify-content-between">
+                        <div class="crm_head bg-warning crm_bg_1 d-flex align-items-center justify-content-between">
                             <div class="thumb">
                                 <img src="{{asset('img/crm/customer.svg')}}" alt="">
                             </div>
@@ -51,13 +51,13 @@
                         </div>
                         <div class="crm_body">
                             <h4>2455</h4>
-                            <p>User Registrations</p>
+                            <p>Total Condidate</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-3">
                     <div class="single_crm">
-                        <div class="crm_head crm_bg_2 d-flex align-items-center justify-content-between">
+                        <div class="crm_head bg-success crm_bg_2 d-flex align-items-center justify-content-between">
                             <div class="thumb">
                                 <img src="{{asset('img/crm/infographic.svg')}}" alt="">
                             </div>
@@ -65,21 +65,21 @@
                         </div>
                         <div class="crm_body">
                             <h4>2455</h4>
-                            <p>User Registrations</p>
+                            <p>Total Jobs</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-3">
                     <div class="single_crm">
-                        <div class="crm_head crm_bg_3 d-flex align-items-center justify-content-between">
+                        <div class="crm_head bg-danger crm_bg_3 d-flex align-items-center justify-content-between">
                             <div class="thumb">
-                                <img src="{{asset('img/crm/sqr.svg')}}" alt="">
+                            <img class="text-light" src="{{asset('img/menu-icon/3.svg')}}" alt="">
                             </div>
                             <i class="fas fa-ellipsis-h f_s_11 white_text"></i>
                         </div>
                         <div class="crm_body">
                             <h4>2455</h4>
-                            <p>User Registrations</p>
+                            <p>Total Events</p>
                         </div>
                     </div>
                 </div>
@@ -198,7 +198,7 @@ $(document).ready(function() {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
-    let SITEURL1="{{url('admin/')}}"
+    let SITEURL1="{{url('admin/')}}";
     $('.user_id').change(function() {
         let user_id = $(this).val();
         // alert(user_id)

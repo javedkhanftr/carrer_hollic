@@ -119,17 +119,17 @@
                                         </td>
                                         <td class="allbtn">
                                             <a href="{{url('admin/candidates/edit/'.$candidates->applicant_id)}}"
-                                                class="btn btn-sm btn-primary badge text-capitalize">
+                                                class="btn btn-sm btn-primary badge  text-capitalize">
                                                 edit
                                                 <!-- <i class="fa fa-edit"></i> -->
                                             </a>
                                             <a href="{{url('admin/candidates/edit/'.$candidates->applicant_id)}}"
-                                                class="btn btn-sm btn-success badge text-capitalize">
+                                                class="btn btn-sm btn-success  badge text-capitalize">
                                                 Assign
                                                 <!-- <i class="fa fa-edit"></i> -->
                                             </a>
                                             <a href="{{url('admin/candidates/delete/'.$candidates->applicant_id)}}"
-                                                class="btn btn-sm btn-danger badge text-capitalize">
+                                                class="btn btn-sm btn-danger  badge  text-capitalize">
                                                 delete
                                                 <!-- <i class="fa fa-trash"></i> -->
                                             </a>
@@ -2026,7 +2026,10 @@
         line-height: 1.8;
         width: 74px;
     }
-
+    .allbtn a {
+        line-height: 1.8;
+        width: 50px;
+    }
 
 
     .customized-radio {

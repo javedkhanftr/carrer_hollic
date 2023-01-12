@@ -120,37 +120,49 @@ Route::post('admin/user-role/mange-user',[User_RolesController::class,'mangeuser
         Route::get('job-setting',[JobSettingController::class,'index']);
 
         // location Company
-        Route::post('job-setting/add_location',[JobSettingController::class,'add_location']);
-        Route::post('job-setting/edit_location',[JobSettingController::class,'edit_location']);
+        Route::get('job-setting/add_location',[JobSettingController::class,'add_location']);
+        Route::post('job-setting/add_location',[JobSettingController::class,'save_location']);
+        Route::get('job-setting/edit_location/{id}',[JobSettingController::class,'edit_location']);
+        Route::post('job-setting/edit_location/{id}',[JobSettingController::class,'update_location']);
         Route::post('job-setting/get_location',[JobSettingController::class,'get_location']);
         Route::get('job-setting/delete_location/{id}',[JobSettingController::class,'delete_location']);
     
         // department 
-        Route::post('job-setting/add_department',[JobSettingController::class,'add_department']);
-        Route::post('job-setting/edit_department',[JobSettingController::class,'edit_department']);
+        Route::get('job-setting/add_department',[JobSettingController::class,'add_department']);
+        Route::post('job-setting/add_department',[JobSettingController::class,'save_department']);
+        Route::get('job-setting/edit_department/{id}',[JobSettingController::class,'edit_department']);
+        Route::post('job-setting/edit_department/{id}',[JobSettingController::class,'update_department']);
         Route::post('job-setting/get_department',[JobSettingController::class,'get_department']);
         Route::get('job-setting/delete_department/{id}',[JobSettingController::class,'delete_department']);
     
         // Job Type 
-        Route::post('job-setting/add_jobtype',[JobSettingController::class,'add_jobtype']);
-        Route::post('job-setting/edit_jobtype',[JobSettingController::class,'edit_jobtype']);
+        
+        Route::get('job-setting/add_jobtype',[JobSettingController::class,'add_jobtype']);
+        Route::post('job-setting/add_jobtype',[JobSettingController::class,'save_jobtype']);
+        Route::get('job-setting/edit_jobtype/{id}',[JobSettingController::class,'edit_jobtype']);
+        Route::post('job-setting/edit_jobtype/{id}',[JobSettingController::class,'update_jobtype']);
         Route::post('job-setting/get_jobtype',[JobSettingController::class,'get_jobtype']);
         Route::get('job-setting/delete_jobtype/{id}',[JobSettingController::class,'delete_jobtype']);
     
         // Event Type 
+        Route::get('job-setting/add_event',[JobSettingController::class,'add_event']);
         Route::post('job-setting/add_eventtype',[JobSettingController::class,'add_eventtype']);
-        Route::post('job-setting/edit_eventtype',[JobSettingController::class,'edit_eventtype']);
+        Route::get('job-setting/edit_event/{id}',[JobSettingController::class,'edit_event']);
+        Route::post('job-setting/edit_eventtype/{id}',[JobSettingController::class,'edit_eventtype']);
         Route::post('job-setting/get_eventtype',[JobSettingController::class,'get_eventtype']);
         Route::get('job-setting/delete_eventtype/{id}',[JobSettingController::class,'delete_eventtype']);
     
          // Stage 
+        Route::get('job-setting/add_hiring_stage',[JobSettingController::class,'add_hiring_stage']);
         Route::post('job-setting/add_stage',[JobSettingController::class,'add_stage']);
-        Route::post('job-setting/edit_stage',[JobSettingController::class,'edit_stage']);
+        Route::get('job-setting/edit_hiring_stage/{id}',[JobSettingController::class,'edit_hiring_stage']);
+        Route::post('job-setting/edit_stage/{id}',[JobSettingController::class,'edit_stage']);
         Route::post('job-setting/get_stage',[JobSettingController::class,'get_stage']);
         Route::get('job-setting/delete_stage/{id}',[JobSettingController::class,'delete_stage']);
     
         // application
-        Route::post('job-setting/get_application/',[JobSettingController::class,'get_application']);
+        Route::get('job-setting/application_form/',[JobSettingController::class,'application_form']);
+        Route::get('job-setting/get_application/{key}',[JobSettingController::class,'get_application']);
     });
 
 Route::post('calendar-crud-ajax', [CalenderController::class, 'calendarEvents']);

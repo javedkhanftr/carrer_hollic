@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <title>Career Hollic</title>
-    <link rel="icon"  class="rounded" width="100%" href="{{asset('img/favicon1.jpg')}}" type="image/png">
+    <link rel="icon"  class="rounded" width="100%" href="{{asset('img/favicon1.jpg')}}" type="image/jpg">
 
     <link rel="stylesheet" href="{{asset('css/bootstrap1.min.css')}}" />
 
@@ -297,20 +297,21 @@
             </div>
         </div>
 
-        <div class="footer_part">
+        
+    </section>
+<!-- <section class="mt-5">
+<div class="footer_part">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="footer_iner text-center">
-                            <p>2020 © Influence - Designed by <a href="#"> <i class="ti-heart"></i> </a><a href="#">
-                                    Dashboard</a></p>
+                            <p>Copyright @ 2022 by Career Hollic</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-
+</section> -->
 
     <div class="CHAT_MESSAGE_POPUPBOX">
         <div class="CHAT_POPUP_HEADER">

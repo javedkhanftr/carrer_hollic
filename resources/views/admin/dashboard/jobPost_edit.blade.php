@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<script src="{{asset('https://code.jquery.com/jquery-3.6.1.min.js')}}"></script>
+
 
 <div class="col-lg-12">
     <div class="white_card card_height_100 mb_30">
@@ -122,3 +122,14 @@
     margin-left: 6px;
 }
 </style>
+<script src="{{asset('https://code.jquery.com/jquery-3.6.1.min.js')}}"></script>
+<script src="{{asset('https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js')}}"></script>
+    <link href="{{asset('https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css')}}"
+        rel="stylesheet" />
+        <script>
+    $(document).ready(function() {
+        $('#job_type').select2();
+        $('#department').select2();
+        $('#Company_location').select2();
+    });
+    </script>
