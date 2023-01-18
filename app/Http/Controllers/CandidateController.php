@@ -92,12 +92,15 @@ class CandidateController extends Controller
         ->where('job_applicants.id',$id)
         ->get();
         $data= $candidates_list[0];
+        $item=json_decode($data->apply_form_setting);
+        // return $data;
         return view('admin/candidate/condidate_data',\compact('data'));
       
     }
     public function assign_job($id){
         $data=Applicant::find($id);
         $jobpost=JobPost::all();
+       
         return view('admin/candidate/assign_job',compact('data','jobpost'));
 
     }

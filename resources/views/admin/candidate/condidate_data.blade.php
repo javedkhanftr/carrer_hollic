@@ -2,7 +2,7 @@
 @section('content')
 <style>
 .fonts {
-    font-size: 12px;
+    font-size: 15px;
 }
 
 .rating.list:hover .star {
@@ -52,26 +52,28 @@
     color: var(--default-font-color);
 }
 </style>
+<script src="{{asset('https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js')}}"></script>
 <div class="container">
     @inject('condidateData', 'App\Http\Controllers\MasterController')
     <div class="row mt-3 bg-white">
-        <div class="col-md-1 mt-3 mb-3">
+        <div class="col-md-2 mt-3 mb-3">
             <h5 class=" text-light h2"
                 style="border-radius: 10%;text-align: center;padding-left: 29px;padding-right: 58px;padding-top: 25px;padding-bottom: 25px; background-color:black;">
                 {{$data->first_name[0].$data->last_name[0]}}
             </h5>
         </div>
+
         <div class="col-md-2 mt-4 mb-3">
             <h6 class="" id="staticBackdropLabel" style="color:black;">
 
-                <p class="ml-2 h6">{{$data->first_name.' '.$data->last_name}} <br>
+                <p class="ml-2 h6 text-dark">{{$data->first_name.' '.$data->last_name}} <br>
                     <font class="fonts pt-5">{{ $condidateData::getnamejobpost($data->job_post_id) }}</font> <br>
                     <font class="fonts">Applied {{ $condidateData::getapplydate($data->job_post_id) }}</font>
                 </p>
             </h6>
         </div>
         <div class="col-md-2 mt-4 mb-3">
-            <h6>
+            <h6 class=" ml-2 h6 text-dark">
                 <font class="">{{$data->email}}</font>
                 <font class="">{{$data->mobile_number}}</font> <br>
                 <font class="fonts">Gender-{{$data->gender}}</font><br>
@@ -79,8 +81,8 @@
             </h6>
         </div>
         <div class="col-md-3"></div>
-        <div class="col-md-4 mt-3 mb-3">
-            <div class="text-size-25 d-flex align-items-center justify-content-between">
+        <div class="col-md-3 mt-3 mb-3">
+            <!-- <div class="text-size-25 d-flex align-items-center justify-content-between">
                 <span>Not reviewed yet</span>
                 <ul class="rating list list-unstyled p-0 m-0">
                     <li class="d-inline-block cursor-pointer star">
@@ -129,7 +131,7 @@
                         </svg>
                     </li>
                 </ul>
-            </div>
+            </div> -->
 
             <div class="d-flex align-items-center justify-content-between mt-5">
                 <div class="d-flex align-items-center default-actions">
@@ -142,7 +144,7 @@
                             <line x1="8" y1="12" x2="16" y2="12"></line>
                         </svg>
                     </a>
-                    <a href="#" data-toggle="tooltip" data-placement="top" title="" class="action-button"
+                    <!-- <a href="#" data-toggle="tooltip" data-placement="top" title="" class="action-button"
                         data-original-title="Compose mail">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -162,7 +164,7 @@
                             <line x1="8" y1="2" x2="8" y2="6"></line>
                             <line x1="3" y1="10" x2="21" y2="10"></line>
                         </svg>
-                    </a>
+                    </a> -->
                 </div>
                 <div class="d-flex align-items-center justify-content-end">
                     Stage
@@ -273,12 +275,11 @@
                             <div class="number"></div>
                             <div class="timeline-info">
                                 <p class="time">
-                                    <font></font> 20-12-2022 12:59 PM
+                                    <font></font> {{$data->created_at}}
                                 </p>
                                 <p class="description">
                                     <font></font>
-                                    <strong>Vijay Meena</strong> moved
-                                    <strong>Moumita Manna</strong> to
+                                    <strong>{{$data->first_name.' '.$data->last_name}}</strong> to
                                     <strong>new</strong>
                                 </p>
                             </div>
@@ -405,1221 +406,43 @@
         <div class="row displayNone2 notest">
             <div class="col-md-12  ">
                 <div class="card-body">
-                    <div class="d-flex align-items-center mb-4">
+                    <!-- <div class="d-flex align-items-center mb-4">
                         <div class="avatars-w-40">
                             <img height='40px' width='40px'
                                 src="https://careerhollic.com/recruitment/storage/avatar/63170d73b98da.jpg"
                                 alt="Not found" class="rounded-circle avatar-bordered">
                         </div>
                         <div class="ml-3">
-                            <h6 class="mb-1">Vijay Meena</h6>
+                            <h6 class="mb-1"></h6>
                         </div>
-                    </div>
-                    <div>
-                        <div class="editor">
-                            <div class="note-editor note-frame card">
-                                <div class="note-dropzone">
-                                    <div class="note-dropzone-message"></div>
-                                </div>
-                                <div class="note-toolbar card-header" role="toolbar">
-                                    <div class="note-btn-group btn-group note-style">
-                                        <button type="button" class="note-btn btn btn-light btn-sm note-btn-bold"
-                                            tabindex="-1" title="" aria-label="Bold (CTRL+B)"
-                                            data-original-title="Bold (CTRL+B)">
-                                            <i class="note-icon-bold">B</i>
-                                        </button>
-                                        <button type="button" class="note-btn btn btn-light btn-sm note-btn-italic"
-                                            tabindex="-1" title="" aria-label="Italic (CTRL+I)"
-                                            data-original-title="Italic (CTRL+I)">
-                                            <i class="note-icon-italic">I</i>
-                                        </button>
-                                        <button type="button" class="note-btn btn btn-light btn-sm note-btn-underline"
-                                            tabindex="-1" title="" aria-label="Underline (CTRL+U)"
-                                            data-original-title="Underline (CTRL+U)">
-                                            <i class="note-icon-underline">U</i>
-                                        </button>
-                                    </div>
-                                    <div class="note-btn-group btn-group note-fontsize">
-                                        <div class="note-btn-group btn-group">
-                                            <button type="button" class="note-btn btn btn-light btn-sm dropdown-toggle"
-                                                tabindex="-1" data-toggle="dropdown" title="" aria-label="Font Size"
-                                                data-original-title="Font Size">
-                                                <span class="note-current-fontsize">24</span>
-                                            </button>
-                                            <div class="note-dropdown-menu dropdown-menu note-check dropdown-fontsize"
-                                                role="list" aria-label="Font Size">
-                                                <a class="dropdown-item" href="#" data-value="8" role="listitem"
-                                                    aria-label="8">
-                                                    <i class="note-icon-menu-check"></i>
-                                                    8
-                                                </a>
-                                                <a class="dropdown-item" href="#" data-value="9" role="listitem"
-                                                    aria-label="9">
-                                                    <i class="note-icon-menu-check"></i>
-                                                    9
-                                                </a>
-                                                <a class="dropdown-item" href="#" data-value="10" role="listitem"
-                                                    aria-label="10">
-                                                    <i class="note-icon-menu-check"></i>
-                                                    10
-                                                </a>
-                                                <a class="dropdown-item" href="#" data-value="11" role="listitem"
-                                                    aria-label="11">
-                                                    <i class="note-icon-menu-check"></i>
-                                                    11
-                                                </a>
-                                                <a class="dropdown-item" href="#" data-value="12" role="listitem"
-                                                    aria-label="12">
-                                                    <i class="note-icon-menu-check"></i>
-                                                    12
-                                                </a>
-                                                <a class="dropdown-item" href="#" data-value="14" role="listitem"
-                                                    aria-label="14">
-                                                    <i class="note-icon-menu-check"></i>
-                                                    14
-                                                </a>
-                                                <a class="dropdown-item" href="#" data-value="18" role="listitem"
-                                                    aria-label="18">
-                                                    <i class="note-icon-menu-check"></i>
-                                                    18
-                                                </a>
-                                                <a class="dropdown-item" href="#" data-value="24" role="listitem"
-                                                    aria-label="24">
-                                                    <i class="note-icon-menu-check"></i>
-                                                    24
-                                                </a>
-                                                <a class="dropdown-item" href="#" data-value="36" role="listitem"
-                                                    aria-label="36">
-                                                    <i class="note-icon-menu-check"></i> 36
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="note-btn-group btn-group">
-                                            <button type="button" class="note-btn btn btn-light btn-sm dropdown-toggle"
-                                                tabindex="-1" data-toggle="dropdown" title="" aria-label="Line Height"
-                                                data-original-title="Line Height">
-                                                <i class="note-icon-text-height">T</i>
-                                            </button>
-                                            <div class="note-dropdown-menu dropdown-menu note-check dropdown-line-height"
-                                                role="list" aria-label="Line Height">
-                                                <a class="dropdown-item" href="#" data-value="1.0" role="listitem"
-                                                    aria-label="1.0">
-                                                    <i class="note-icon-menu-check"></i> 1.0
-                                                </a>
-                                                <a class="dropdown-item" href="#" data-value="1.2" role="listitem"
-                                                    aria-label="1.2">
-                                                    <i class="note-icon-menu-check"></i> 1.2
-                                                </a>
-                                                <a class="dropdown-item" href="#" data-value="1.4" role="listitem"
-                                                    aria-label="1.4"><i class="note-icon-menu-check"></i> 1.4</a><a
-                                                    class="dropdown-item" href="#" data-value="1.5" role="listitem"
-                                                    aria-label="1.5"><i class="note-icon-menu-check"></i> 1.5</a><a
-                                                    class="dropdown-item" href="#" data-value="1.6" role="listitem"
-                                                    aria-label="1.6"><i class="note-icon-menu-check"></i> 1.6</a><a
-                                                    class="dropdown-item" href="#" data-value="1.8" role="listitem"
-                                                    aria-label="1.8"><i class="note-icon-menu-check"></i> 1.8</a><a
-                                                    class="dropdown-item" href="#" data-value="2.0" role="listitem"
-                                                    aria-label="2.0"><i class="note-icon-menu-check"></i> 2.0</a><a
-                                                    class="dropdown-item" href="#" data-value="3.0" role="listitem"
-                                                    aria-label="3.0"><i class="note-icon-menu-check"></i> 3.0
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <div class="note-btn-group btn-group note-color note-color-all">
-                                            <button type="button"
-                                                class="note-btn btn btn-light btn-sm note-current-color-button"
-                                                tabindex="-1" title="" aria-label="Recent Color"
-                                                data-original-title="Recent Color" data-backcolor="#FFFF00"
-                                                data-forecolor="#000000">
-                                                <i class="note-icon-font note-recent-color"
-                                                    style="background-color: rgb(255, 255, 0); color: rgb(0, 0, 0);">A</i>
-                                            </button>
-                                            <button type="button" class="note-btn btn btn-light btn-sm dropdown-toggle"
-                                                tabindex="-1" data-toggle="dropdown" title="" aria-label="More Color"
-                                                data-original-title="More Color">
+                    </div> -->
+                    <section class="main_content dashboard_part large_header_bg">
 
-                                            </button>
-                                            <div class="note-dropdown-menu dropdown-menu" role="list">
-                                                <div class="note-palette">
-                                                    <div class="note-palette-title">Background Color</div>
-                                                    <div><button type="button"
-                                                            class="note-color-reset btn btn-light btn-default"
-                                                            data-event="backColor"
-                                                            data-value="transparent">Transparent</button>
-                                                    </div>
-                                                    <div class="note-holder" data-event="backColor">
-                                                        <!-- back colors -->
-                                                        <div class="note-color-palette">
-                                                            <div class="note-color-row"><button type="button"
-                                                                    class="note-color-btn"
-                                                                    style="background-color:#000000"
-                                                                    data-event="backColor" data-value="#000000" title=""
-                                                                    aria-label="Black" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Black"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#424242"
-                                                                    data-event="backColor" data-value="#424242" title=""
-                                                                    aria-label="Tundora" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Tundora"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#636363"
-                                                                    data-event="backColor" data-value="#636363" title=""
-                                                                    aria-label="Dove Gray" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Dove Gray"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#9C9C94"
-                                                                    data-event="backColor" data-value="#9C9C94" title=""
-                                                                    aria-label="Star Dust" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Star Dust"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#CEC6CE"
-                                                                    data-event="backColor" data-value="#CEC6CE" title=""
-                                                                    aria-label="Pale Slate" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Pale Slate"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#EFEFEF"
-                                                                    data-event="backColor" data-value="#EFEFEF" title=""
-                                                                    aria-label="Gallery" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Gallery"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#F7F7F7"
-                                                                    data-event="backColor" data-value="#F7F7F7" title=""
-                                                                    aria-label="Alabaster" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Alabaster"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#FFFFFF"
-                                                                    data-event="backColor" data-value="#FFFFFF" title=""
-                                                                    aria-label="White" data-toggle="button"
-                                                                    tabindex="-1" data-original-title="White"></button>
-                                                            </div>
-                                                            <div class="note-color-row"><button type="button"
-                                                                    class="note-color-btn"
-                                                                    style="background-color:#FF0000"
-                                                                    data-event="backColor" data-value="#FF0000" title=""
-                                                                    aria-label="Red" data-toggle="button" tabindex="-1"
-                                                                    data-original-title="Red"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#FF9C00"
-                                                                    data-event="backColor" data-value="#FF9C00" title=""
-                                                                    aria-label="Orange Peel" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Orange Peel"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#FFFF00"
-                                                                    data-event="backColor" data-value="#FFFF00" title=""
-                                                                    aria-label="Yellow" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Yellow"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#00FF00"
-                                                                    data-event="backColor" data-value="#00FF00" title=""
-                                                                    aria-label="Green" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Green"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#00FFFF"
-                                                                    data-event="backColor" data-value="#00FFFF" title=""
-                                                                    aria-label="Cyan" data-toggle="button" tabindex="-1"
-                                                                    data-original-title="Cyan"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#0000FF"
-                                                                    data-event="backColor" data-value="#0000FF" title=""
-                                                                    aria-label="Blue" data-toggle="button" tabindex="-1"
-                                                                    data-original-title="Blue"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#9C00FF"
-                                                                    data-event="backColor" data-value="#9C00FF" title=""
-                                                                    aria-label="Electric Violet" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Electric Violet"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#FF00FF"
-                                                                    data-event="backColor" data-value="#FF00FF" title=""
-                                                                    aria-label="Magenta" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Magenta"></button>
-                                                            </div>
-                                                            <div class="note-color-row"><button type="button"
-                                                                    class="note-color-btn"
-                                                                    style="background-color:#F7C6CE"
-                                                                    data-event="backColor" data-value="#F7C6CE" title=""
-                                                                    aria-label="Azalea" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Azalea"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#FFE7CE"
-                                                                    data-event="backColor" data-value="#FFE7CE" title=""
-                                                                    aria-label="Karry" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Karry"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#FFEFC6"
-                                                                    data-event="backColor" data-value="#FFEFC6" title=""
-                                                                    aria-label="Egg White" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Egg White"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#D6EFD6"
-                                                                    data-event="backColor" data-value="#D6EFD6" title=""
-                                                                    aria-label="Zanah" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Zanah"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#CEDEE7"
-                                                                    data-event="backColor" data-value="#CEDEE7" title=""
-                                                                    aria-label="Botticelli" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Botticelli"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#CEE7F7"
-                                                                    data-event="backColor" data-value="#CEE7F7" title=""
-                                                                    aria-label="Tropical Blue" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Tropical Blue"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#D6D6E7"
-                                                                    data-event="backColor" data-value="#D6D6E7" title=""
-                                                                    aria-label="Mischka" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Mischka"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#E7D6DE"
-                                                                    data-event="backColor" data-value="#E7D6DE" title=""
-                                                                    aria-label="Twilight" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Twilight"></button>
-                                                            </div>
-                                                            <div class="note-color-row"><button type="button"
-                                                                    class="note-color-btn"
-                                                                    style="background-color:#E79C9C"
-                                                                    data-event="backColor" data-value="#E79C9C" title=""
-                                                                    aria-label="Tonys Pink" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Tonys Pink"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#FFC69C"
-                                                                    data-event="backColor" data-value="#FFC69C" title=""
-                                                                    aria-label="Peach Orange" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Peach Orange"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#FFE79C"
-                                                                    data-event="backColor" data-value="#FFE79C" title=""
-                                                                    aria-label="Cream Brulee" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Cream Brulee"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#B5D6A5"
-                                                                    data-event="backColor" data-value="#B5D6A5" title=""
-                                                                    aria-label="Sprout" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Sprout"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#A5C6CE"
-                                                                    data-event="backColor" data-value="#A5C6CE" title=""
-                                                                    aria-label="Casper" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Casper"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#9CC6EF"
-                                                                    data-event="backColor" data-value="#9CC6EF" title=""
-                                                                    aria-label="Perano" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Perano"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#B5A5D6"
-                                                                    data-event="backColor" data-value="#B5A5D6" title=""
-                                                                    aria-label="Cold Purple" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Cold Purple"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#D6A5BD"
-                                                                    data-event="backColor" data-value="#D6A5BD" title=""
-                                                                    aria-label="Careys Pink" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Careys Pink"></button>
-                                                            </div>
-                                                            <div class="note-color-row"><button type="button"
-                                                                    class="note-color-btn"
-                                                                    style="background-color:#E76363"
-                                                                    data-event="backColor" data-value="#E76363" title=""
-                                                                    aria-label="Mandy" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Mandy"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#F7AD6B"
-                                                                    data-event="backColor" data-value="#F7AD6B" title=""
-                                                                    aria-label="Rajah" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Rajah"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#FFD663"
-                                                                    data-event="backColor" data-value="#FFD663" title=""
-                                                                    aria-label="Dandelion" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Dandelion"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#94BD7B"
-                                                                    data-event="backColor" data-value="#94BD7B" title=""
-                                                                    aria-label="Olivine" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Olivine"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#73A5AD"
-                                                                    data-event="backColor" data-value="#73A5AD" title=""
-                                                                    aria-label="Gulf Stream" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Gulf Stream"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#6BADDE"
-                                                                    data-event="backColor" data-value="#6BADDE" title=""
-                                                                    aria-label="Viking" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Viking"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#8C7BC6"
-                                                                    data-event="backColor" data-value="#8C7BC6" title=""
-                                                                    aria-label="Blue Marguerite" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Blue Marguerite"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#C67BA5"
-                                                                    data-event="backColor" data-value="#C67BA5" title=""
-                                                                    aria-label="Puce" data-toggle="button" tabindex="-1"
-                                                                    data-original-title="Puce"></button>
-                                                            </div>
-                                                            <div class="note-color-row"><button type="button"
-                                                                    class="note-color-btn"
-                                                                    style="background-color:#CE0000"
-                                                                    data-event="backColor" data-value="#CE0000" title=""
-                                                                    aria-label="Guardsman Red" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Guardsman Red"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#E79439"
-                                                                    data-event="backColor" data-value="#E79439" title=""
-                                                                    aria-label="Fire Bush" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Fire Bush"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#EFC631"
-                                                                    data-event="backColor" data-value="#EFC631" title=""
-                                                                    aria-label="Golden Dream" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Golden Dream"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#6BA54A"
-                                                                    data-event="backColor" data-value="#6BA54A" title=""
-                                                                    aria-label="Chelsea Cucumber" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Chelsea Cucumber"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#4A7B8C"
-                                                                    data-event="backColor" data-value="#4A7B8C" title=""
-                                                                    aria-label="Smalt Blue" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Smalt Blue"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#3984C6"
-                                                                    data-event="backColor" data-value="#3984C6" title=""
-                                                                    aria-label="Boston Blue" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Boston Blue"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#634AA5"
-                                                                    data-event="backColor" data-value="#634AA5" title=""
-                                                                    aria-label="Butterfly Bush" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Butterfly Bush"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#A54A7B"
-                                                                    data-event="backColor" data-value="#A54A7B" title=""
-                                                                    aria-label="Cadillac" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Cadillac"></button>
-                                                            </div>
-                                                            <div class="note-color-row"><button type="button"
-                                                                    class="note-color-btn"
-                                                                    style="background-color:#9C0000"
-                                                                    data-event="backColor" data-value="#9C0000" title=""
-                                                                    aria-label="Sangria" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Sangria"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#B56308"
-                                                                    data-event="backColor" data-value="#B56308" title=""
-                                                                    aria-label="Mai Tai" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Mai Tai"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#BD9400"
-                                                                    data-event="backColor" data-value="#BD9400" title=""
-                                                                    aria-label="Buddha Gold" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Buddha Gold"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#397B21"
-                                                                    data-event="backColor" data-value="#397B21" title=""
-                                                                    aria-label="Forest Green" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Forest Green"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#104A5A"
-                                                                    data-event="backColor" data-value="#104A5A" title=""
-                                                                    aria-label="Eden" data-toggle="button" tabindex="-1"
-                                                                    data-original-title="Eden"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#085294"
-                                                                    data-event="backColor" data-value="#085294" title=""
-                                                                    aria-label="Venice Blue" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Venice Blue"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#311873"
-                                                                    data-event="backColor" data-value="#311873" title=""
-                                                                    aria-label="Meteorite" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Meteorite"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#731842"
-                                                                    data-event="backColor" data-value="#731842" title=""
-                                                                    aria-label="Claret" data-toggle="button"
-                                                                    tabindex="-1" data-original-title="Claret"></button>
-                                                            </div>
-                                                            <div class="note-color-row"><button type="button"
-                                                                    class="note-color-btn"
-                                                                    style="background-color:#630000"
-                                                                    data-event="backColor" data-value="#630000" title=""
-                                                                    aria-label="Rosewood" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Rosewood"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#7B3900"
-                                                                    data-event="backColor" data-value="#7B3900" title=""
-                                                                    aria-label="Cinnamon" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Cinnamon"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#846300"
-                                                                    data-event="backColor" data-value="#846300" title=""
-                                                                    aria-label="Olive" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Olive"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#295218"
-                                                                    data-event="backColor" data-value="#295218" title=""
-                                                                    aria-label="Parsley" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Parsley"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#083139"
-                                                                    data-event="backColor" data-value="#083139" title=""
-                                                                    aria-label="Tiber" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Tiber"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#003163"
-                                                                    data-event="backColor" data-value="#003163" title=""
-                                                                    aria-label="Midnight Blue" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Midnight Blue"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#21104A"
-                                                                    data-event="backColor" data-value="#21104A" title=""
-                                                                    aria-label="Valentino" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Valentino"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#4A1031"
-                                                                    data-event="backColor" data-value="#4A1031" title=""
-                                                                    aria-label="Loulou" data-toggle="button"
-                                                                    tabindex="-1" data-original-title="Loulou"></button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div>
-                                                        <button type="button"
-                                                            class="note-color-select btn btn-light btn-default"
-                                                            data-event="openPalette"
-                                                            data-value="backColorPicker">Select</button><input
-                                                            type="color" id="backColorPicker"
-                                                            class="note-btn note-color-select-btn" value="#FFFF00"
-                                                            data-event="backColorPalette">
-                                                    </div>
-                                                    <div class="note-holder-custom" id="backColorPalette"
-                                                        data-event="backColor">
-                                                        <div class="note-color-palette">
-                                                            <div class="note-color-row"><button type="button"
-                                                                    class="note-color-btn"
-                                                                    style="background-color:#FFFFFF"
-                                                                    data-event="backColor" data-value="#FFFFFF" title=""
-                                                                    aria-label="#FFFFFF" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="#FFFFFF"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#FFFFFF"
-                                                                    data-event="backColor" data-value="#FFFFFF" title=""
-                                                                    aria-label="#FFFFFF" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="#FFFFFF"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#FFFFFF"
-                                                                    data-event="backColor" data-value="#FFFFFF" title=""
-                                                                    aria-label="#FFFFFF" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="#FFFFFF"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#FFFFFF"
-                                                                    data-event="backColor" data-value="#FFFFFF" title=""
-                                                                    aria-label="#FFFFFF" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="#FFFFFF"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#FFFFFF"
-                                                                    data-event="backColor" data-value="#FFFFFF" title=""
-                                                                    aria-label="#FFFFFF" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="#FFFFFF"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#FFFFFF"
-                                                                    data-event="backColor" data-value="#FFFFFF" title=""
-                                                                    aria-label="#FFFFFF" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="#FFFFFF"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#FFFFFF"
-                                                                    data-event="backColor" data-value="#FFFFFF" title=""
-                                                                    aria-label="#FFFFFF" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="#FFFFFF"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#FFFFFF"
-                                                                    data-event="backColor" data-value="#FFFFFF" title=""
-                                                                    aria-label="#FFFFFF" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="#FFFFFF"></button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="note-palette">
-                                                    <div class="note-palette-title">Text Color</div>
-                                                    <div><button type="button"
-                                                            class="note-color-reset btn btn-light btn-default"
-                                                            data-event="removeFormat" data-value="foreColor">Reset to
-                                                            default</button></div>
-                                                    <div class="note-holder" data-event="foreColor">
-                                                        <!-- fore colors -->
-                                                        <div class="note-color-palette">
-                                                            <div class="note-color-row"><button type="button"
-                                                                    class="note-color-btn"
-                                                                    style="background-color:#000000"
-                                                                    data-event="foreColor" data-value="#000000" title=""
-                                                                    aria-label="Black" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Black"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#424242"
-                                                                    data-event="foreColor" data-value="#424242" title=""
-                                                                    aria-label="Tundora" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Tundora"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#636363"
-                                                                    data-event="foreColor" data-value="#636363" title=""
-                                                                    aria-label="Dove Gray" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Dove Gray"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#9C9C94"
-                                                                    data-event="foreColor" data-value="#9C9C94" title=""
-                                                                    aria-label="Star Dust" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Star Dust"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#CEC6CE"
-                                                                    data-event="foreColor" data-value="#CEC6CE" title=""
-                                                                    aria-label="Pale Slate" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Pale Slate"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#EFEFEF"
-                                                                    data-event="foreColor" data-value="#EFEFEF" title=""
-                                                                    aria-label="Gallery" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Gallery"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#F7F7F7"
-                                                                    data-event="foreColor" data-value="#F7F7F7" title=""
-                                                                    aria-label="Alabaster" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Alabaster"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#FFFFFF"
-                                                                    data-event="foreColor" data-value="#FFFFFF" title=""
-                                                                    aria-label="White" data-toggle="button"
-                                                                    tabindex="-1" data-original-title="White"></button>
-                                                            </div>
-                                                            <div class="note-color-row"><button type="button"
-                                                                    class="note-color-btn"
-                                                                    style="background-color:#FF0000"
-                                                                    data-event="foreColor" data-value="#FF0000" title=""
-                                                                    aria-label="Red" data-toggle="button" tabindex="-1"
-                                                                    data-original-title="Red"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#FF9C00"
-                                                                    data-event="foreColor" data-value="#FF9C00" title=""
-                                                                    aria-label="Orange Peel" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Orange Peel"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#FFFF00"
-                                                                    data-event="foreColor" data-value="#FFFF00" title=""
-                                                                    aria-label="Yellow" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Yellow"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#00FF00"
-                                                                    data-event="foreColor" data-value="#00FF00" title=""
-                                                                    aria-label="Green" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Green"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#00FFFF"
-                                                                    data-event="foreColor" data-value="#00FFFF" title=""
-                                                                    aria-label="Cyan" data-toggle="button" tabindex="-1"
-                                                                    data-original-title="Cyan"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#0000FF"
-                                                                    data-event="foreColor" data-value="#0000FF" title=""
-                                                                    aria-label="Blue" data-toggle="button" tabindex="-1"
-                                                                    data-original-title="Blue"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#9C00FF"
-                                                                    data-event="foreColor" data-value="#9C00FF" title=""
-                                                                    aria-label="Electric Violet" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Electric Violet"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#FF00FF"
-                                                                    data-event="foreColor" data-value="#FF00FF" title=""
-                                                                    aria-label="Magenta" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Magenta"></button>
-                                                            </div>
-                                                            <div class="note-color-row"><button type="button"
-                                                                    class="note-color-btn"
-                                                                    style="background-color:#F7C6CE"
-                                                                    data-event="foreColor" data-value="#F7C6CE" title=""
-                                                                    aria-label="Azalea" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Azalea"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#FFE7CE"
-                                                                    data-event="foreColor" data-value="#FFE7CE" title=""
-                                                                    aria-label="Karry" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Karry"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#FFEFC6"
-                                                                    data-event="foreColor" data-value="#FFEFC6" title=""
-                                                                    aria-label="Egg White" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Egg White"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#D6EFD6"
-                                                                    data-event="foreColor" data-value="#D6EFD6" title=""
-                                                                    aria-label="Zanah" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Zanah"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#CEDEE7"
-                                                                    data-event="foreColor" data-value="#CEDEE7" title=""
-                                                                    aria-label="Botticelli" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Botticelli"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#CEE7F7"
-                                                                    data-event="foreColor" data-value="#CEE7F7" title=""
-                                                                    aria-label="Tropical Blue" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Tropical Blue"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#D6D6E7"
-                                                                    data-event="foreColor" data-value="#D6D6E7" title=""
-                                                                    aria-label="Mischka" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Mischka"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#E7D6DE"
-                                                                    data-event="foreColor" data-value="#E7D6DE" title=""
-                                                                    aria-label="Twilight" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Twilight"></button>
-                                                            </div>
-                                                            <div class="note-color-row"><button type="button"
-                                                                    class="note-color-btn"
-                                                                    style="background-color:#E79C9C"
-                                                                    data-event="foreColor" data-value="#E79C9C" title=""
-                                                                    aria-label="Tonys Pink" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Tonys Pink"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#FFC69C"
-                                                                    data-event="foreColor" data-value="#FFC69C" title=""
-                                                                    aria-label="Peach Orange" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Peach Orange"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#FFE79C"
-                                                                    data-event="foreColor" data-value="#FFE79C" title=""
-                                                                    aria-label="Cream Brulee" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Cream Brulee"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#B5D6A5"
-                                                                    data-event="foreColor" data-value="#B5D6A5" title=""
-                                                                    aria-label="Sprout" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Sprout"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#A5C6CE"
-                                                                    data-event="foreColor" data-value="#A5C6CE" title=""
-                                                                    aria-label="Casper" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Casper"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#9CC6EF"
-                                                                    data-event="foreColor" data-value="#9CC6EF" title=""
-                                                                    aria-label="Perano" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Perano"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#B5A5D6"
-                                                                    data-event="foreColor" data-value="#B5A5D6" title=""
-                                                                    aria-label="Cold Purple" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Cold Purple"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#D6A5BD"
-                                                                    data-event="foreColor" data-value="#D6A5BD" title=""
-                                                                    aria-label="Careys Pink" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Careys Pink"></button>
-                                                            </div>
-                                                            <div class="note-color-row"><button type="button"
-                                                                    class="note-color-btn"
-                                                                    style="background-color:#E76363"
-                                                                    data-event="foreColor" data-value="#E76363" title=""
-                                                                    aria-label="Mandy" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Mandy"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#F7AD6B"
-                                                                    data-event="foreColor" data-value="#F7AD6B" title=""
-                                                                    aria-label="Rajah" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Rajah"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#FFD663"
-                                                                    data-event="foreColor" data-value="#FFD663" title=""
-                                                                    aria-label="Dandelion" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Dandelion"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#94BD7B"
-                                                                    data-event="foreColor" data-value="#94BD7B" title=""
-                                                                    aria-label="Olivine" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Olivine"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#73A5AD"
-                                                                    data-event="foreColor" data-value="#73A5AD" title=""
-                                                                    aria-label="Gulf Stream" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Gulf Stream"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#6BADDE"
-                                                                    data-event="foreColor" data-value="#6BADDE" title=""
-                                                                    aria-label="Viking" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Viking"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#8C7BC6"
-                                                                    data-event="foreColor" data-value="#8C7BC6" title=""
-                                                                    aria-label="Blue Marguerite" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Blue Marguerite"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#C67BA5"
-                                                                    data-event="foreColor" data-value="#C67BA5" title=""
-                                                                    aria-label="Puce" data-toggle="button" tabindex="-1"
-                                                                    data-original-title="Puce"></button>
-                                                            </div>
-                                                            <div class="note-color-row"><button type="button"
-                                                                    class="note-color-btn"
-                                                                    style="background-color:#CE0000"
-                                                                    data-event="foreColor" data-value="#CE0000" title=""
-                                                                    aria-label="Guardsman Red" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Guardsman Red"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#E79439"
-                                                                    data-event="foreColor" data-value="#E79439" title=""
-                                                                    aria-label="Fire Bush" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Fire Bush"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#EFC631"
-                                                                    data-event="foreColor" data-value="#EFC631" title=""
-                                                                    aria-label="Golden Dream" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Golden Dream"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#6BA54A"
-                                                                    data-event="foreColor" data-value="#6BA54A" title=""
-                                                                    aria-label="Chelsea Cucumber" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Chelsea Cucumber"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#4A7B8C"
-                                                                    data-event="foreColor" data-value="#4A7B8C" title=""
-                                                                    aria-label="Smalt Blue" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Smalt Blue"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#3984C6"
-                                                                    data-event="foreColor" data-value="#3984C6" title=""
-                                                                    aria-label="Boston Blue" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Boston Blue"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#634AA5"
-                                                                    data-event="foreColor" data-value="#634AA5" title=""
-                                                                    aria-label="Butterfly Bush" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Butterfly Bush"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#A54A7B"
-                                                                    data-event="foreColor" data-value="#A54A7B" title=""
-                                                                    aria-label="Cadillac" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Cadillac"></button>
-                                                            </div>
-                                                            <div class="note-color-row"><button type="button"
-                                                                    class="note-color-btn"
-                                                                    style="background-color:#9C0000"
-                                                                    data-event="foreColor" data-value="#9C0000" title=""
-                                                                    aria-label="Sangria" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Sangria"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#B56308"
-                                                                    data-event="foreColor" data-value="#B56308" title=""
-                                                                    aria-label="Mai Tai" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Mai Tai"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#BD9400"
-                                                                    data-event="foreColor" data-value="#BD9400" title=""
-                                                                    aria-label="Buddha Gold" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Buddha Gold"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#397B21"
-                                                                    data-event="foreColor" data-value="#397B21" title=""
-                                                                    aria-label="Forest Green" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Forest Green"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#104A5A"
-                                                                    data-event="foreColor" data-value="#104A5A" title=""
-                                                                    aria-label="Eden" data-toggle="button" tabindex="-1"
-                                                                    data-original-title="Eden"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#085294"
-                                                                    data-event="foreColor" data-value="#085294" title=""
-                                                                    aria-label="Venice Blue" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Venice Blue"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#311873"
-                                                                    data-event="foreColor" data-value="#311873" title=""
-                                                                    aria-label="Meteorite" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Meteorite"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#731842"
-                                                                    data-event="foreColor" data-value="#731842" title=""
-                                                                    aria-label="Claret" data-toggle="button"
-                                                                    tabindex="-1" data-original-title="Claret"></button>
-                                                            </div>
-                                                            <div class="note-color-row"><button type="button"
-                                                                    class="note-color-btn"
-                                                                    style="background-color:#630000"
-                                                                    data-event="foreColor" data-value="#630000" title=""
-                                                                    aria-label="Rosewood" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Rosewood"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#7B3900"
-                                                                    data-event="foreColor" data-value="#7B3900" title=""
-                                                                    aria-label="Cinnamon" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Cinnamon"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#846300"
-                                                                    data-event="foreColor" data-value="#846300" title=""
-                                                                    aria-label="Olive" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Olive"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#295218"
-                                                                    data-event="foreColor" data-value="#295218" title=""
-                                                                    aria-label="Parsley" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Parsley"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#083139"
-                                                                    data-event="foreColor" data-value="#083139" title=""
-                                                                    aria-label="Tiber" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Tiber"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#003163"
-                                                                    data-event="foreColor" data-value="#003163" title=""
-                                                                    aria-label="Midnight Blue" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Midnight Blue"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#21104A"
-                                                                    data-event="foreColor" data-value="#21104A" title=""
-                                                                    aria-label="Valentino" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="Valentino"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#4A1031"
-                                                                    data-event="foreColor" data-value="#4A1031" title=""
-                                                                    aria-label="Loulou" data-toggle="button"
-                                                                    tabindex="-1" data-original-title="Loulou"></button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div><button type="button"
-                                                            class="note-color-select btn btn-light btn-default"
-                                                            data-event="openPalette"
-                                                            data-value="foreColorPicker">Select</button><input
-                                                            type="color" id="foreColorPicker"
-                                                            class="note-btn note-color-select-btn" value="#000000"
-                                                            data-event="foreColorPalette">
-                                                    </div>
-                                                    <div class="note-holder-custom" id="foreColorPalette"
-                                                        data-event="foreColor">
-                                                        <div class="note-color-palette">
-                                                            <div class="note-color-row"><button type="button"
-                                                                    class="note-color-btn"
-                                                                    style="background-color:#FFFFFF"
-                                                                    data-event="foreColor" data-value="#FFFFFF" title=""
-                                                                    aria-label="#FFFFFF" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="#FFFFFF"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#FFFFFF"
-                                                                    data-event="foreColor" data-value="#FFFFFF" title=""
-                                                                    aria-label="#FFFFFF" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="#FFFFFF"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#FFFFFF"
-                                                                    data-event="foreColor" data-value="#FFFFFF" title=""
-                                                                    aria-label="#FFFFFF" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="#FFFFFF"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#FFFFFF"
-                                                                    data-event="foreColor" data-value="#FFFFFF" title=""
-                                                                    aria-label="#FFFFFF" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="#FFFFFF"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#FFFFFF"
-                                                                    data-event="foreColor" data-value="#FFFFFF" title=""
-                                                                    aria-label="#FFFFFF" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="#FFFFFF"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#FFFFFF"
-                                                                    data-event="foreColor" data-value="#FFFFFF" title=""
-                                                                    aria-label="#FFFFFF" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="#FFFFFF"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#FFFFFF"
-                                                                    data-event="foreColor" data-value="#FFFFFF" title=""
-                                                                    aria-label="#FFFFFF" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="#FFFFFF"></button><button
-                                                                    type="button" class="note-color-btn"
-                                                                    style="background-color:#FFFFFF"
-                                                                    data-event="foreColor" data-value="#FFFFFF" title=""
-                                                                    aria-label="#FFFFFF" data-toggle="button"
-                                                                    tabindex="-1"
-                                                                    data-original-title="#FFFFFF"></button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+
+                        <div class="main_content_iner ">
+                            <div class="container-fluid p-0 ">
+                                <div class="row ">
+                                   
+                                
+                                    <div class="col-12">
+                                        <div class="white_box mb_30">
+
+                                            <div class="box_header ">
+                                                <div class="main-title">
+                                                    <h3 class="mb-0">{{$data->first_name.' '.$data->last_name}}</h3>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                    <div class="note-btn-group btn-group note-para">
-                                        <button type="button" class="note-btn btn btn-light btn-sm" tabindex="-1"
-                                            title="" aria-label="Unordered list (CTRL+SHIFT+NUM7)"
-                                            data-original-title="Unordered list (CTRL+SHIFT+NUM7)">
-                                            <i class="fa fa-bars"></i>
-                                        </button>
-                                        <button type="button" class="note-btn btn btn-light btn-sm" tabindex="-1"
-                                            title="" aria-label="Ordered list (CTRL+SHIFT+NUM8)"
-                                            data-original-title="Ordered list (CTRL+SHIFT+NUM8)">
-                                            <font style="font-size:10px;">1</font><i class="fa fa-bars"></i>
-                                        </button>
-                                    </div>
-                                    <div class="note-btn-group btn-group note-insert">
-                                        <button type="button" class="note-btn btn btn-light btn-sm" tabindex="-1"
-                                            title="" aria-label="Picture" data-original-title="Picture">
-                                            <i class="fa   fa-camera"></i>
-                                        </button>
-                                        <button type="button" class="note-btn btn btn-light btn-sm" tabindex="-1"
-                                            title="" aria-label="Link (CTRL+K)" data-original-title="Link (CTRL+K)">
-                                            <i class="fa fa-link"></i>
-                                        </button>
-                                        <button type="button" class="note-btn btn btn-light btn-sm" tabindex="-1"
-                                            title="" aria-label="Video" data-original-title="Video">
-                                            <i class="note-icon-video fa fa-video"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="note-editing-area">
-                                    <div class="note-handle">
-                                        <div class="note-control-selection" style="display: none;">
-                                            <div class="note-control-selection-bg"></div>
-                                            <div class="note-control-holder note-control-nw"></div>
-                                            <div class="note-control-holder note-control-ne"></div>
-                                            <div class="note-control-holder note-control-sw"></div>
-                                            <div class="note-control-sizing note-control-se"></div>
-                                            <div class="note-control-selection-info"></div>
-                                        </div>
-                                    </div>
-                                    <textarea class="note-codable form-control" aria-multiline="true"
-                                        rows="8"></textarea>
-                                    <!-- <div class="note-editable card-block " contenteditable="true" role="textbox"
-                                            aria-multiline="true" spellcheck="true" autocorrect="true"
-                                            style="height: 100px;">
-                                        </div> -->
-                                </div>
-                                <output class="note-status-output" role="status" aria-live="polite"></output>
-                                <div class="note-statusbar" role="status">
-                                    <div class="note-resizebar" aria-label="Resize">
-                                        <div class="note-icon-bar"></div>
-                                        <div class="note-icon-bar"></div>
-                                        <div class="note-icon-bar"></div>
-                                    </div>
-                                </div>
-                                <div class="note-popover popover in note-link-popover bottom" style="display: none;">
-                                    <div class="arrow"></div>
-                                    <div class="popover-content note-children-container"><span><a
-                                                target="_blank"></a>&nbsp;</span>
-                                        <div class="note-btn-group btn-group note-link"><button type="button"
-                                                class="note-btn btn btn-light btn-sm" tabindex="-1" title=""
-                                                aria-label="Edit" data-original-title="Edit"><i
-                                                    class="note-icon-link"></i></button><button type="button"
-                                                class="note-btn btn btn-light btn-sm" tabindex="-1" title=""
-                                                aria-label="Unlink" data-original-title="Unlink"><i
-                                                    class="note-icon-chain-broken"></i></button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="note-popover popover in note-image-popover bottom" style="display: none;">
-                                    <div class="arrow"></div>
-                                    <div class="popover-content note-children-container">
-                                        <div class="note-btn-group btn-group note-resize"><button type="button"
-                                                class="note-btn btn btn-light btn-sm" tabindex="-1" title=""
-                                                aria-label="Resize full" data-original-title="Resize full"><span
-                                                    class="note-fontsize-10">100%</span></button><button type="button"
-                                                class="note-btn btn btn-light btn-sm" tabindex="-1" title=""
-                                                aria-label="Resize half" data-original-title="Resize half"><span
-                                                    class="note-fontsize-10">50%</span></button><button type="button"
-                                                class="note-btn btn btn-light btn-sm" tabindex="-1" title=""
-                                                aria-label="Resize quarter" data-original-title="Resize quarter"><span
-                                                    class="note-fontsize-10">25%</span></button><button type="button"
-                                                class="note-btn btn btn-light btn-sm" tabindex="-1" title=""
-                                                aria-label="Original size" data-original-title="Original size"><i
-                                                    class="note-icon-rollback"></i></button>
-                                        </div>
-                                        <div class="note-btn-group btn-group note-float"><button type="button"
-                                                class="note-btn btn btn-light btn-sm" tabindex="-1" title=""
-                                                aria-label="Float Left" data-original-title="Float Left"><i
-                                                    class="note-icon-float-left"></i></button><button type="button"
-                                                class="note-btn btn btn-light btn-sm" tabindex="-1" title=""
-                                                aria-label="Float Right" data-original-title="Float Right"><i
-                                                    class="note-icon-float-right"></i></button><button type="button"
-                                                class="note-btn btn btn-light btn-sm" tabindex="-1" title=""
-                                                aria-label="Remove float" data-original-title="Remove float"><i
-                                                    class="note-icon-rollback"></i></button>
-                                        </div>
-                                        <div class="note-btn-group btn-group note-remove"><button type="button"
-                                                class="note-btn btn btn-light btn-sm" tabindex="-1" title=""
-                                                aria-label="Remove Image" data-original-title="Remove Image"><i
-                                                    class="note-icon-trash"></i></button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="note-popover popover in note-table-popover bottom" style="display: none;">
-                                    <div class="arrow"></div>
-                                    <div class="popover-content note-children-container">
-                                        <div class="note-btn-group btn-group note-add"><button type="button"
-                                                class="note-btn btn btn-light btn-sm btn-md" tabindex="-1" title=""
-                                                aria-label="Add row below" data-original-title="Add row below"><i
-                                                    class="note-icon-row-below"></i></button><button type="button"
-                                                class="note-btn btn btn-light btn-sm btn-md" tabindex="-1" title=""
-                                                aria-label="Add row above" data-original-title="Add row above"><i
-                                                    class="note-icon-row-above"></i></button><button type="button"
-                                                class="note-btn btn btn-light btn-sm btn-md" tabindex="-1" title=""
-                                                aria-label="Add column left" data-original-title="Add column left"><i
-                                                    class="note-icon-col-before"></i></button><button type="button"
-                                                class="note-btn btn btn-light btn-sm btn-md" tabindex="-1" title=""
-                                                aria-label="Add column right" data-original-title="Add column right"><i
-                                                    class="note-icon-col-after"></i></button>
-                                        </div>
-                                        <div class="note-btn-group btn-group note-delete">
-                                            <button type="button" class="note-btn btn btn-light btn-sm btn-md"
-                                                tabindex="-1" title="" aria-label="Delete row"
-                                                data-original-title="Delete row">
-                                                <i class="note-icon-row-remove"></i>
-                                            </button>
-                                            <button type="button" class="note-btn btn btn-light btn-sm btn-md"
-                                                tabindex="-1" title="" aria-label="Delete column"
-                                                data-original-title="Delete column">
-                                                <i class="note-icon-col-remove"></i>
-                                            </button>
-                                            <button type="button" class="note-btn btn btn-light btn-sm btn-md"
-                                                tabindex="-1" title="" aria-label="Delete table"
-                                                data-original-title="Delete table">
-                                                <i class="note-icon-trash"></i>
-                                            </button>
+                                            <div id='summernote'></div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+
+                    </section>
+
+
+                   
                     <div class="d-flex justify-content-end mt-2">
                         <button class="btn btn-primary">Submit</button>
                     </div>
@@ -1643,9 +466,9 @@
                     <div class="min-height-200">
                         <div class="default-base-color rounded p-4 mb-primary">
                             <div class="d-flex justify-content-between align-items-center">
-                                <p class="mb-0 text-primary">Resume - Moumita Manna</p>
+                                <p class="mb-0 text-primary">Resume - {{$data->first_name.' '.$data->last_name}}</p>
                                 <div class="d-flex justify-content-start"><a
-                                        href="https://careerhollic.com/recruitment/storage/attachments/adobe_scan16-_dec-2022-639efa7bb834e.pdf"
+                                        href="{{$data->first_name}}"
                                         target="_blank"
                                         class="text-muted default-base-color width-30 height-30 rounded d-inline-flex align-items-center justify-content-center">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
@@ -1666,10 +489,128 @@
     </div>
 
 </div>
+<div class="CHAT_MESSAGE_POPUPBOX">
+                        <div class="CHAT_POPUP_HEADER">
+                            <div class="MSEESAGE_CHATBOX_CLOSE">
+                                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M7.09939 5.98831L11.772 10.661C12.076 10.965 12.076 11.4564 11.772 11.7603C11.468 12.0643 10.9766 12.0643 10.6726 11.7603L5.99994 7.08762L1.32737 11.7603C1.02329 12.0643 0.532002 12.0643 0.228062 11.7603C-0.0760207 11.4564 -0.0760207 10.965 0.228062 10.661L4.90063 5.98831L0.228062 1.3156C-0.0760207 1.01166 -0.0760207 0.520226 0.228062 0.216286C0.379534 0.0646715 0.578697 -0.0114918 0.777717 -0.0114918C0.976738 -0.0114918 1.17576 0.0646715 1.32737 0.216286L5.99994 4.889L10.6726 0.216286C10.8243 0.0646715 11.0233 -0.0114918 11.2223 -0.0114918C11.4213 -0.0114918 11.6203 0.0646715 11.772 0.216286C12.076 0.520226 12.076 1.01166 11.772 1.3156L7.09939 5.98831Z"
+                                        fill="white" />
+                                </svg>
+                            </div>
+                            <h3>Chat with us</h3>
+                            <div class="Chat_Listed_member">
+                                <ul>
+                                    <li>
+                                        <a href="#">
+                                            <div class="member_thumb">
+                                                <img src="img/staf/1.png" alt="">
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <div class="member_thumb">
+                                                <img src="img/staf/2.png" alt="">
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <div class="member_thumb">
+                                                <img src="img/staf/3.png" alt="">
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <div class="member_thumb">
+                                                <img src="img/staf/4.png" alt="">
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <div class="member_thumb">
+                                                <img src="img/staf/5.png" alt="">
+                                            </div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <div class="member_thumb">
+                                                <div class="more_member_count">
+                                                    <span>90+</span>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="CHAT_POPUP_BODY">
+                            <p class="mesaged_send_date">
+                                Sunday, 12 January
+                            </p>
+                            <div class="CHATING_SENDER">
+                                <div class="SMS_thumb">
+                                    <img src="img/staf/1.png" alt="">
+                                </div>
+                                <div class="SEND_SMS_VIEW">
+                                    <P>Hi! Welcome .
+                                        How can I help you?</P>
+                                </div>
+                            </div>
+                            <div class="CHATING_SENDER CHATING_RECEIVEr">
+                                <div class="SEND_SMS_VIEW">
+                                    <P>Hello</P>
+                                </div>
+                                <div class="SMS_thumb">
+                                    <img src="img/staf/1.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="CHAT_POPUP_BOTTOM">
+                            <div class="chat_input_box d-flex align-items-center">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Write your message"
+                                        aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                    <div class="input-group-append">
+                                        <button class="btn " type="button">
 
+                                            <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M18.7821 3.21895C14.4908 -1.07281 7.50882 -1.07281 3.2183 3.21792C-1.07304 7.50864 -1.07263 14.4908 3.21872 18.7824C7.50882 23.0729 14.4908 23.0729 18.7817 18.7815C23.0726 14.4908 23.0724 7.50906 18.7821 3.21895ZM17.5813 17.5815C13.9525 21.2103 8.04773 21.2108 4.41871 17.5819C0.78907 13.9525 0.789485 8.04714 4.41871 4.41832C8.04752 0.789719 13.9521 0.789304 17.5817 4.41874C21.2105 8.04755 21.2101 13.9529 17.5813 17.5815ZM6.89503 8.02162C6.89503 7.31138 7.47107 6.73534 8.18131 6.73534C8.89135 6.73534 9.46739 7.31117 9.46739 8.02162C9.46739 8.73228 8.89135 9.30811 8.18131 9.30811C7.47107 9.30811 6.89503 8.73228 6.89503 8.02162ZM12.7274 8.02162C12.7274 7.31138 13.3038 6.73534 14.0141 6.73534C14.7241 6.73534 15.3002 7.31117 15.3002 8.02162C15.3002 8.73228 14.7243 9.30811 14.0141 9.30811C13.3038 9.30811 12.7274 8.73228 12.7274 8.02162ZM15.7683 13.2898C14.9712 15.1332 13.1043 16.3243 11.0126 16.3243C8.8758 16.3243 6.99792 15.1272 6.22834 13.2744C6.09642 12.9573 6.24681 12.593 6.56438 12.4611C6.64238 12.4289 6.72328 12.4136 6.80293 12.4136C7.04687 12.4136 7.27836 12.5577 7.37772 12.7973C7.95376 14.1842 9.38048 15.0799 11.0126 15.0799C12.6077 15.0799 14.0261 14.1836 14.626 12.7959C14.7625 12.4804 15.1288 12.335 15.4441 12.4717C15.7594 12.6084 15.9048 12.9745 15.7683 13.2898Z"
+                                                    fill="#707DB7" />
+                                            </svg>
+
+                                        </button>
+                                        <button class="btn" type="button">
+
+                                            <svg width="22" height="22" viewBox="0 0 22 22" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M11 0.289062C4.92455 0.289062 0 5.08402 0 10.9996C0 16.9152 4.92455 21.7101 11 21.7101C17.0755 21.7101 22 16.9145 22 10.9996C22 5.08472 17.0755 0.289062 11 0.289062ZM11 20.3713C5.68423 20.3713 1.375 16.1755 1.375 10.9996C1.375 5.82371 5.68423 1.62788 11 1.62788C16.3158 1.62788 20.625 5.82371 20.625 10.9996C20.625 16.1755 16.3158 20.3713 11 20.3713ZM15.125 10.3302H11.6875V6.98314C11.6875 6.61363 11.3795 6.31373 11 6.31373C10.6205 6.31373 10.3125 6.61363 10.3125 6.98314V10.3302H6.875C6.4955 10.3302 6.1875 10.6301 6.1875 10.9996C6.1875 11.3691 6.4955 11.669 6.875 11.669H10.3125V15.016C10.3125 15.3855 10.6205 15.6854 11 15.6854C11.3795 15.6854 11.6875 15.3855 11.6875 15.016V11.669H15.125C15.5045 11.669 15.8125 11.3691 15.8125 10.9996C15.8125 10.6301 15.5045 10.3302 15.125 10.3302Z"
+                                                    fill="#707DB7" />
+                                            </svg>
+
+                                            <input type="file">
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 @endsection
 <!-- <script src="https://code.jquery.com/jquery-3.6.2.min.js"></script> -->
 <script src="{{asset('https://code.jquery.com/jquery-3.6.1.min.js')}}"></script>
+<script src="js/custom.js"></script>
+
+
+
+
 <script>
 $(document).ready(function() {
     $('.notestData').click(function() {
@@ -1696,6 +637,31 @@ $(document).ready(function() {
         $('.event').addClass('displayNone2');
         $('.notest').addClass('displayNone2');
         $('.attachments').removeClass('displayNone2');
-    })
+    });
+    var Ckeditor = function() {
+        // Private functions
+        var demos = function() {
+            ClassicEditor
+                .create(document.querySelector('#kt-ckeditor-1'))
+                .then(editor => {
+                    console.log(editor);
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+        }
+
+        return {
+            // public functions
+            init: function() {
+                demos();
+            }
+        };
+    }();
+
+    // Initialization
+    jQuery(document).ready(function() {
+        Ckeditor.init();
+    });
 });
 </script>

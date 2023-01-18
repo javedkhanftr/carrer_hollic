@@ -11,7 +11,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Department;
 use DB;
-
+use Carbon\Carbon;
 
 class MasterController extends Controller
 {
@@ -35,13 +35,42 @@ class MasterController extends Controller
        
         if(Auth::check()){
           
-            // $first_name = Auth::user()->id;
-            // $last_name = Auth::user()->last_name;
-            // $name=$first_name.' '.$last_name;
-            // return $name;
+            $first_name = Auth::user()->first_name;
+            $last_name = Auth::user()->last_name;
+            $name=$first_name.' '.$last_name;
+            return $name;
         }
   
         return redirect("login")->withSuccess('You are not allowed to access');
+    }
+    public static function getimage(){
+       
+        if(Auth::check()){
+          
+            $image = Auth::user()->image;
+           
+            return $image;
+        }
+  
+        return redirect("login")->withSuccess('You are not allowed to access');
+    }
+    public static function getcurrenttime(){
+        date_default_timezone_set("Asia/Kolkata");
+         $time= date("H");
+        //  return $time;
+         
+         if ('01'<= $time && $time < '12') {
+            return "Good Morning";
+         }
+         elseif ('12'<= $time && $time <'16') {
+            return "Good Afternoon";
+         }
+         elseif ('16'<= $time && $time < '19') {
+            return "Good Evening";
+         }
+         else  {
+            return "Good Night";
+         }
     }
     public static function getstage($id){
         $job_stage=JobStage::find($id);

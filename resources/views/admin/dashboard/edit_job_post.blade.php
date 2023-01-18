@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('content')
-<link rel="stylesheet" href="{{asset('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css')}}">
+<link rel="stylesheet"
+    href="{{asset('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css')}}">
 <meta name="csrf-token" content="{{ csrf_token() }}" />
 <div class="toast bg-success text-light" role="alert" aria-live="assertive" aria-atomic="true">
 
@@ -14,7 +15,7 @@
 </section>
 <section>
     <div class="row">
-
+<input type="hidden" name="id" class="id" value="{{$jobpost->id}}">
         <div class="col-md-12 ">
             <div class=" card mt-3 shadow p-3 mb-5 bg-body rounded">
                 @inject('jobsData', 'App\Http\Controllers\MasterController')
@@ -22,24 +23,24 @@
                     <div class="container">
                         <div class=" ">
                             <div class="">
-                                <div class="row mt-5 mb-5">
+                                <div class="row mt-2 mb-2">
                                     <div class="col-md-1"></div>
                                     <div class="col-md-10">
                                         <div class="editor-content">
                                             <div class="preview-content">
                                                 <div class="preview">
-                                                    <div class="d-flex flex-column align-items-center mb-5 text-center">
+                                                    <div class="d-flex flex-column align-items-center mb-2 text-center">
                                                         <img width="20%" src="{{asset('img/careerhollic.png')}}" alt=""
                                                             class="candidate-viewable-icon img-fluid">
                                                     </div>
-                                                    <div class="text-center mb-5">
-                                                        <h1 class="mb-4 headingmain"
+                                                    <div class="text-center mb-2">
+                                                        <h1 class="mb-2 headingmain"
                                                             style="font-size: 50px; font-weight: 700; letter-spacing: 1px; color: rgb(49, 49, 49);">
                                                             {{$jobpost->name}}
                                                         </h1>
                                                         <div class="addheading displayNone">
 
-                                                            <div class="input-group mb-4">
+                                                            <div class="input-group mb-2">
                                                                 <input type="text" class="form-control addmainheading"
                                                                     value="{{$jobpost->name}}">
                                                                 <div class="input-group-append">
@@ -62,13 +63,13 @@
                                                             </div>
                                                         </div>
 
-                                                        <p class="mb-4 adddetaismain"
+                                                        <p class="mb-2 adddetaismain"
                                                             style="font-size: 30px; font-weight: 300; letter-spacing: 1px; color: rgb(175, 177, 182);">
                                                             {{$data->content->details}}
                                                         </p>
                                                         <div class="adddetailsall displayNone">
 
-                                                            <div class="input-group mb-4">
+                                                            <div class="input-group mb-2">
                                                                 <input type="text" class="form-control adddeatils"
                                                                     value="{{$data->content->details}}">
                                                                 <div class="input-group-append">
@@ -90,19 +91,14 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <p
-                                                            style="font-size: 20px; font-weight: 300; letter-spacing: 1px; color: rgb(55, 88, 179);">
-                                                            {{ $jobsData::getJobType($jobpost->job_type_id) }} -
-                                                            {{ $jobsData::getLoation($jobpost->company_location_id) }}
-                                                        </p>
-                                                        <p class="mt-3 getvacancy"
+                                                        <p class="mt-2 getvacancy"
                                                             style="font-size: 20px; font-weight: 300; letter-spacing: 1px; color: rgb(55, 88, 179);">
                                                             Vacancy - <font class="countvacancy">
                                                                 {{$jobpost->vacancy_count}}</font>
                                                         </p>
                                                         <div class="adddallVacancy displayNone">
 
-                                                            <div class="input-group mb-4">
+                                                            <div class="input-group mb-2">
                                                                 <input type="text" class="form-control addvacancy"
                                                                     value="{{$jobpost->vacancy_count}}">
                                                                 <div class="input-group-append">
@@ -129,74 +125,91 @@
                                                         <div class="row">
                                                             <div class="col-md-9"></div>
                                                             <div class="col-md-3">
-                                                            <div class="editor-group-action mb-2 d-flex">
-                                                            <div class="displayNone addbuttondata">
-                                                            <button type="button" class="btn  text-primary ">
-                                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus">
-                                                                    <line x1="12" y1="5" x2="12" y2="19"></line>
-                                                                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                                                                </svg>
-                                                            </button> 
-                                                            </div>
-                                                            <button type="button" class="btn  text-primary editbodySection">
-                                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit">
-                                                                    <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
-                                                                    <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
-                                                                </svg>
-                                                            </button> 
-                                                            <button type="button" class="btn  text-primary savebodySection">
-                                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check">
-                                                                    <polyline points="20 6 9 17 4 12"></polyline>
-                                                                </svg>
-                                                            </button>
-                                                        </div>
+                                                                <div class="editor-group-action mb-2 d-flex">
+
+                                                                    <button type="button"
+                                                                        class="btn  text-primary editbodySection">
+                                                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                                                            width="24" height="24" viewBox="0 0 24 24"
+                                                                            fill="none" stroke="currentColor"
+                                                                            stroke-width="2" stroke-linecap="round"
+                                                                            stroke-linejoin="round"
+                                                                            class="feather feather-edit">
+                                                                            <path
+                                                                                d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7">
+                                                                            </path>
+                                                                            <path
+                                                                                d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z">
+                                                                            </path>
+                                                                        </svg>
+                                                                    </button>
+                                                                    <button type="button"
+                                                                        class="btn  text-primary savebodySection">
+                                                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                                                            width="24" height="24" viewBox="0 0 24 24"
+                                                                            fill="none" stroke="currentColor"
+                                                                            stroke-width="2" stroke-linecap="round"
+                                                                            stroke-linejoin="round"
+                                                                            class="feather feather-check">
+                                                                            <polyline points="20 6 9 17 4 12">
+                                                                            </polyline>
+                                                                        </svg>
+                                                                    </button>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                         <div class="allbodysection">
-                                                        @foreach($jobpost->job_post_settings->content->bodySection as $item)
-                                                        <div class="allbodydata">
-                                                        <div class="card shadow mt-4">
-                                                            <div class="card-body">
-                                                                <div class="mb-5 ">
-                                                                    <h5
-                                                                        style="font-size: 27px; font-weight: 600; letter-spacing: 0px; color: rgb(49, 49, 49);">
-                                                                        {{$item->headings}}
-                                                                        <hr>
-                                                                    </h5>
-                                                                    <p
-                                                                        style="font-family: emoji; font-size: 19px; font-weight: 300; letter-spacing: 0px; color: rgb(49, 49, 49);">
-                                                                        {{$item->description}}
-                                                                    </p>
-                                                                    <hr>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        </div>
-                                                        <div class="headingsdescription displayNone">
-                                                        <div class="card shadow mt-4">
-                                                            <div class="card-body">
-                                                                <div class="mb-5 ">
-                                                                    <div class="row">
-                                                                        <div class="col-md-11 mb-3">
-                                                                        <input type="text" name="" value="{{$item->headings}}" class="form-control addheadingsbody" id="">
-                                                                        </div>
-                                                                        <div class="col-md-1 mb-3">
-                                                                            <span class="btn btn-sm btn-success"><i class="fa fa-trash"></i></span>
-                                                                        </div>
-                                                                        <hr>
-                                                                        <div class="col-md-12 ">
-                                                                        <textarea name="" id="" cols="30" rows="10" class="form-control adddescriptionbody">{{$item->description}}</textarea>
-                                                                    <hr>
+                                                            
+                                                            <div class="databody">
+                                                                <div class="card shadow mt-4">
+                                                                    <div class="card-body">
+                                                                        <div class="mb-5 ">
+                                                                            <h5 class="desctitle"
+                                                                                style="font-size: 27px; font-weight: 600; letter-spacing: 0px; color: rgb(49, 49, 49);">
+                                                                                xyz
+                                                                                <hr>
+                                                                            </h5>
+                                                                            <p class="descdesc"
+                                                                                style="font-family: emoji; font-size: 19px; font-weight: 300; letter-spacing: 0px; color: rgb(49, 49, 49);">
+                                                                               test
+                                                                            </p>
+                                                                            <hr>
                                                                         </div>
                                                                     </div>
-                                                                    
-                                                                
-                        
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                        </div>
-                                                        @endforeach
+                                                            <div class="headingsdescription displayNone">
+                                                                <div class="card shadow mt-4">
+                                                                    <div class="card-body">
+                                                                        <div class="mb-5 ">
+                                                                            <div class="row">
+                                                                                <div class="col-md-12 mb-3">
+                                                                                    <input type="text" name=""
+                                                                                        value=""
+                                                                                        class="form-control addheadingsbody"
+                                                                                        id="">
+                                                                                </div>
+                                                                                <!-- <div class="col-md-1 mb-3">
+                                                                                    <span
+                                                                                        class="btn btn-sm btn-success"><i
+                                                                                            class="fa fa-trash"></i></span>
+                                                                                </div> -->
+                                                                                <hr>
+                                                                                <div class="col-md-12 ">
+                                                                                    <textarea name="" id="" cols="30"
+                                                                                        rows="10"
+                                                                                        class="form-control adddescriptionbody"></textarea>
+                                                                                    <hr>
+                                                                                </div>
+                                                                            </div>
+
+
+
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        
                                                         </div>
                                                     </div>
                                                     <div class="apply-wrapper mb-5">
@@ -217,10 +230,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="text-center py-4">
-                                                        <img width="30%"
-                                                            src="https://careerhollic.com/recruitment/storage/logo/6317055e836fd."
-                                                            alt=""
-                                                            class="candidate-viewable-logo img-fluid d-block mx-auto">
+                                                        <button class="btn btn-sm btn-primary  saveallData">Submit</button>
                                                     </div>
                                                     <div class="text-center py-4">
                                                         Copyright @ 2021 by Career Hollic
@@ -327,182 +337,71 @@ $(document).ready(function() {
         $('.adddallVacancy').addClass('displayNone');
         $('.countvacancy').html(val);
     });
-    $('.editbodySection').click(function(){
+    $('.editbodySection').click(function() {
         $('.addbuttondata').removeClass('displayNone');
         $('.headingsdescription').removeClass('displayNone');
-        $('.allbodydata').addClass('displayNone');
+        $('.databody').addClass('displayNone');
     });
-    $('.savebodySection').click(function(){
+    $('.savebodySection').click(function() {
+        let val1=$('.addheadingsbody').val();
+        let val2=$('.adddescriptionbody').val();
         $('.addbuttondata').addClass('displayNone');
         $('.headingsdescription').addClass('displayNone');
-        $('.allbodydata').removeClass('displayNone');
+        $('.databody').removeClass('displayNone');
+        $('.desctitle').html(val1);
+        $('.descdesc').html(val2);
     });
-
-
-
-
-    $('#addSubtile').click(function() {
-        $('.subtitleData').addClass('displayNone');
-        $('.subtitle').removeClass('displayNone');
-    })
-    $('.iconData').click(function() {
-        let subtitle = $('#subtitle').val();
-        // alert()
-        if (subtitle == '') {
-            $('.subtitleData').removeClass('displayNone');
-
-        } else {
-            $('.addInputData').html(subtitle);
-            $('.subtitleData').addClass('displayNone');
-            $('.subtitle').addClass('displayNone');
-
-        }
-    })
-    $('.addInputData').click(function() {
-        $(this).addClass('displayNone');
-        $('.subtitle').removeClass('displayNone');
-    })
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
-    $('.editData').click(function() {
-        $('.headingData').addClass('displayNone');
-        $('.descriptionBody').addClass('displayNone');
-        $('.Addheading').removeClass('displayNone');
-        $('.adddescriptionBody').removeClass('displayNone');
-        $('.addAllData').removeClass('displayNone');
-    });
-    $('.savebodyData').click(function() {
-        $('.headingData').removeClass('displayNone');
-        $('.descriptionBody').removeClass('displayNone');
-        $('.Addheading').addClass('displayNone');
-        $('.adddescriptionBody').addClass('displayNone');
-        $('.addAllData').addClass('displayNone');
-        // let bodyarr=[];
-        // $('#bodyData .databody').each(function() {
-        //     let bodyobj = {};
-        //     $(this).find('input,textarea').each(function() {
-
-        //         let val = $(this).val();
-        //         let key = $(this).attr('data-id');
-
-        //         bodyobj[key] = val;
-
-        //     })
-        //     bodyarr.push(bodyobj);
-        // });
-        // console.log(bodyarr);
-    });
 
     $(".saveallData").click(function(e) {
+       
 
-        e.preventDefault();
-        let bodyarr = [];
-        $('#bodyData .databody').each(function() {
-            let bodyobj = {};
-            $(this).find('h5,p').each(function() {
+            e.preventDefault();
+            let id=$('.id').val();
+            let val1=$('.desctitle').text().trim();
+            let val2=$('.descdesc').text().trim();
+            let vacancy=$('.countvacancy').text().trim();
+            let bodyarr = [{
+                "headings":val1,
+                "description":val2,
+            }];
+           
 
-                let val = $(this).text();
-                let key = $(this).attr('data-id');
-
-                bodyobj[key] = val;
-
-            })
-            bodyarr.push(bodyobj);
-        });
-        // console.log(bodyarr);
-        // return false;
-        let pagearr = [];
-        $('#pageData .accordion ').each(function() {
-            let pageobj = {};
-            $(this).find('button').each(function() {
-
-                let val = $(this).text().trim();
-                let key = $(this).attr('data-id');
-
-                pageobj[key] = val;
-                //    console.log(pageobj);
-
-            })
-            $(this).find('input').each(function() {
-
-                let val = $(this).val();
-                let key = $(this).attr('data-id');
-
-                pageobj[key] = val;
-                // console.log(pageobj);
-
-            })
-            pagearr.push(pageobj);
-        });
-        let checkbox1 = $('#flexSwitchCheckChecked1');
-        let checkbox2 = $('#flexSwitchCheckChecked2');
-        let checkbox3 = $('#flexSwitchCheckChecked3');
-        let checkbox4 = $('#flexSwitchCheckChecked4');
-        let header = checkbox1[0]['checked'];
-        let body = checkbox2[0]['checked'];
-        let footer = checkbox3[0]['checked'];
-        let logo = checkbox4[0]['checked'];
-        let title = $('#titleData').text().trim();
-        let data = [{
-            'job_post_settings': {
-                'content': {
-                    'title': title,
-                    'subtitle': null,
-                    'details': "Software",
-                    'bodySection': bodyarr,
-                },
-                'pageStyle': {
-                    'defaultView': pagearr,
-                    'mobileView': pagearr,
-                },
-                'pageBlocks': {
-                    'defaultView': {
-                        header: header,
-                        body: body,
-                        footer: footer,
-                        logo: logo,
-                    },
-                    'mobileView': {
-                        header: header,
-                        body: body,
-                        footer: footer,
-                        logo: logo,
-                    },
-                },
-            },
-            'name': title,
-            'description': null,
-        }];
+            let title = $('.headingmain').text().trim();
+            let details = $('.adddetaismain').text().trim();
+            // let vacancy = $('.adddallVacancy').text().trim();
+        
+            let data = [{
+                        'content': {
+                            'title': title,
+                            'subtitle': null,
+                            'details': details,
+                            'bodySection': bodyarr,
+                        }
+              
+            }];
 
         // console.log(data);
         // return false;
 
         $.ajax({
             type: 'POST',
-            url: "{{ url('/career_page/update/') }}",
+            url: "{{ url('admin/career_page/update/') }}",
             data: {
-                data: data
+                id:id,
+                data: data,
+                vacancy:vacancy,
             },
             success: function(data) {
-                // console.log(data.success);
-                setTimeout(() => {
-                    $('.toast').addClass('tostData');
-                    var toastElList = [].slice.call(document.querySelectorAll(
-                        '.toast'))
-                    var toastList = toastElList.map(function(toastEl) {
-                        return new bootstrap.Toast(toastEl)
-                    })
-                    toastList.forEach(toast => toast.show())
-                    setTimeout(() => {
-                        window.location.href = "career_page#";
-                    }, 1000);
-                }, 1000);
+                console.log(data);
+           
             }
         });
 
     });
-})
+});
 </script>

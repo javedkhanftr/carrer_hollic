@@ -25,7 +25,7 @@
             <img src="https://w7.pngwing.com/pngs/146/551/png-transparent-user-login-mobile-phones-password-user-miscellaneous-blue-text.png" style="background:white;" alt="">
         </div>
         <div class="text-center mt-4 name">
-            <img src="http://127.0.0.1:8000/image/logo.png" alt="logo" class="img-fluid" width="40%"> <br>
+            <img src="{{asset('img/favicon.png')}}" alt="logo" class="img-fluid" width="40%"> <br>
             <!-- Admin -->
         </div>
         <form class="p-3 mt-3" method="POST" action="{{ route('login.custom') }}">

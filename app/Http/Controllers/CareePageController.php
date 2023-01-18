@@ -19,9 +19,10 @@ class CareePageController extends Controller
     }
     public function update(Request $request){
         $data=$request->all();
-        $alldata=json_encode($data['data'][0]);
-        $setting=Setting::find(17);
-        $setting->value=$alldata;
+        return $data;
+       $jobpost=JobPost::find($request->id);
+       $jobpost->vacancy_count=$request->vacancy;
+       $jobpost->job_post_settings=$request->$request->data;
         $setting->update();
         // return $request;
         return response()->json(['success'=>'update succesfully','data'=>$setting]);

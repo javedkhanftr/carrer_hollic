@@ -43,7 +43,7 @@ class JobPostController extends Controller
     public function preview($slug){
         $data=JobPost::where('slug',$slug)->get();
          $jobpost=$data[0];
-        //  return $jobpost;
+         return $jobpost;
        return view('admin/dashboard/preview',\compact('jobpost'));
        
     }
@@ -71,9 +71,9 @@ class JobPostController extends Controller
     public function edit_data($id){
         $jobpost=JobPost::find($id);
         $setting=Setting::where('name','career_page')->get();
-        $carrer_page_data= \json_decode($setting[0]['value']);
-        $data= $carrer_page_data->job_post_settings;
-        // return $data;
+        $data= ($jobpost->job_post_settings);
+        // $data= $carrer_page_data->job_post_settings;
+        // return $carrer_page_data;
         return view('admin/dashboard/edit_job_post',\compact('jobpost','data'));
     }
     public function overview($id){

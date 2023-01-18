@@ -24,8 +24,14 @@ class UserController extends Controller
         return view('user/career',compact('data_basic','jobpost'));
     }
     public function readMore(){
-        $jobpost=JobPost::all();
+        $jobpost=JobPost::paginate(6);
         return view('user/readMore',compact('jobpost'));   
+
+    }
+    public function serch_job(Request $request){
+        $name= $request->name;
+        $data = JobPost::where('name', 'LIKE','%'.$name.'%')->get();
+        return response()->json($data); 
 
     }
   

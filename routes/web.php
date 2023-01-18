@@ -21,6 +21,7 @@ use App\Http\Controllers\CalenderController;
 |
 */
 
+
 Route::get('admin/dashboard', [CustomAuthController::class, 'dashboard']); 
 Route::post('admin/best_employee', [CustomAuthController::class, 'best_employee']); 
 Route::get('admin/jobPost', [CustomAuthController::class, 'jobPost']); 
@@ -37,7 +38,7 @@ Route::get('admin/signout', [CustomAuthController::class, 'signOut'])->name('sig
 // Route::post('user_edit/{id}',[UserController::class,'update']);
 // Route::get('delete/{id}',[UserController::class,'delete']);
 
-
+Route::group(['middleware' => ['auth']], function () { 
 //candidates data start
 Route::get('admin/candidates',[CandidateController::class,'candidates_list']);
 // Route::post('condidate_data',[CandidateController::class,'condidate_data']);
@@ -53,7 +54,7 @@ Route::get('admin/candidates/assign_job/{id}',[CandidateController::class,'assig
 
 //career Page 
 Route::get('admin/career_page',[CareePageController::class, 'index']);
-Route::post('career_page/update',[CareePageController::class, 'update']);
+Route::post('admin/career_page/update',[CareePageController::class, 'update']);
 
 // user Roles
 Route::get('admin/users',[User_RolesController::class,'index']);
@@ -98,24 +99,21 @@ Route::post('admin/role/manage_role/{id}',[User_RolesController::class,'manage_r
 
 
     });
-    Route::group(['prefix'=>'user'],function(){
+   
+ 
+        Route::group(['prefix'=>'admin/wfh'],function(){
 
-        Route::get('home',[UserController::class,'index']);
-        Route::get('career',[UserController::class,'career']);
-        Route::get('readMore',[UserController::class,'readMore']);
-        
-    });
-    Route::group(['prefix'=>'admin/wfh'],function(){
-
-        // wfhModule
-        Route::get('/list',[WfhController::class,'wfhlist'])->name('wfh.list');
-        Route::get('/add',[WfhController::class,'create'])->name('wfh.create');
-        Route::post('/store',[WfhController::class,'store'])->name('wfh.store');
-        Route::get('/delete/{id}',[WfhController::class,'delete'])->name('wfh.delete');
-        Route::get('/edit/{id}',[WfhController::class,'edit'])->name('wfh.edit');
-        Route::post('/edit/{id}',[WfhController::class,'update'])->name('wfh.update');
-            
-    });
+            // wfhModule
+            Route::get('/list',[WfhController::class,'wfhlist'])->name('wfh.list');
+            Route::get('/add',[WfhController::class,'create'])->name('wfh.create');
+            Route::post('/store',[WfhController::class,'store'])->name('wfh.store');
+            Route::get('/delete/{id}',[WfhController::class,'delete'])->name('wfh.delete');
+            Route::get('/edit/{id}',[WfhController::class,'edit'])->name('wfh.edit');
+            Route::post('/edit/{id}',[WfhController::class,'update'])->name('wfh.update');
+                
+        });
+    
+    
     Route::group(['prefix'=>'admin/'],function(){
         Route::get('calendar-event', [CalenderController::class, 'index']);
         Route::get('event/delete/{id}', [CalenderController::class, 'delete']);
@@ -173,3 +171,12 @@ Route::post('admin/role/manage_role/{id}',[User_RolesController::class,'manage_r
     });
 
 Route::post('calendar-crud-ajax', [CalenderController::class, 'calendarEvents']);
+});
+Route::group(['prefix'=>'user'],function(){
+
+    Route::get('home',[UserController::class,'index']);
+    Route::get('career',[UserController::class,'career']);
+    Route::get('readMore',[UserController::class,'readMore']);
+    
+});
+Route::post('serch_job',[UserController::class,'serch_job']);

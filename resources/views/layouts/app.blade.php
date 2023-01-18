@@ -46,11 +46,12 @@
 
 <body class="crm_body_bg">
 
+@inject('jobsData', 'App\Http\Controllers\MasterController')
 
     <nav class="sidebar">
         <div class="logo d-flex justify-content-between">
-            <a class="large_logo" href="{{url('admin/dashboard')}}"><img src="{{asset('https://careerhollic.com/recruitment/storage/logo/6317055e836fd.')}}" alt=""></a>
-            <a class="small_logo" href="{{url('admin/dashboard')}}">Vijay Meena</a>
+            <a class="large_logo" href="{{url('admin/dashboard')}}"><img src="{{asset('img/careerhollic.png')}}" alt=""></a>
+            <a class="small_logo" href="{{url('admin/dashboard')}}">{{ $jobsData::getname() }}</a>
             <div class="sidebar_close_icon d-lg-none">
                 <i class="ti-close"></i>
             </div>
@@ -175,6 +176,8 @@
                         </div>
                   
                         <div class="header_right d-flex justify-content-between align-items-center">
+                            <font style="    margin-right: 70px;font-size: 25px;" class="text-warning">{{ $jobsData::getcurrenttime() }}</font>
+                            <font style="    margin-right: 30px;font-size: 25px;">    {{ $jobsData::getname() }}</font>
                             <!-- <div class="header_notification_warp d-flex align-items-center">
                                 <li>
                                     <a class="bell_notification_clicker" href="#"> <img src="{{asset('img/icon/bell.svg')}}" alt="">
@@ -272,12 +275,13 @@
                                     </a>
                                 </li>
                             </div> -->
+                            
                             <div class="profile_info">
-                                <img src="{{asset('img/client_img.png')}}" alt="#">
+                                <img src="{{asset('img/'.$jobsData::getimage())}}" alt="#">
                                 <div class="profile_info_iner">
                                     <div class="profile_author_name">
-                                        <p>Admin </p>
-                                        <h5>Vijay Menna</h5>
+                                        <!-- <p>Admin </p> -->
+                                        <h5>{{ $jobsData::getname() }}</h5>
                                     </div>
                                     <div class="profile_info_details">
                                         <!-- <a href="#">My Profile </a>

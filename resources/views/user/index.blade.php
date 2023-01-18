@@ -178,7 +178,7 @@ color: #FFFFFF;
                 <a href="{{url('user/career')}}"
                     style="display:block;margin-left: auto;margin-right: auto; margin-bottom:5px;width: 100px;"
                     class="btn btn-primary ">Find Jobs</a>
-                <a style="margin-left: auto;margin-right: auto;" href="{{url('login')}}" class="btn btn-primary ">Staff
+                <a style="margin-left: auto;margin-right: auto;" href="{{url('admin/login')}}" class="btn btn-primary ">Staff
                     Login</a>
             </div>
         </div>

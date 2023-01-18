@@ -12,7 +12,7 @@
     href="{{asset('https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css')}}" />
 <link rel="stylesheet" href="{{asset('https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css')}}" />
 <div class="row">
-    <div class="col-12">
+    <div class="col-10">
         <div class="page_title_box d-flex flex-wrap align-items-center justify-content-between">
             <div class="page_title_left d-flex align-items-center">
                 <h3 class="f_s_25 f_w_700 dark_text mr_30">Dashboard</h3>
@@ -20,6 +20,33 @@
             </div>
 
         </div>
+    </div>
+    <div class="col-2 text-end">
+
+        <form method="POST" action="{{ route('attendance') }}">
+            {{ csrf_field() }}
+            @if(!empty($attendance))
+
+            @if($attendance->checkout != null)
+            <button type="submit" name="checkin" value="1" class="btn btn-primary checkinData" data-id="1">Check
+                In</button>
+            @else
+            <button type="submit" name="checkout" value="2" class="btn btn-primary checkinData" data-id="1">Check
+                out</button>
+
+            @endif
+
+            @endif
+
+            @if(empty($attendance))
+            <button type="submit" name="checkin" value="1" class="btn btn-primary checkinData" data-id="1">Check
+                In</button>
+            @endif
+
+
+
+
+        </form>
     </div>
 </div>
 <div class="row ">
@@ -73,7 +100,7 @@
                     <div class="single_crm">
                         <div class="crm_head bg-danger crm_bg_3 d-flex align-items-center justify-content-between">
                             <div class="thumb">
-                            <img class="text-light" src="{{asset('img/menu-icon/3.svg')}}" alt="">
+                                <img class="text-light" src="{{asset('img/menu-icon/3.svg')}}" alt="">
                             </div>
                             <i class="fas fa-ellipsis-h f_s_11 white_text"></i>
                         </div>
@@ -87,84 +114,43 @@
 
         </div>
     </div>
-    <div class="col-md-6 mt-2" height="auto">
+    <div class="col-md-8 mt-2" height="auto">
         <div class="card">
             <div class="card-body">
-                <div class="container mt-5" style="max-width: 700px">
-
-                    <div id='full_calendar_events'></div>
-                </div>
+                table
             </div>
         </div>
 
 
 
     </div>
-    <div class="col-md-6 mt-2" height="auto">
+    <div class="col-md-4 mt-2" height="auto">
         <!-- <h3>your to-dos</h3> -->
-        <div class="card">
+        <div class="card" >
             <div class="card-body">
                 <div class="row text-center mb-5">
-                    <div class="col-md-12">
-                        <div class="search1">
-                            <h5>Today Attendance</h5>
-                        </div>
-                    </div>
-
-                    <div class="col-md-12 mt-3">
-
-                        <form method="POST" action="{{ route('attendance') }}">
-                            {{ csrf_field() }}
-                            @if(!empty($attendance))
-
-                            @if($attendance->checkout != null)
-                            <button type="submit" name="checkin" value="1" class="btn btn-primary checkinData"
-                                data-id="1">Check
-                                In</button>
-                            @else
-                            <button type="submit" name="checkout" value="2" class="btn btn-primary checkinData"
-                                data-id="1">Check
-                                out</button>
-
-                            @endif
-
-                            @endif
-
-                            @if(empty($attendance))
-                            <button type="submit" name="checkin" value="1" class="btn btn-primary checkinData"
-                                data-id="1">Check
-                                In</button>
-                            @endif
 
 
-
-
-                        </form>
-                        <hr>
-                    </div>
-                    <div class="col-md-4"></div>
-
-                    <div class="col-md-4 mt-2">
-
-                        <center class=" text-dark shadow"
-                            style="    border: 2px solid #f3f6f9; border-bottom-left-radius: 85%; border-top-left-radius: 85%; border-top-right-radius: 85%; border-bottom-right-radius: 85%; padding: 46px; width: 200px; height: 200px; background: #f3f6f9; color: blue;">
-                            <div id="timer" style="    margin-top: 33px; font-size: 24px;">
-                                <span id="hours">00:</span>
-                                <span id="mins">00:</span>
-                                <span id="seconds">00</span>
-                            </div>
-
-                        </center>
-                    </div>
-                    <div class="col-md-4"></div>
                     <div class="col-md-12 mt-2">
-                        <hr>
+                        
                         <h4>Best Employee in this Month</h4>
+                        <hr>
                         <div class="row mt-5">
-                        <div class="col-md-6 text-end">
-                                <h3 class="mt-1">{{$user_data->first_name.' '.$user_data->last_name}}</h3>
+                            <div class="col-md-12 text-center">
+                                <!-- <h3 class="mt-1">{{$user_data->first_name.' '.$user_data->last_name}}</h3> -->
+                                <div class="card shadow border-less" style="    border-top-left-radius: 80%;
+    border-top-right-radius: 80%;
+    border-bottom-left-radius: 80%;
+    border-bottom-right-radius: 80%;
+    height: 200px;
+    width: 200px;
+    margin-left: 70;">
+                                    <div class="card-body">
+                                        <img src="{{asset('img/'.$user_data->image)}}" class="mt-5" alt="">
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col-md-1"></div>
+                            <!-- <div class="col-md-1"></div>
                             <div class="col-md-5">
                                 <select name="user_id" class="user_id" id=""
                                     style="width: 159px; height: 50px; padding-left: 10px; border: none; background: #f3f6f9;border-radius: 15%">
@@ -173,8 +159,8 @@
                                     <option value="{{$item->id}}">{{$item->first_name.' '.$item->last_name}}</option>
                                     @endforeach
                                 </select>
-                            </div>
-                          
+                            </div> -->
+
                         </div>
                     </div>
 
@@ -198,7 +184,7 @@ $(document).ready(function() {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
-    let SITEURL1="{{url('admin/')}}";
+    let SITEURL1 = "{{url('admin/')}}";
     $('.user_id').change(function() {
         let user_id = $(this).val();
         // alert(user_id)
@@ -251,7 +237,7 @@ $(document).ready(function() {
         }, 1000);
     }
     var SITEURL = "{{ url('/') }}";
-    
+
     var calendar = $('#full_calendar_events').fullCalendar({
         editable: true,
         editable: true,
@@ -335,10 +321,4 @@ $(document).ready(function() {
 function displayMessage(message) {
     toastr.success(message, 'Event');
 }
-</script>
-<script>
-$('.checkinData').click(function() {
-    // alert($(this).val());
-    alert('sjhjh')
-})
 </script>

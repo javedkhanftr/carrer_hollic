@@ -52,10 +52,11 @@
                                                 <div class="col-md-12  ml-2">
                                                     <a class="text-primary "
                                                         href="{{url('admin/condidate_data/'.$candidates->id)}}"
-                                                        data-id="{{$candidates->id}}">{{$candidates->first_name.' '.$candidates->last_name}}</a>
-                                                    <p style="font-size:10px;">{{$candidates->email}}
+                                                        data-id="{{$candidates->id}}">{{$candidates->first_name.' '.$candidates->last_name}}</a><br>
+                                                    <font style="font-size:10px;">
+                                                            {{$candidates->email}}
                                                         <br>{{$candidates->mobile_number}}
-                                                    </p>
+                                                    </font>
 
                                                 </div>
                                             </div>
