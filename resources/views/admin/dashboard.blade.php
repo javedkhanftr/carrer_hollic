@@ -36,7 +36,7 @@
                             <i class="fas fa-ellipsis-h f_s_11 white_text"></i>
                         </div>
                         <div class="crm_body">
-                            <h4>2455</h4>
+                            <h4>{{ $user->count() }}</h4>
                             <p>Total User</p>
                         </div>
                     </div>
@@ -50,7 +50,7 @@
                             <i class="fas fa-ellipsis-h f_s_11 white_text"></i>
                         </div>
                         <div class="crm_body">
-                            <h4>2455</h4>
+                            <h4>{{$applicant->count()}}</h4>
                             <p>Total Condidate</p>
                         </div>
                     </div>
@@ -64,7 +64,7 @@
                             <i class="fas fa-ellipsis-h f_s_11 white_text"></i>
                         </div>
                         <div class="crm_body">
-                            <h4>2455</h4>
+                            <h4>{{$job_posts->count()}}</h4>
                             <p>Total Jobs</p>
                         </div>
                     </div>
@@ -78,7 +78,7 @@
                             <i class="fas fa-ellipsis-h f_s_11 white_text"></i>
                         </div>
                         <div class="crm_body">
-                            <h4>2455</h4>
+                            <h4>{{$events->count()}}</h4>
                             <p>Total Events</p>
                         </div>
                     </div>

@@ -5,11 +5,13 @@ use Hash;
 use Session;
 use App\Models\User;
 use App\Models\JobType;
+use App\Models\Applicant;
 use App\Models\JobPost;
 use App\Models\Department;
 use App\Models\CompanyLocation;
 use App\Models\Best_employee;
 use Carbon\Carbon;
+use App\Models\CrudEvents;
 use DB;
 use Illuminate\Support\Facades\Auth;
 class CustomAuthController extends Controller
@@ -65,12 +67,13 @@ class CustomAuthController extends Controller
     
     public function dashboard()
     {
-        $job_posts=JobPost::paginate(5);
+        $job_posts=JobPost::all();
         $Job_type=JobType::all();
         $department=Department::all();
         $Company_location=CompanyLocation::all();
         $user=User::all();
-
+        $applicant=Applicant::all();
+        $events=CrudEvents::all();
         $date = date('Y-m-d ');
         $attendance = DB::table('attendance')
                          ->where('date',$date)
@@ -85,7 +88,7 @@ class CustomAuthController extends Controller
         $user_data=User::find($id);
         if(Auth::check()){
           
-            return view('admin/dashboard',compact('job_posts','Job_type','department','Company_location','attendance','user','user_data'));
+            return view('admin/dashboard',compact('applicant','events','job_posts','Job_type','department','Company_location','attendance','user','user_data'));
         }
   
         return redirect("admin/login")->withSuccess('You are not allowed to access');
