@@ -43,7 +43,7 @@ class JobPostController extends Controller
     public function preview($slug){
         $data=JobPost::where('slug',$slug)->get();
          $jobpost=$data[0];
-         return $jobpost;
+        //  return $jobpost;
        return view('admin/dashboard/preview',\compact('jobpost'));
        
     }
@@ -71,9 +71,8 @@ class JobPostController extends Controller
     public function edit_data($id){
         $jobpost=JobPost::find($id);
         $setting=Setting::where('name','career_page')->get();
-        $data= ($jobpost->job_post_settings);
-        // $data= $carrer_page_data->job_post_settings;
-        // return $carrer_page_data;
+        $data= $jobpost->job_post_settings;
+        // return $data;
         return view('admin/dashboard/edit_job_post',\compact('jobpost','data'));
     }
     public function overview($id){
@@ -119,13 +118,14 @@ class JobPostController extends Controller
         $applicant->email=$request->email;
         $applicant->mobile_number=$request->number;
         $applicant->gender=$request->gender;
+        $applicant->added_by='Career Hollic';
         $applicant->date_of_birth=$request->dob;
         $applicant->save();
         $applicant_id=$applicant->id;
             $jobApplicant = new JobApplicant();
             $jobApplicant->applicant_id=$applicant_id;
             $jobApplicant->job_post_id =$request->id;
-            $jobApplicant->status_id =1;
+            $jobApplicant->status_id =4;
             $jobApplicant->current_stage_id =80;
             $jobApplicant->slug=$str;
             $jobApplicant->save();

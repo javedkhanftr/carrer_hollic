@@ -8,12 +8,18 @@ use App\Models\JobApplicant;
 use App\Models\App\Recruitment\JobStage;
 use Illuminate\Support\Facades\DB;
 use App\Models\JobPost;
+use App\Models\Status;
+use App\Models\Role_user;
 use Illuminate\Support\Facades\Auth;
 
 class CandidateController extends Controller
 {
     public function candidates_list(){
-        if(Auth::check()){
+    
+        $id=Auth::user()->id;
+        $user=Role_user::where('user_id',$id)->get();
+       
+       
             $candidates_list = DB::table('applicants')
             ->join('job_applicants', 'applicants.id', '=', 'job_applicants.applicant_id')
             ->select('applicants.*', 'job_applicants.*')
@@ -21,30 +27,40 @@ class CandidateController extends Controller
             ->orderBy('applicants.id', 'DESC')
             ->get();
             $email = Auth::user()->email;
+            $status=Status::all();
+            // return $status;
             // return $candidates_list;
-             return view('admin/candidate/index',compact('candidates_list','email'));
-            
-        }    
-        return Redirect('admin/login');
+             return view('admin/candidate/index',compact('candidates_list','email','status','user'));
     }
     public function candidates_show(){
         $email = Auth::user()->email;
         return view('admin/candidate/info',\compact('email'));
     }
     public function candidates_create(Request $request){
+        $str_result = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+        $str1= substr(str_shuffle($str_result),0, 10);
+        $str2= substr(str_shuffle($str_result),0, 10);
+        $str3= substr(str_shuffle($str_result),0, 10);
+        $str4= substr(str_shuffle($str_result),0, 10);
+        $str=$str1.'-'.$str2.'-'.$str3.'-'.$str4;
+        $first_name = Auth::user()->first_name;
+        $last_name = Auth::user()->last_name;
+        $name=$first_name.' '.$last_name;
            $applicant=new Applicant();
            $applicant->first_name=$request->first_name;
            $applicant->last_name=$request->last_name;
            $applicant->email=$request->email;
            $applicant->gender=$request->gender;
+           $applicant->added_by=$name;
+           $applicant->user_id=Auth::user()->id;
            $applicant->date_of_birth=$request->last_submission_date;
             $applicant->save();
             $jobApplicant = new JobApplicant();
             $jobApplicant->applicant_id=$applicant->id;
             $jobApplicant->job_post_id =$request->job_post_id;
-            $jobApplicant->status_id =1;
+            $jobApplicant->status_id =4;
             $jobApplicant->current_stage_id =80;
-            $jobApplicant->slug='93adb1ec-8013-'.$request->first_name.'-a5a5-5d66f9079889';
+            $jobApplicant->slug=$str;
             $jobApplicant->save();
             
             return redirect('admin/candidates');
@@ -103,5 +119,12 @@ class CandidateController extends Controller
        
         return view('admin/candidate/assign_job',compact('data','jobpost'));
 
+    }
+    public function change_status(Request $request){
+            // return $request->all();
+            $jobpost=JobApplicant::find($request->id);
+            $jobpost->status_id=$request->status_id;
+            $jobpost->update();
+            return redirect('admin/candidates');
     }
 }

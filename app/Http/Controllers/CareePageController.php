@@ -14,17 +14,16 @@ class CareePageController extends Controller
         $setting=Setting::where('name','career_page')->get();
         $carrer_page_data= \json_decode($setting[0]['value']);
         $data= $carrer_page_data->job_post_settings;
-        // return $data;
+        // return $jobpost;
         return view('admin/career_page/index',\compact('jobpost','data'));
     }
     public function update(Request $request){
         $data=$request->all();
-        return $data;
-       $jobpost=JobPost::find($request->id);
+        // return $request->vacancy;
+       $jobpost=JobPost::find($request->id);    
        $jobpost->vacancy_count=$request->vacancy;
-       $jobpost->job_post_settings=$request->$request->data;
-        $setting->update();
-        // return $request;
-        return response()->json(['success'=>'update succesfully','data'=>$setting]);
+       $jobpost->job_post_settings=$request->data[0];
+        $jobpost->update();
+        return response()->json(['success'=>'update succesfully','data'=>$jobpost]);
     }
 }

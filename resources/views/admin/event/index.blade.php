@@ -22,6 +22,9 @@
                                             </form>
                                         </div>
                                     </div>
+                                    <div class="add_button ms-2">
+                                        <a href="{{url('admin/event/create')}}" class="btn_1">Add New</a>
+                                    </div>
 
                                 </div>
                             </div>
@@ -32,14 +35,16 @@
                                         <tr>
                                             <th>S.No</th>
                                             <th>Event Name</th>
+                                            <th>User</th>
                                             <th>Event Start</th>
                                             <th>Event End</th>
-                                            <th>Assign User</th>
+                                            <th>Status</th>
                                             <!-- <th>Status</th> -->
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @inject('jobsData', 'App\Http\Controllers\MasterController')
                                         @php
                                         $i=1;
                                         @endphp
@@ -47,22 +52,25 @@
                                         <tr>
                                             <td>{{ $i++}}</td>
                                             <td>{{ $value->event_name}}</td>
+                                            <td>{{ $jobsData::getusername($value->user_id) }}</td>
                                             <td>{{ $value->event_start}}</td>
 
                                             <td>{{ $value->event_end}}</td>
                                             <td>
-                                                @if($value->user_id != '0')
-                                                    <span class="btn btn-sm btn-success" style="    width: 112px; border-radius: 15%;">Assigned</span>
-                                                @else
-                                                <input type="hidden" name="id" class="id" value="{{$value->id}}">
-                                                <select name="user_id" class="user_id" id=""
-                                                    style="     padding-left: 15px;width: 112px; height: 31px; border: none; background: blue; color: whitesmoke; border-radius: 15%;">
-                                                    <option selected disabled>Assign User</option>
-                                                    @foreach($user as $item)
-                                                    <option value="{{$item->id}}">
-                                                        {{$item->first_name.' '.$item->last_name}}</option>
-                                                    @endforeach
+                                                @if($value->status == '0')
+                                                <select name="status" id=""
+                                                    class="btn btn-sm btn-success status_approval" data-id="{{$value->id}}" style="width: 102px;">
+                                                    <option value="" selected disabled>Pending</option>
+                                                    <option value="1">Accept</option>
                                                 </select>
+                                                @elseif($value->status == '1')
+                                                <select name="status" id="" style="width: 102px;"
+                                                    class="btn btn-sm btn-primary status_approval" data-id="{{$value->id}}">
+                                                    <option value="" selected disabled>Accept</option>
+                                                    <option value="2">Complate</option>
+                                                </select>
+                                                @else
+                                                <span class="btn btn-sm btn-info text-light" style="width: 102px;">Complated</span>
                                                 @endif
 
                                             </td>
@@ -132,19 +140,39 @@ $(document).ready(function() {
     });
     $('.user_id').change(function() {
         let user_id = $(this).val();
-        let id=$(this).siblings().val();
+        let id = $(this).siblings().val();
         $.ajax({
             url: SITEURL + "/assign",
             data: {
-                id:id,
+                id: id,
                 user_id: user_id,
             },
             type: "POST",
             success: function(data) {
-            //  console.log(data);
-            location.reload();
+                //  console.log(data);
+                location.reload();
             }
         });
     });
+
+    $('.status_approval').change(function() {
+        let status = $(this).val();
+        let id = $(this).attr('data-id');
+        let SITEURL = "{{url('admin/event')}}";
+        // alert(user_id)
+        $.ajax({
+            url: SITEURL + "/change_status/",
+            data: {
+                id: id,
+                status: status,
+            },
+            type: "POST",
+            success: function(data) {
+                // console.log(data);
+                location.reload();
+            }
+        });
+
+    })
 })
 </script>

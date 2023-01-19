@@ -15,7 +15,7 @@
 </section>
 <section>
     <div class="row">
-<input type="hidden" name="id" class="id" value="{{$jobpost->id}}">
+        <input type="hidden" name="id" class="id" value="{{$jobpost->id}}">
         <div class="col-md-12 ">
             <div class=" card mt-3 shadow p-3 mb-5 bg-body rounded">
                 @inject('jobsData', 'App\Http\Controllers\MasterController')
@@ -29,98 +29,127 @@
                                         <div class="editor-content">
                                             <div class="preview-content">
                                                 <div class="preview">
-                                                    <div class="d-flex flex-column align-items-center mb-2 text-center">
-                                                        <img width="20%" src="{{asset('img/careerhollic.png')}}" alt=""
-                                                            class="candidate-viewable-icon img-fluid">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div
+                                                                class="d-flex flex-column align-items-center mb-2 text-end">
+                                                                <img width="20%" src="{{asset('img/careerhollic.png')}}"
+                                                                    alt="" class="candidate-viewable-icon img-fluid">
+                                                            </div>
+                                                            <div class="text-center mb-2">
+                                                                <h1 class="mb-2 headingmain"
+                                                                    style="font-size: 50px; font-weight: 700; letter-spacing: 1px; color: rgb(49, 49, 49);">
+                                                                    {{$jobpost->name}}
+                                                                </h1>
+                                                                <div class="addheading displayNone">
+
+                                                                    <div class="input-group mb-2">
+                                                                        <input type="text"
+                                                                            class="form-control addmainheading"
+                                                                            value="{{$jobpost->name}}">
+                                                                        <div class="input-group-append">
+                                                                            <span
+                                                                                class="input-group-text headingaddmain">
+                                                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                                                    width="24" height="24"
+                                                                                    viewBox="0 0 24 24" fill="none"
+                                                                                    stroke="currentColor"
+                                                                                    stroke-width="2"
+                                                                                    stroke-linecap="round"
+                                                                                    stroke-linejoin="round"
+                                                                                    class="feather feather-save">
+                                                                                    <path
+                                                                                        d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z">
+                                                                                    </path>
+                                                                                    <polyline
+                                                                                        points="17 21 17 13 7 13 7 21">
+                                                                                    </polyline>
+                                                                                    <polyline points="7 3 7 8 15 8">
+                                                                                    </polyline>
+                                                                                </svg>
+                                                                            </span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <p class="mb-2 adddetaismain"
+                                                                    style="font-size: 30px; font-weight: 300; letter-spacing: 1px; color: rgb(175, 177, 182);">
+                                                                    {{$data->content->details}}
+                                                                </p>
+                                                                <div class="adddetailsall displayNone">
+
+                                                                    <div class="input-group mb-2">
+                                                                        <input type="text"
+                                                                            class="form-control adddeatils"
+                                                                            value="{{$data->content->details}}">
+                                                                        <div class="input-group-append">
+                                                                            <span
+                                                                                class="input-group-text adddeatilsallmain">
+                                                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                                                    width="24" height="24"
+                                                                                    viewBox="0 0 24 24" fill="none"
+                                                                                    stroke="currentColor"
+                                                                                    stroke-width="2"
+                                                                                    stroke-linecap="round"
+                                                                                    stroke-linejoin="round"
+                                                                                    class="feather feather-save">
+                                                                                    <path
+                                                                                        d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z">
+                                                                                    </path>
+                                                                                    <polyline
+                                                                                        points="17 21 17 13 7 13 7 21">
+                                                                                    </polyline>
+                                                                                    <polyline points="7 3 7 8 15 8">
+                                                                                    </polyline>
+                                                                                </svg>
+                                                                            </span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <p class="mt-2 getvacancy"
+                                                                    style="font-size: 20px; font-weight: 300; letter-spacing: 1px; color: rgb(55, 88, 179);">
+                                                                    Vacancy - <font class="countvacancy">
+                                                                        {{$jobpost->vacancy_count}}</font>
+                                                                </p>
+                                                                <div class="adddallVacancy displayNone">
+
+                                                                    <div class="input-group mb-2">
+                                                                        <input type="text"
+                                                                            class="form-control addvacancy"
+                                                                            value="{{$jobpost->vacancy_count}}">
+                                                                        <div class="input-group-append">
+                                                                            <span
+                                                                                class="input-group-text addcountvacancy">
+                                                                                <svg xmlns="http://www.w3.org/2000/svg"
+                                                                                    width="24" height="24"
+                                                                                    viewBox="0 0 24 24" fill="none"
+                                                                                    stroke="currentColor"
+                                                                                    stroke-width="2"
+                                                                                    stroke-linecap="round"
+                                                                                    stroke-linejoin="round"
+                                                                                    class="feather feather-save">
+                                                                                    <path
+                                                                                        d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z">
+                                                                                    </path>
+                                                                                    <polyline
+                                                                                        points="17 21 17 13 7 13 7 21">
+                                                                                    </polyline>
+                                                                                    <polyline points="7 3 7 8 15 8">
+                                                                                    </polyline>
+                                                                                </svg>
+                                                                            </span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-12 text-end">
+                                                        <a href="{{url('admin/dashboard/job_post/'.$jobpost->slug.'/applyjob')}}"
+                                                                            class="btn btn-sm btn-outline-primary "
+                                                                            style="border-radius: 1.0rem;">Apply now</a>
+                                                        </div>
                                                     </div>
-                                                    <div class="text-center mb-2">
-                                                        <h1 class="mb-2 headingmain"
-                                                            style="font-size: 50px; font-weight: 700; letter-spacing: 1px; color: rgb(49, 49, 49);">
-                                                            {{$jobpost->name}}
-                                                        </h1>
-                                                        <div class="addheading displayNone">
 
-                                                            <div class="input-group mb-2">
-                                                                <input type="text" class="form-control addmainheading"
-                                                                    value="{{$jobpost->name}}">
-                                                                <div class="input-group-append">
-                                                                    <span class="input-group-text headingaddmain">
-                                                                        <svg xmlns="http://www.w3.org/2000/svg"
-                                                                            width="24" height="24" viewBox="0 0 24 24"
-                                                                            fill="none" stroke="currentColor"
-                                                                            stroke-width="2" stroke-linecap="round"
-                                                                            stroke-linejoin="round"
-                                                                            class="feather feather-save">
-                                                                            <path
-                                                                                d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z">
-                                                                            </path>
-                                                                            <polyline points="17 21 17 13 7 13 7 21">
-                                                                            </polyline>
-                                                                            <polyline points="7 3 7 8 15 8"></polyline>
-                                                                        </svg>
-                                                                    </span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                        <p class="mb-2 adddetaismain"
-                                                            style="font-size: 30px; font-weight: 300; letter-spacing: 1px; color: rgb(175, 177, 182);">
-                                                            {{$data->content->details}}
-                                                        </p>
-                                                        <div class="adddetailsall displayNone">
-
-                                                            <div class="input-group mb-2">
-                                                                <input type="text" class="form-control adddeatils"
-                                                                    value="{{$data->content->details}}">
-                                                                <div class="input-group-append">
-                                                                    <span class="input-group-text adddeatilsallmain">
-                                                                        <svg xmlns="http://www.w3.org/2000/svg"
-                                                                            width="24" height="24" viewBox="0 0 24 24"
-                                                                            fill="none" stroke="currentColor"
-                                                                            stroke-width="2" stroke-linecap="round"
-                                                                            stroke-linejoin="round"
-                                                                            class="feather feather-save">
-                                                                            <path
-                                                                                d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z">
-                                                                            </path>
-                                                                            <polyline points="17 21 17 13 7 13 7 21">
-                                                                            </polyline>
-                                                                            <polyline points="7 3 7 8 15 8"></polyline>
-                                                                        </svg>
-                                                                    </span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <p class="mt-2 getvacancy"
-                                                            style="font-size: 20px; font-weight: 300; letter-spacing: 1px; color: rgb(55, 88, 179);">
-                                                            Vacancy - <font class="countvacancy">
-                                                                {{$jobpost->vacancy_count}}</font>
-                                                        </p>
-                                                        <div class="adddallVacancy displayNone">
-
-                                                            <div class="input-group mb-2">
-                                                                <input type="text" class="form-control addvacancy"
-                                                                    value="{{$jobpost->vacancy_count}}">
-                                                                <div class="input-group-append">
-                                                                    <span class="input-group-text addcountvacancy">
-                                                                        <svg xmlns="http://www.w3.org/2000/svg"
-                                                                            width="24" height="24" viewBox="0 0 24 24"
-                                                                            fill="none" stroke="currentColor"
-                                                                            stroke-width="2" stroke-linecap="round"
-                                                                            stroke-linejoin="round"
-                                                                            class="feather feather-save">
-                                                                            <path
-                                                                                d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z">
-                                                                            </path>
-                                                                            <polyline points="17 21 17 13 7 13 7 21">
-                                                                            </polyline>
-                                                                            <polyline points="7 3 7 8 15 8"></polyline>
-                                                                        </svg>
-                                                                    </span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
                                                     <div class="editor-body">
                                                         <div class="row">
                                                             <div class="col-md-9"></div>
@@ -158,20 +187,21 @@
                                                                 </div>
                                                             </div>
                                                         </div>
+                                                        @foreach($data->content->bodySection as $item)
                                                         <div class="allbodysection">
-                                                            
+
                                                             <div class="databody">
                                                                 <div class="card shadow mt-4">
                                                                     <div class="card-body">
                                                                         <div class="mb-5 ">
                                                                             <h5 class="desctitle"
                                                                                 style="font-size: 27px; font-weight: 600; letter-spacing: 0px; color: rgb(49, 49, 49);">
-                                                                                xyz
+                                                                                {{$item->headings}}
                                                                                 <hr>
                                                                             </h5>
                                                                             <p class="descdesc"
                                                                                 style="font-family: emoji; font-size: 19px; font-weight: 300; letter-spacing: 0px; color: rgb(49, 49, 49);">
-                                                                               test
+                                                                                {{$item->description}}
                                                                             </p>
                                                                             <hr>
                                                                         </div>
@@ -185,7 +215,7 @@
                                                                             <div class="row">
                                                                                 <div class="col-md-12 mb-3">
                                                                                     <input type="text" name=""
-                                                                                        value=""
+                                                                                        value="{{$item->headings}}"
                                                                                         class="form-control addheadingsbody"
                                                                                         id="">
                                                                                 </div>
@@ -198,7 +228,7 @@
                                                                                 <div class="col-md-12 ">
                                                                                     <textarea name="" id="" cols="30"
                                                                                         rows="10"
-                                                                                        class="form-control adddescriptionbody"></textarea>
+                                                                                        class="form-control adddescriptionbody"> {{$item->description}}</textarea>
                                                                                     <hr>
                                                                                 </div>
                                                                             </div>
@@ -209,28 +239,13 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        
+
                                                         </div>
+                                                        @endforeach
                                                     </div>
-                                                    <div class="apply-wrapper mb-5">
-                                                        <div class="card shadow mt-5"
-                                                            style="background-color:#eef2ff; border:none;border-radius: 1.0rem;">
-                                                            <div class="card-body">
-                                                                <div class="row ">
-                                                                    <div class="col-md-10">
-                                                                        <h4>Apply for the post Back office</h4>
-                                                                    </div>
-                                                                    <div class="col-md-2 text-center">
-                                                                        <a href="{{url('admin/dashboard/job_post/'.$jobpost->slug.'/applyjob')}}"
-                                                                            class="btn btn-sm btn-outline-primary "
-                                                                            style="border-radius: 1.0rem;">Apply now</a>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+
                                                     <div class="text-center py-4">
-                                                        <button class="btn btn-sm btn-primary  saveallData">Submit</button>
+                                                        <button class="btn  btn-primary  saveallData">Submit</button>
                                                     </div>
                                                     <div class="text-center py-4">
                                                         Copyright @ 2021 by Career Hollic
@@ -343,8 +358,8 @@ $(document).ready(function() {
         $('.databody').addClass('displayNone');
     });
     $('.savebodySection').click(function() {
-        let val1=$('.addheadingsbody').val();
-        let val2=$('.adddescriptionbody').val();
+        let val1 = $('.addheadingsbody').val();
+        let val2 = $('.adddescriptionbody').val();
         $('.addbuttondata').addClass('displayNone');
         $('.headingsdescription').addClass('displayNone');
         $('.databody').removeClass('displayNone');
@@ -358,47 +373,43 @@ $(document).ready(function() {
     });
 
     $(".saveallData").click(function(e) {
-       
 
-            e.preventDefault();
-            let id=$('.id').val();
-            let val1=$('.desctitle').text().trim();
-            let val2=$('.descdesc').text().trim();
-            let vacancy=$('.countvacancy').text().trim();
-            let bodyarr = [{
-                "headings":val1,
-                "description":val2,
-            }];
-           
 
-            let title = $('.headingmain').text().trim();
-            let details = $('.adddetaismain').text().trim();
-            // let vacancy = $('.adddallVacancy').text().trim();
-        
-            let data = [{
-                        'content': {
-                            'title': title,
-                            'subtitle': null,
-                            'details': details,
-                            'bodySection': bodyarr,
-                        }
-              
-            }];
+        e.preventDefault();
+        let id = $('.id').val();
+        let val1 = $('.desctitle').text().trim();
+        let val2 = $('.descdesc').text().trim();
+        let vacancy = $('.countvacancy').text().trim();
+        let bodyarr = [{
+            "headings": val1,
+            "description": val2,
+        }];
 
-        // console.log(data);
-        // return false;
+        let title = $('.headingmain').text().trim();
+        let details = $('.adddetaismain').text().trim();
+        let data = [{
+            'content': {
+                'title': title,
+                'subtitle': null,
+                'details': details,
+                'bodySection': bodyarr,
+            }
+
+        }];
+
 
         $.ajax({
             type: 'POST',
             url: "{{ url('admin/career_page/update/') }}",
             data: {
-                id:id,
+                id: id,
                 data: data,
-                vacancy:vacancy,
+                vacancy: vacancy,
             },
             success: function(data) {
                 console.log(data);
-           
+                location.reload();
+
             }
         });
 

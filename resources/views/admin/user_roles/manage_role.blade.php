@@ -18,14 +18,26 @@
                             @csrf
 
                             <div class="row mb-3">
+                                <div class="col-md-12 mt-3">
+                                    <label for="">Select User</label>
+                                    <select class="js-example-basic-multiple form-control" name="users[]" multiple="multiple">
+
+                                        @foreach($user as $item)
+                                        <option value="{{$item->id}}">{{$item->first_name.' '.$item->last_name}}
+                                        </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            
+                                <div class="col-md-12 mt-3">
+                                    <label for="">Permison</label>
+                                    <select name="permision" id="" class="form-control ">
+                                        <option value="1">Yes</option>
+                                        <option value="0">No</option>
+                                    </select>
+                                </div>
 
 
-                                <select class="js-example-basic-multiple" name="users[]" multiple="multiple">
-                                
-                                    @foreach($user as $item)
-                                    <option value="{{$item->id}}">{{$item->first_name.' '.$item->last_name}}</option>
-                                    @endforeach
-                                </select>
 
                                 <div class="col-md-2 mt-3">
                                     <label for="" class="text-light">h</label>

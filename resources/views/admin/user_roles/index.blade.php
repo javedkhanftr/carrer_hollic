@@ -102,7 +102,7 @@ $(document).ready(function() {
         <div class="main_content_iner ">
             <div class="container-fluid p-0">
                 <div class="row justify-content-center">
-                  
+
                     <div class="col-lg-12">
                         <div class="white_card card_height_100 mb_30">
                             <div class="white_card_body">
@@ -120,7 +120,10 @@ $(document).ready(function() {
                                                     </form>
                                                 </div>
                                             </div>
-                                          
+                                            <div class="add_button ms-2">
+                                                <a href="{{url('admin/user/create')}}" class="btn_1">Add New</a>
+                                            </div>
+
                                         </div>
                                     </div>
                                     <div class="QA_table mb_30">
@@ -132,37 +135,43 @@ $(document).ready(function() {
                                                 <th>Status</th>
                                                 <th>Action</th>
                                             </thead>
-                                        <tbody>
-                                                                @foreach($userRole as $role)
-                                                                <tr>
-                                                                    <td>
-                                                                    {{$role->first_name}} {{$role->last_name}}
-                                                                    </td>
-                                                                    <td>
-                                                                    {{$role->email}}
-                                                                    </td>
-                                                                    <td class="">
-                                                                        <span class="allbtn">
-                                                                        @if($role->status_id == 1)
-                                                                        <a href="{{url('admin/user/status_change/'.$role->id)}}" class="btn btn-sm btn-info badge"> Active
+                                            <tbody>
+                                                @foreach($userRole as $role)
+                                                <tr>
+                                                    <td>
+                                                        {{$role->first_name}} {{$role->last_name}}
+                                                    </td>
+                                                    <td>
+                                                        {{$role->email}}
+                                                    </td>
+                                                    <td class="">
+                                                        <span class="allbtn">
+                                                            @if($role->status_id == 1)
+                                                            <a href="{{url('admin/user/status_change/'.$role->id)}}"
+                                                                class="btn btn-sm btn-info badge"> Active
 
-                                                                        </a>
-                                                                        @else
-                                                                        <a href="{{url('admin/user/status_change/'.$role->id)}}" class="btn btn-sm btn-danger badge">Inactive</a>
-                                                                        @endif
+                                                            </a>
+                                                            @else
+                                                            <a href="{{url('admin/user/status_change/'.$role->id)}}"
+                                                                class="btn btn-sm btn-danger badge">Inactive</a>
+                                                            @endif
 
-                                                                        </span>
-                                                                    </td>
-                                                                    <td>
-                                                                    <a href="{{url('admin/user_edit/'.$role->id)}}" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>
-                                                                    <button data-id="{{$role->id}}" class="deleteuser  btb btn-sm btn-danger"><i class="fa fa-trash"></i></button>
-                                                                                  
-                                                                       
+                                                        </span>
+                                                    </td>
+                                                    <td>
+                                                        <a href="{{url('admin/user_edit/'.$role->id)}}"
+                                                            class="btn btn-sm btn-primary"><i
+                                                                class="fa fa-edit"></i></a>
+                                                        <button data-id="{{$role->id}}"
+                                                            class="deleteuser  btb btn-sm btn-danger"><i
+                                                                class="fa fa-trash"></i></button>
 
-                                                                    </td>
-                                                                </tr>
-                                                                @endforeach
-                                                            </tbody>
+
+
+                                                    </td>
+                                                </tr>
+                                                @endforeach
+                                            </tbody>
                                         </table>
                                     </div>
                                 </div>
@@ -172,7 +181,7 @@ $(document).ready(function() {
                 </div>
             </div>
         </div>
-       
+
     </div>
 </div>
 
@@ -2269,7 +2278,7 @@ $(document).ready(function() {
     })
     $('.deleteuser').click(function() {
         let id = $(this).attr('data-id');
-       
+
         Swal.fire({
             title: 'Are you sure?',
             text: "You won't be able to revert this!",

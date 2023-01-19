@@ -8,12 +8,13 @@ use App\Models\User;
 use App\Models\Role;
 use App\Models\Role_user;
 use Auth;
+use Hash;
 use Session;
 class User_RolesController extends Controller
 {
     public function index(){
 
-        $userRole = DB::table('users')->get();
+        $userRole = DB::table('users')->get();     
 
         $user_role=Role::all();
        
@@ -87,8 +88,9 @@ class User_RolesController extends Controller
         $userRole = DB::table('users')->get();
 
         $user_role=Role::all();
-       
-        return view('admin/user_roles/role',compact('userRole','user_role'));
+        $id=Auth::user()->id;
+        $user=Role_user::where('user_id',$id);
+        return view('admin/user_roles/role',compact('userRole','user_role','user'));
     }
     public function role_create(){
         return view('admin/user_roles/role_create');
@@ -108,7 +110,7 @@ class User_RolesController extends Controller
         return view('admin/user_roles/manage_role',compact('user'));
     }
     public function manage_role_save(Request $request,$id){
-        // return $request->users;
+        // return $request->all();
        
         // return $role;
         $data=$request->users;
@@ -116,9 +118,27 @@ class User_RolesController extends Controller
             $role= new Role_user();
             $role->user_id=$item;
             $role->role_id=$id;
+            $role->permision=$request->permision;
             // return $role;
             $role->save();
         }
         return redirect('admin/users-and-roles');
+    }
+    public function user_create(){
+        return view('admin/user_roles/info');
+    }
+    public function user_save(Request $request){
+        // return $request->all();
+        $user=new User();
+        $user->first_name=$request->first_name;
+        $user->last_name=$request->last_name;
+        $user->email=$request->email;
+        $user->password= Hash::make($request->password);
+        $user->image=$request->image;
+        // $user->last_login_at=;
+        $user->created_by =Auth::user()->id;
+        $user->status_id =1;
+        $user->save();
+        return redirect('admin/users');
     }
 }

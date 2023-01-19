@@ -49,6 +49,7 @@ Route::get('admin/candidates/edit/{id}',[CandidateController::class,'candidates_
 Route::post('admin/candidates/edit/{id}',[CandidateController::class,'candidates_save']);
 Route::get('admin/candidates/delete/{id}',[CandidateController::class,'candidates_delete']);
 Route::get('admin/candidates/assign_job/{id}',[CandidateController::class,'assign_job']);
+Route::post('admin/candidates/change_status/',[CandidateController::class,'change_status']);
 
 
 
@@ -58,6 +59,8 @@ Route::post('admin/career_page/update',[CareePageController::class, 'update']);
 
 // user Roles
 Route::get('admin/users',[User_RolesController::class,'index']);
+Route::get('admin/user/create',[User_RolesController::class,'user_create']);
+Route::post('admin/user/create',[User_RolesController::class,'user_save']);
 Route::get('admin/users-and-roles',[User_RolesController::class,'users_roles']);
 Route::post('admin/user-roleedit',[User_RolesController::class,'userEdit']);
 Route::get('admin/user_edit/{id}',[User_RolesController::class,'user_edit']);
@@ -110,16 +113,21 @@ Route::post('admin/role/manage_role/{id}',[User_RolesController::class,'manage_r
             Route::get('/delete/{id}',[WfhController::class,'delete'])->name('wfh.delete');
             Route::get('/edit/{id}',[WfhController::class,'edit'])->name('wfh.edit');
             Route::post('/edit/{id}',[WfhController::class,'update'])->name('wfh.update');
+            Route::post('/change_status',[WfhController::class,'change_status'])->name('wfh.change_status');
+
                 
         });
     
     
     Route::group(['prefix'=>'admin/'],function(){
-        Route::get('calendar-event', [CalenderController::class, 'index']);
+        Route::get('event', [CalenderController::class, 'index']);
         Route::get('event/delete/{id}', [CalenderController::class, 'delete']);
         Route::get('event/edit/{id}', [CalenderController::class, 'edit']);
         Route::post('event/edit/{id}', [CalenderController::class, 'update']);
+        Route::get('event/create', [CalenderController::class, 'create']);
+        Route::post('event/create', [CalenderController::class, 'save']);
         Route::post('event/assign/', [CalenderController::class, 'assign']);
+        Route::post('event/change_status/', [CalenderController::class, 'change_status']);
 
 
         Route::get('job-setting',[JobSettingController::class,'index']);

@@ -63,4 +63,11 @@ class WfhController extends Controller
       return redirect('admin/wfh/list');
        
     }
+    public function change_status(Request $request){
+        // return $request->all();
+        $product=Wfh::find($request->id);
+        $product->status_approval=$request->status_approval;
+        $product->update();
+        return $product;
+    }
 }

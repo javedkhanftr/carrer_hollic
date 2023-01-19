@@ -20,7 +20,7 @@ class CalenderController extends Controller
     public function delete($id){
         $data=CrudEvents::find($id);
         $data->delete();
-        return redirect('admin/calendar-event');
+        return redirect('admin/event');
     }
  
     public function calendarEvents(Request $request)
@@ -60,15 +60,17 @@ class CalenderController extends Controller
     }
     public function edit($id){
         $event=CrudEvents::find($id);
-        return view('admin/event/edit',compact('event'));
+        $user=User::all();
+        return view('admin/event/edit',compact('event','user'));
     }
     public function update(Request $request,$id){
-        $event = CrudEvents::find($id)->update([
-            'event_name' => $request->event_name,
-            'event_start' => $request->event_start,
-            'event_end' => $request->event_end,
-        ]);
-        return redirect('admin/calendar-event');
+        $event = CrudEvents::find($id);
+        $event->user_id=$request->user_id;
+        $event->event_name=$request->event_name;
+        $event->event_start=$request->event_start;
+        $event->event_end=$request->event_end;
+        $event->update();
+        return redirect('admin/event');
     }
     public function assign(Request $request){
         $id=$request->id;
@@ -78,5 +80,27 @@ class CalenderController extends Controller
         return $event;
 
 
+    }
+    public function create(){
+        $user=User::all();
+        return view('admin/event/info',compact('user'));
+    }
+    public function save(Request $request){
+        // return $request->all();
+        $event=new CrudEvents();
+        $event->user_id=$request->user_id;
+        $event->event_name=$request->event_name;
+        $event->event_start=$request->event_start;
+        $event->event_end=$request->event_end;
+        $event->status=0;
+        $event->save();
+        return redirect('admin/event');
+    }
+    public function change_status(Request $request){
+        $id=$request->id;
+        $event=CrudEvents::find($id);
+        $event->status=$request->status;
+        $event->update();
+        return $event;
     }
 }

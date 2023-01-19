@@ -34,28 +34,28 @@
                                     <div class="preview">
                                         <div class="row">
                                             <div class="col-md-4"></div>
-                                            <div class="col-md-4">
+                                            <div class="col-md-12">
                                                 <div class="d-flex flex-column align-items-center mb-2 text-center">
-                                                    <img width="80%" src="{{asset('img/careerhollic.png')}}" alt=""
+                                                    <img width="20%" src="{{asset('img/careerhollic.png')}}" alt=""
                                                         class="candidate-viewable-icon img-fluid">
                                                 </div>
                                                 <div class="text-center mb-2">
                                                     <h1 class="mb-1"
-                                                        style="font-size: 50px; font-weight: 700; letter-spacing: 1px; color: rgb(49, 49, 49);">
+                                                        style="font-size: 30px; font-weight: 700; letter-spacing: 1px; color: rgb(49, 49, 49);">
                                                         {{$jobpost->name}}
                                                     </h1>
                                                     <p class="mb-2"
-                                                        style="font-size: 30px; font-weight: 300; letter-spacing: 1px; color: rgb(175, 177, 182);">
+                                                        style="font-size: 18px; font-weight: 300; letter-spacing: 1px; color: rgb(175, 177, 182);">
                                                         {{$jobpost->job_post_settings->content->details}}
                                                     </p>
 
                                                     <p
-                                                        style="font-size: 20px; font-weight: 300; letter-spacing: 1px; color: rgb(55, 88, 179);">
+                                                        style="font-size: 15px; font-weight: 300; letter-spacing: 1px; color: rgb(55, 88, 179);">
                                                         Vacancy - {{$jobpost->vacancy_count}}
                                                     </p>
                                                 </div>
                                             </div>
-                                            <div class="col-md-4 text-center mt-5">
+                                            <div class="col-md-12 text-end mt-3">
                                                 <a href="{{url('admin/dashboard/job_post/'.$jobpost->slug.'/applyjob/')}}"
                                                     class="btn btn-sm btn-outline-primary "
                                                     style="border-radius: 1.0rem;">Apply now</a>
@@ -71,13 +71,13 @@
                                                         <div class="card-body">
                                                             <div class="mb-3">
                                                                 <h5
-                                                                    style="font-size: 27px; font-weight: 600; letter-spacing: 0px; color: rgb(49, 49, 49);">
+                                                                    style="font-size: 20px; font-weight: 600; letter-spacing: 0px; color: rgb(49, 49, 49);">
                                                                     {{$item->headings}}
 
                                                                 </h5>
                                                                 <hr>
                                                                 <p
-                                                                    style="font-size: 19px; font-weight: 300; letter-spacing: 0px; color: rgb(49, 49, 49);font-family: emoji;">
+                                                                    style="font-size: 15px; font-weight: 300; letter-spacing: 0px; color: rgb(49, 49, 49);font-family: emoji;">
                                                                     {{$item->description}}
                                                                 </p>
                                                                 <hr>

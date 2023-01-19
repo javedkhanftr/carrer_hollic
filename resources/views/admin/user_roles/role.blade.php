@@ -122,10 +122,15 @@ $(document).ready(function() {
                                                     </form>
                                                 </div>
                                             </div>
-                                            <div class="add_button ms-2">
+                                            @foreach($user as $item)
+                                                @if($item->permision == '1')
+                                                <div class="add_button ms-2">
                                                 <a href="{{url('admin/role/create')}}" class="btn_1">Add
                                                     New</a>
                                             </div>
+                                                @endif
+                                            @endforeach
+                                           
 
                                         </div>
                                     </div>
@@ -149,9 +154,14 @@ $(document).ready(function() {
                                                             <span>Users</span>
                                                         </span>
                                                     </th>
-                                                    <th track-by="3" class="datatable-th pt-0 text-right">
+                                                    @foreach($user as $item)
+                                                @if($item->permision == '1')
+                                               <th track-by="3" class="datatable-th pt-0 text-right">
                                                         <span class="font-size-default">Action</span>
                                                     </th>
+                                                @endif
+                                            @endforeach
+                                                   
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -194,7 +204,9 @@ $(document).ready(function() {
                                                         </span>
                                                     </td>
                                                     <td>
-                                                        <a href="{{url('admin/role/edit/'.$role->id)}}" class="btn btn-sm btn-primary text-light"><i
+                                                    @foreach($user as $item)
+                                                @if($item->permision == '1')
+                                                 <a href="{{url('admin/role/edit/'.$role->id)}}" class="btn btn-sm btn-primary text-light"><i
                                                                 class="fa fa-edit"></i></a>
                                                         <a href="{{url('admin/user-role/deleteData/'.$role->id)}}"
                                                             class="btn btn-sm btn-danger text-light"><i
@@ -202,6 +214,9 @@ $(document).ready(function() {
                                                         <a href="{{url('admin/role/manage_role/'.$role->id)}}"
                                                             class=" btn btn-sm btn-info text-light mangeuser"><i
                                                                 class="fa fa-user"></i></a>
+                                                @endif
+                                            @endforeach
+                                                       
 
 
                                                     </td>

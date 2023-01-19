@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('content')
 
+<meta name="csrf-token" content="{{ csrf_token() }}">
 
 <div class="main_content_iner ">
     <div class="container-fluid p-0">
@@ -52,7 +53,20 @@
                                             <td>{{ $value->form_date}}</td>
                                             <td>{{ $value->day_type}}</td>
                                             <td>{{ $value->reason}}</td>
-                                            <td>{{ $value->status_approval}}</td>
+                                            <td>
+                                                @if($value->status_approval == 2)
+                                                <select name="status_approval" id="" class="btn btn-sm btn-success status_approval" data-id="{{$value->id}}">
+                                                    <option value="" selected disabled>Pending</option>
+                                                    <option value="1">Accept</option>
+                                                    <option value="0">Reject</option>
+                                                </select>
+                                                @elseif($value->status_approval == 1)
+                                                        <span class="btn btn-sm btn-primary" style="width: 90px;">Accept</span>
+                                                @else
+                                                 <span class="btn btn-sm btn-danger" style="width: 90px;">Reject</span>
+                                                    
+                                                @endif
+                                            </td>
                                             <td>
                                                 <a href="{{url('admin/wfh/edit/'.$value->id)}}" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>
                                                 <button data-id="{{$value->id}}" class="btn btn-sm btn-danger deleteData"><i
@@ -104,6 +118,31 @@ $(document).ready(function() {
                     swal("Your imaginary file is safe!");
                 }
             });
+    });
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    $('.status_approval').change(function(){
+        let status_approval=$(this).val();
+        let id=$(this).attr('data-id');
+     
+    let SITEURL = "{{url('admin/wfh')}}";
+        // alert(user_id)
+        $.ajax({
+            url: SITEURL + "/change_status/",
+            data: {
+                id:id,
+                status_approval: status_approval,
+            },
+            type: "POST",
+            success: function(data) {
+                // console.log(data);
+                location.reload();
+            }
+        });
+        
     })
 })
 </script>

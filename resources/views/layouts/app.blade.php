@@ -137,7 +137,7 @@
                 
             </li>
             <li class="">
-                <a class="" href="{{url('admin/calendar-event/')}}" >
+                <a class="" href="{{url('admin/event/')}}" >
                     <div class="nav_icon_small">
                         <img src="{{asset('img/menu-icon/3.svg')}}" alt="">
                     </div>

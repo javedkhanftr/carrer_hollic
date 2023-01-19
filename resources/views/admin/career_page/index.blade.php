@@ -89,15 +89,15 @@
 </section>
 <section>
     <div class="row">
-        <div class="col-md-9 ">
+        <div class="col-md-12 ">
             <div class=" card mt-3 shadow-sm p-3 mb-5 bg-body rounded">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-5"></div>
                         <div class="col-md-2">
-                            @if($data->pageBlocks->defaultView->logo == 'true')
+                          
                             <img src="{{asset('image/logo.png')}}" class="img-fluid" alt="logo">
-                            @endif
+                          
                         </div>
                         <div class="col-md-5"></div>
                         <div class="col-md-12">
@@ -105,7 +105,7 @@
                                 <div class="col-md-2"></div>
                                 <div class="col-md-8">
                                     <div class="text-center mt-5">
-                                    @if($data->pageBlocks->defaultView->header == 'true')
+                                   
                                     <h1 class="mb-4" style="font-size: 40px; font-weight: 700; letter-spacing: 1px; color: rgb(49, 49, 49);"id="titleData">{{$data->content->title}}</h1>
                                     @if($data->content->subtitle == null)
                                         <div class="subtitleData">
@@ -120,7 +120,7 @@
                                         @else
 
                                         @endif
-                                     @endif
+                                    
                                         
                                         
 
@@ -146,7 +146,7 @@
                                 </div>
                             </div>
                         </div>
-                        @if($data->pageBlocks->defaultView->body == 'true')
+                      
                         <div class="col-md-12">
                             <div class="row">
                                 <div class="col-md-9"></div>
@@ -206,7 +206,7 @@
                             @endforeach
 
                         </div>
-                            @endif
+                            
                       
                         <div class="col-md-12">
                             <div class="mb-5">
@@ -248,135 +248,22 @@
                         </div>
                         <div class="col-md-12">
                             <div class="text-center py-4">
-                            @if($data->pageBlocks->defaultView->logo == 'true')
+                            
                             <img width="40%" src="{{asset('image/logo.png')}}" class="candidate-viewable-logo img-fluid d-block mx-auto" alt="logo">
-                            @endif
+                         
                             </div>
-                            @if($data->pageBlocks->defaultView->footer == 'true')
+                           
                             <div class="text-center py-4">
                                 Copyright @ 2021 by Career Hollic
                             </div>
-                            @endif
+                          
                            
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-md-3 bg-white">
-            <div class="mb-4 container mt-3" id="pageData">
-                <h6 class="mb-3">Page styling</h6>
-                @foreach($data->pageStyle->defaultView as $val)
-                <div id="accordionExample" class="accordion ">
-                    <div class="accordion-item">
-                        <div id="headingOne" class="accordion-header  bg-light">
-                            <button type="button" data-toggle="collapse" data-target="#{{$val->key}}"
-                                aria-expanded="true" aria-controls="{{$val->key}}" data-id="name"
-                                class="btn btn-block text-left">
-                                {{$val->name}}
-                            </button>
-
-                        </div>
-                        <div id="{{$val->key}}" aria-labelledby="headingOne" data-parent="#accordionExample"
-                            class="collapse page">
-                            <div class="accordion-content">
-                                <div class="container">
-                                    <div class="row mb-3">
-                                        <div class="col-md-7 mt-3">
-                                            <label for="titleFontSize">Font size</label>
-                                        </div>
-                                        <div class="col-md-5 mt-3">
-                                            <input type="hidden" name="" data-id="key" value="{{$val->key}}">
-                                            <input type="number" id="titleFontSize" class="form-control"
-                                                data-id="fontSize" value="{{$val->fontSize}}">
-                                        </div>
-                                        <div class="col-md-7 mt-3">
-                                            <label for="titleFontWeight"> Font weight</label>
-                                        </div>
-                                        <div class="col-md-5 mt-3">
-                                            <input type="number" id="titleFontWeight" class="form-control"
-                                                data-id="fontWeight" value="{{$val->fontWeight}}">
-                                        </div>
-                                        <div class="col-md-7 mt-3">
-                                            <label for="titleLetterSpacing">Letter spacing</label>
-                                        </div>
-                                        <div class="col-md-5 mt-3">
-                                            <input type="number" id="titleLetterSpacing" class="form-control"
-                                                data-id="letterSpacing" value="{{$val->letterSpacing}}">
-                                        </div>
-                                        <div class="col-md-7 mt-3">
-                                            <label for="titleColor">Color</label>
-                                        </div>
-                                        <div class="col-md-5 mt-3">
-                                            <input type="color" id="titleColor" class="form-control" data-id="color"
-                                                value="{{$val->color}}">
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                @endforeach
-            </div>
-            <div class="mb-4 container mt-3">
-                <h6 class="mb-3">Page blocks</h6>
-                <div class="page-blocks">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-12 card bg-light ">
-                                <div class="mt-2 mb-3 pageBlocks">
-                                    <div class="form-check form-switch ml-4 mt-2 mb-2 h6 " id="pageBlocks">
-
-                                        @if($data->pageBlocks->defaultView->header == 'true')
-                                        <input class="form-check-input header" type="checkbox"
-                                            id="flexSwitchCheckChecked1" checked>
-                                        @else
-                                        <input class="form-check-input header" type="checkbox"
-                                            id="flexSwitchCheckChecked1">
-                                        @endif
-
-                                        <label class="form-check-label ml-2 "
-                                            for="flexSwitchCheckChecked">Header</label>
-                                    </div>
-                                    <div class="form-check form-switch  ml-4 mt-2 mb-2 h6">
-                                        @if($data->pageBlocks->defaultView->body == 'true')
-                                        <input class="form-check-input body1" type="checkbox"
-                                            id="flexSwitchCheckChecked2" checked>
-                                        @else
-                                        <input class="form-check-input body1" type="checkbox"
-                                            id="flexSwitchCheckChecked2">
-                                        @endif
-                                        <label class="form-check-label ml-2" for="flexSwitchCheckChecked">Body</label>
-                                    </div>
-                                    <div class="form-check form-switch  ml-4 mt-2 mb-2 h6">
-                                        @if($data->pageBlocks->defaultView->footer == 'true')
-                                        <input class="form-check-input footer1" type="checkbox"
-                                            id="flexSwitchCheckChecked3" checked>
-                                        @else
-                                        <input class="form-check-input footer1" type="checkbox"
-                                            id="flexSwitchCheckChecked3">
-                                        @endif
-                                        <label class="form-check-label ml-2" for="flexSwitchCheckChecked">Footer</label>
-                                    </div>
-                                    <div class="form-check form-switch  ml-4 mt-2 mb-2 h6">
-                                        @if($data->pageBlocks->defaultView->logo == 'true')
-                                        <input class="form-check-input logo1" type="checkbox"
-                                            id="flexSwitchCheckChecked4" checked>
-                                        @else
-                                        <input class="form-check-input logo1" type="checkbox"
-                                            id="flexSwitchCheckChecked4">
-                                        @endif
-                                        <label class="form-check-label ml-2" for="flexSwitchCheckChecked">Logo</label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+      
     </div>
 </section>
 

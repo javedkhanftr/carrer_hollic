@@ -112,5 +112,14 @@ class MasterController extends Controller
         $interval = date_diff($datetime1, $datetime2);
         return $interval->format('%y years %m months');
     }
+    public static function getusername($id){
+        
+        $user=User::find($id);
+        $fname=$user->first_name;
+        // return $fname;
+        $lname=$user->last_name;
+        $name=$fname.' '.$lname;
+        return $name;
+    }
 
 }
