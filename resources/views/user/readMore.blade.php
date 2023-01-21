@@ -47,22 +47,35 @@
                 <a href="{{url('user/career')}}"
                     style="display:block;margin-left: auto;margin-right: auto; margin-bottom:5px;width: 100px;"
                     class="btn btn-primary ">Find Jobs</a>
-                <a style="margin-left: auto;margin-right: auto;" href="{{url('admin/login')}}" class="btn btn-primary ">Staff
+                <a style="margin-left: auto;margin-right: auto;" href="{{url('admin/login')}}"
+                    class="btn btn-primary ">Staff
                     Login</a>
             </div>
         </div>
     </div>
     <div class="container">
         <div class="row " id="myUL">
-            <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4">
+            <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12">
+                <form method="post" action="{{ url('user/readMore') }}">
+                    @csrf
 
-                <input type="text" id="myInput" placeholder="Search for names.." class="form-control serch">
+
+                    <div class="row">
+                        <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4">
+
+                            <input type="text" name="search" class="form-control" value="{{$search}}" placeholder="Enter  Name">
+                        </div>
+                        <div class="col-sm-1 col-md-1 col-lg-1 col-xl-1">
+                            <input type="submit" class="btn btn-primary" name="submit">
+                        </div>
+                    </div>
+
+                </form>
             </div>
-            <div class="col-sm-1 col-md-1 col-lg-1 col-xl-1">
-                <button class="btn  btn-primary form-control serchData">Serch</button>
-            </div>
-            <div class="col-md-6"></div>
+
+            <!-- <div class="col-md-6"></div>    -->
             @inject('jobsData', 'App\Http\Controllers\MasterController')
+            @if($jobpost[0] != '')
             @foreach($jobpost as $item)
             <div class="col-md-6 col-sm-6 col-lg-6 col-xl-6 mt-3 ">
                 <div class="card card2 ">
@@ -109,6 +122,9 @@
             </div>
 
             @endforeach
+            @else
+            <div class="col-md-12 col-sm-12 col-xl-12 col-lg-12 text-center">No Data</div>
+            @endif
 
 
         </div>

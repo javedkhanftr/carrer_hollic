@@ -15,17 +15,31 @@ class UserController extends Controller
         $jobpost1=JobPost::where('featured_job','no')->paginate(4);
         return view('user/index',compact('jobpost','jobpost1'));   
     }
-    public function career(){
-        $jobpost=JobPost::all();
+    public function career(Request $request){
+        $search=$request->search;
+        if ($search == '') {
+            $jobpost=JobPost::paginate(6);
+        }else{
+            $jobpost=JobPost::where('name', 'LIKE','%'.$search.'%')->paginate(6);
+
+        }
         
 
         $setting=Setting::where('name','career_page')->get();
         $data_basic= \json_decode($setting[0]['value']);
-        return view('user/career',compact('data_basic','jobpost'));
+        return view('user/career',compact('data_basic','jobpost','search'));
     }
-    public function readMore(){
-        $jobpost=JobPost::paginate(6);
-        return view('user/readMore',compact('jobpost'));   
+    public function readMore(Request $request){
+        // return $request->all();
+        $search=$request->search;
+        if ($search == '') {
+            $jobpost=JobPost::paginate(6);
+        }else{
+            $jobpost=JobPost::where('name', 'LIKE','%'.$search.'%')->paginate(6);
+
+        }
+        // return $jobpost;
+        return view('user/readMore',compact('jobpost','search'));   
 
     }
     public function serch_job(Request $request){

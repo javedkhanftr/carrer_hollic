@@ -89,7 +89,8 @@ class User_RolesController extends Controller
 
         $user_role=Role::all();
         $id=Auth::user()->id;
-        $user=Role_user::where('user_id',$id);
+        $user=Role_user::where('user_id',$id)->get();
+        // return $user;
         return view('admin/user_roles/role',compact('userRole','user_role','user'));
     }
     public function role_create(){

@@ -3,19 +3,19 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\CrudEvents;
 use App\Models\User;
+use App\Models\Role_user;
+use App\Models\Best_employee;
+use Illuminate\Support\Facades\Auth;
 class CalenderController extends Controller
 {
     public function index(Request $request)
     {
-        if($request->ajax()) {  
-            $data = CrudEvents::whereDate('event_start', '>=', $request->start)
-                ->whereDate('event_end',   '<=', $request->end)
-                ->get(['id', 'event_name', 'event_start', 'event_end']);
-            return response()->json($data);
-        }
+        $id=Auth::user()->id;
+        $user_role=Role_user::where('user_id',$id)->get();
         $events=CrudEvents::all();
         $user=User::all();
-        return view('admin/event/index',compact('events','user'));
+    
+        return view('admin/event/index',compact('events','user','user_role'));
     }
     public function delete($id){
         $data=CrudEvents::find($id);
@@ -102,5 +102,13 @@ class CalenderController extends Controller
         $event->status=$request->status;
         $event->update();
         return $event;
+    }
+    public function best_employee(Request $request){
+        $best_employe=Best_employee::find(1);
+        $best_employe->user_id=$request->user_id;
+   
+            $best_employe->update();
+            return $best_employe;
+       
     }
 }

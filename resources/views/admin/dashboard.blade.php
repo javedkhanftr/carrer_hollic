@@ -146,7 +146,7 @@
     width: 200px;
     margin-left: 70;">
                                     <div class="card-body">
-                                        <img src="{{asset('img/'.$user_data->image)}}" class="mt-5" alt="">
+                                        <img src="{{asset('img/'.$user_data->image)}}" class="" alt="">
                                     </div>
                                 </div>
                             </div>

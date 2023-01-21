@@ -17,17 +17,17 @@
         <div class="row">
             <div class="col-md-12 mt-5">
                 <div class="preview">
-                    <div class="d-flex flex-column align-items-center mb-5">
-                        <img width="20%" src="{{asset('img/careerhollic.png')}}" alt=""
+                    <div class="d-flex flex-column align-items-center mb-3">
+                        <img width="15%" src="{{asset('img/careerhollic.png')}}" alt=""
                             class="candidate-viewable-icon img-fluid">
                     </div>
-                    <div class="text-center mb-5">
-                        <h1 class="mb-4"
-                            style="font-size: 50px; font-weight: 700; letter-spacing: 1px; color: rgb(49, 49, 49);">
+                    <div class="text-center mb-3">
+                        <h1 class="mb-3"
+                            style="font-size: 20px; font-weight: 700; letter-spacing: 1px; color: rgb(49, 49, 49);">
                             {{$data_basic->job_post_settings->content->title}}
                         </h1>
-                        <p class="mb-4"
-                            style="font-size: 30px; font-weight: 300; letter-spacing: 1px; color: rgb(175, 177, 182);">
+                        <p class="mb-3"
+                            style="font-size: 15px !important; font-weight: 300; letter-spacing: 1px; color: rgb(175, 177, 182);">
 
                         </p>
                         <hr>
@@ -37,15 +37,15 @@
                             @foreach($data_basic->job_post_settings->content->bodySection as $item)
                             <div class="col-md-6">
                                 <div class="card shadow">
-                                    <div class="card-body m-4">
+                                    <div class="card-body ">
                                         <div class="mt-3 mb-3">
                                             <h5
-                                                style="font-size: 27px; font-weight: 600; letter-spacing: 0px; color: rgb(49, 49, 49);">
+                                                style="font-size: 20px; font-weight: 600; letter-spacing: 0px; color: rgb(49, 49, 49);">
                                                 {{$item->headings}}
                                             </h5>
                                             <hr>
                                             <p
-                                                style="font-size: 19px; font-weight: 300; letter-spacing: 0px; color: rgb(49, 49, 49);font-family: emoji;">
+                                                style="font-size: 15px; font-weight: 300; letter-spacing: 0px; color: rgb(49, 49, 49);font-family: emoji;">
                                                 {{$item->description}}
                                             </p>
                                         </div>
@@ -58,36 +58,35 @@
                     <div class="card mt-5 shadow">
                         <div class="card-body">
                             <div class="mb-3 mt-3">
-                                <h5
-                                    style="font-size: 27px; font-weight: 600; letter-spacing: 0px; color: rgb(49, 49, 49);">
-                                    Job Openings
-                                </h5>
-                                <hr>
-                                <div class="job-openings">
-                                    <!-- <div class="row">
-                                        @foreach($jobpost as $post)
-                                        <div class="col-12 mb-primary col-md-6 col-xl-4 mt-3">
-                                            <div class="job-card">
-                                                @inject('jobsData', 'App\Http\Controllers\MasterController')
-                                                <a href="{{url('dashboard/preview/'.$post->slug.'/display')}}"
-                                                    class="text-size-18">{{$post['name']}}</a>
-                                                <p class="mb-0">{{ $jobsData::getJobType($post->job_type_id) }}</p>
-                                                <div class="text-muted text-size-13 d-flex align-items-center">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                        viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                                        class="feather feather-map-pin size-14 mr-2">
-                                                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                                                        <circle cx="12" cy="10" r="3"></circle>
-                                                    </svg>
-                                                    {{ $jobsData::getLoation($post->company_location_id) }}
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h5
+                                            style="font-size: 27px; font-weight: 600; letter-spacing: 0px; color: rgb(49, 49, 49);">
+                                            Job Openings
+                                        </h5>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <form method="post" action="{{ url('user/career') }}">
+                                            @csrf
+
+
+                                            <div class="row">
+                                                <div class="col-sm-9 col-md-9 col-lg-9 col-xl-9">
+
+                                                    <input type="text" name="search" class="form-control"
+                                                        value="{{$search}}" placeholder="Enter  Name">
+                                                </div>
+                                                <div class="col-sm-1 col-md-1 col-lg-1 col-xl-1">
+                                                    <input type="submit" class="btn btn-primary" name="submit">
                                                 </div>
                                             </div>
 
-                                        </div>
-                                        @endforeach
+                                        </form>
+                                    </div>
+                                </div>
 
-                                    </div> -->
+                                <hr>
+                                <div class="job-openings">
                                     <div class="container">
                                         <div class="row">
                                             @inject('jobsData', 'App\Http\Controllers\MasterController')
@@ -134,7 +133,9 @@
                                                                 <div class="col-md-6 mt-3">
                                                                     <div class="widget-49-title-wrapper">
                                                                         <div class="widget-49-date-primary">
-                                                                            <span class="widget-49-date-day"><i class="fa fa-inr" aria-hidden="true"></i></span>
+                                                                            <span class="widget-49-date-day"><i
+                                                                                    class="fa fa-inr"
+                                                                                    aria-hidden="true"></i></span>
 
                                                                         </div>
                                                                         <div class="widget-49-meeting-info">
@@ -147,7 +148,9 @@
                                                                 <div class="col-md-6 mt-3">
                                                                     <div class="widget-49-title-wrapper ">
                                                                         <div class="widget-49-date-primary">
-                                                                            <span class="widget-49-date-day"><i class="fa fa-users" aria-hidden="true"></i></span>
+                                                                            <span class="widget-49-date-day"><i
+                                                                                    class="fa fa-users"
+                                                                                    aria-hidden="true"></i></span>
 
                                                                         </div>
                                                                         <div class="widget-49-meeting-info">
@@ -169,6 +172,17 @@
                                         </div>
                                     </div>
                                 </div>
+                                <section>
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-12 col-sm-12 col-lg-12 col-xl-12">
+                                                <div class="mt-4">
+                                                    {!! $jobpost->links() !!}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
                             </div>
                         </div>
                     </div>
@@ -245,7 +259,7 @@
         flex-direction: column;
         background-color: #edf1fc;
         width: 2rem;
-    height: 2rem;
+        height: 2rem;
         border-radius: 50%;
     }
 

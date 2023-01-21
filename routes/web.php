@@ -10,6 +10,7 @@ use App\Http\Controllers\User_RolesController;
 use App\Http\Controllers\JobSettingController;
 use App\Http\Controllers\WfhController;
 use App\Http\Controllers\CalenderController;
+use App\Http\Controllers\AttendanceController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,12 +32,6 @@ Route::get('admin/registration', [CustomAuthController::class, 'registration'])-
 Route::post('admin/custom-registration', [CustomAuthController::class, 'customRegistration'])->name('register.custom'); 
 Route::get('admin/signout', [CustomAuthController::class, 'signOut'])->name('signout');
 
-// Route::get('user_list',[UserController::class,'index']);
-// Route::get('user_create',[UserController::class,'create']);
-// Route::post('user_create',[UserController::class,'save']);
-// Route::get('user_edit/{id}',[UserController::class,'edit']);
-// Route::post('user_edit/{id}',[UserController::class,'update']);
-// Route::get('delete/{id}',[UserController::class,'delete']);
 
 Route::group(['middleware' => ['auth']], function () { 
 //candidates data start
@@ -49,12 +44,13 @@ Route::get('admin/candidates/edit/{id}',[CandidateController::class,'candidates_
 Route::post('admin/candidates/edit/{id}',[CandidateController::class,'candidates_save']);
 Route::get('admin/candidates/delete/{id}',[CandidateController::class,'candidates_delete']);
 Route::get('admin/candidates/assign_job/{id}',[CandidateController::class,'assign_job']);
+Route::post('admin/candidates/assign_job/',[CandidateController::class,'assign_job_save']);
 Route::post('admin/candidates/change_status/',[CandidateController::class,'change_status']);
 
 
 
 //career Page 
-Route::get('admin/career_page',[CareePageController::class, 'index']);
+Route::any('admin/career_page',[CareePageController::class, 'index']);
 Route::post('admin/career_page/update',[CareePageController::class, 'update']);
 
 // user Roles
@@ -75,7 +71,7 @@ Route::get('admin/role/edit/{id}',[User_RolesController::class,'edit']);
 Route::post('admin/role/edit/{id}',[User_RolesController::class,'update']);
 Route::get('admin/role/manage_role/{id}',[User_RolesController::class,'manage_role']);
 Route::post('admin/role/manage_role/{id}',[User_RolesController::class,'manage_role_save']);
-
+Route::any('admin/attendance', [AttendanceController::class, 'index'])->name('attendance.view');
 
 //job setting 
    
@@ -121,6 +117,7 @@ Route::post('admin/role/manage_role/{id}',[User_RolesController::class,'manage_r
     
     Route::group(['prefix'=>'admin/'],function(){
         Route::get('event', [CalenderController::class, 'index']);
+        Route::any('event/best_employee/', [CalenderController::class, 'best_employee']);
         Route::get('event/delete/{id}', [CalenderController::class, 'delete']);
         Route::get('event/edit/{id}', [CalenderController::class, 'edit']);
         Route::post('event/edit/{id}', [CalenderController::class, 'update']);
@@ -183,8 +180,8 @@ Route::post('calendar-crud-ajax', [CalenderController::class, 'calendarEvents'])
 Route::group(['prefix'=>'user'],function(){
 
     Route::get('home',[UserController::class,'index']);
-    Route::get('career',[UserController::class,'career']);
-    Route::get('readMore',[UserController::class,'readMore']);
+    Route::any('career',[UserController::class,'career']);
+    Route::any('readMore',[UserController::class,'readMore']);
     
 });
 Route::post('serch_job',[UserController::class,'serch_job']);

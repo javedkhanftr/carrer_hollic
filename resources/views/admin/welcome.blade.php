@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+
 <script src="{{asset('https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js')}}"></script>
 
 <div class="container-fluid">
@@ -36,7 +37,7 @@
                                         <div class="search_inner">
                                             <form Active="#">
                                                 <div class="search_field">
-                                                    <input type="text" placeholder="Search content here...">
+                                                    <input type="text" id="myInput" placeholder="Search content here...">
                                                 </div>
                                                 <button type="submit"> <i class="ti-search"></i> </button>
                                             </form>
@@ -65,7 +66,7 @@
 
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody id="myTable">
                                         @php
                                         $i=1;
                                         @endphp
@@ -290,7 +291,13 @@ $(document).ready(function() {
         $('.copylinkdata').addClass('displaynone');
         $('.copyedData').removeClass('displaynone');
         // alert(data);
-    })
+    });
+    $("#myInput").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $("#myTable tr").filter(function() {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+    });
 })
 </script>
 

@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+
 <link rel="stylesheet"
     href="{{asset('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css')}}">
 <meta name="csrf-token" content="{{ csrf_token() }}" />

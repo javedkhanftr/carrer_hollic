@@ -14,7 +14,7 @@
                 </div>
                 <div class="white_card_body">
                     <div class="card-body">
-                        <form method="post" action="{{url('admin/candidates/edit/'.$data->applicant_id)}}">
+                        <form method="post" action="{{url('admin/candidates/assign_job/')}}">
                             @csrf
                             <input type="hidden" name="job_applicatins_id" value="{{$data->id}}">
                             <div class="row mb-3">

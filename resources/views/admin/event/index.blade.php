@@ -39,8 +39,13 @@
                                             <th>Event Start</th>
                                             <th>Event End</th>
                                             <th>Status</th>
-                                            <!-- <th>Status</th> -->
+                                            <th>
+                                            @if(empty($user[0]->permision == '1'))
+                                            Best Employee
+                                            @endif
+                                            </th>
                                             <th>Action</th>
+                                            
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -74,9 +79,15 @@
                                                 @endif
 
                                             </td>
-                                            <!-- <td>
-
-                                            </td> -->
+                                            <td>
+                                            @if(empty($user[0]->permision == '1'))
+                                                <select name="user_id" id="" class="form-control btn btn-secondary addbestemployee" data-id="{{$value->user_id}}">
+                                                    <option value="1">Yes</option>
+                                                    <option value="0" selected>No</option>
+                                                </select>
+                                            @endif
+                                           </td>
+                                           
                                             <td>
                                                 <a href="{{url('admin/event/edit/'.$value->id)}}"
                                                     class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>
@@ -108,8 +119,10 @@
 <script src="{{asset('https://unpkg.com/sweetalert/dist/sweetalert.min.js')}}"></script>
 <script>
 $(document).ready(function() {
+    
     $('.deleteData').click(function() {
         let id = $(this).attr('data-id');
+        
 
         swal({
                 title: "Are you sure?",
@@ -138,6 +151,27 @@ $(document).ready(function() {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
+    $('.addbestemployee').change(function(){
+        let user_id = $(this).attr('data-id');
+        let val=$(this).val();
+      
+      if (val == '1') {
+      
+        $.ajax({
+            url: SITEURL + "/best_employee",
+            data: {
+                user_id: user_id,
+                val:val,
+            },
+            type: "POST",
+            success: function(data) {
+                //  console.log(data);
+                location.reload();
+            }
+        });
+      }
+      
+    })
     $('.user_id').change(function() {
         let user_id = $(this).val();
         let id = $(this).siblings().val();

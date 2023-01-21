@@ -205,7 +205,7 @@ $(document).ready(function() {
                                                     </td>
                                                     <td>
                                                     @foreach($user as $item)
-                                                @if($item->permision == '1')
+                                                @if($item->permision == 1)
                                                  <a href="{{url('admin/role/edit/'.$role->id)}}" class="btn btn-sm btn-primary text-light"><i
                                                                 class="fa fa-edit"></i></a>
                                                         <a href="{{url('admin/user-role/deleteData/'.$role->id)}}"

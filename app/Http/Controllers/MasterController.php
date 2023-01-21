@@ -10,6 +10,7 @@ use App\Models\JobPost;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Department;
+use App\Models\Job_Assign;
 use DB;
 use Carbon\Carbon;
 
@@ -120,6 +121,18 @@ class MasterController extends Controller
         $lname=$user->last_name;
         $name=$fname.' '.$lname;
         return $name;
+    }
+    public static function getjobapplication($id){
+        $job_Assign=Job_Assign::where('applicant_id',$id)->get();
+        $count=count($job_Assign);
+       
+        if ($count == '1') {
+           return 'Single';
+        }elseif($count == '2'){
+            return 'Multiple';
+        }else{
+            return 'No Assign';
+        }
     }
 
 }

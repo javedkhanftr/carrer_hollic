@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\JobPost;
 use App\Models\Status;
 use App\Models\Role_user;
+use App\Models\Job_Assign;
 use Illuminate\Support\Facades\Auth;
 
 class CandidateController extends Controller
@@ -19,18 +20,35 @@ class CandidateController extends Controller
         $id=Auth::user()->id;
         $user=Role_user::where('user_id',$id)->get();
        
-       
+        if (empty($user[0])) {
+            $candidates_list = DB::table('applicants')
+            ->join('job_applicants', 'applicants.id', '=', 'job_applicants.applicant_id')
+            ->select('applicants.*', 'job_applicants.*')
+            ->where('status_id','!=','7')
+            ->where('applicants.user_id',$id)
+            ->orderBy('applicants.id', 'DESC')
+            ->get();
+            $user_id='';
+           
+        }else{
             $candidates_list = DB::table('applicants')
             ->join('job_applicants', 'applicants.id', '=', 'job_applicants.applicant_id')
             ->select('applicants.*', 'job_applicants.*')
             ->where('status_id','!=','7')
             ->orderBy('applicants.id', 'DESC')
             ->get();
+            $user_id=$user[0]->user_id;
+        }
+        
+      
+       
+       
+            
             $email = Auth::user()->email;
             $status=Status::all();
             // return $status;
             // return $candidates_list;
-             return view('admin/candidate/index',compact('candidates_list','email','status','user'));
+             return view('admin/candidate/index',compact('candidates_list','email','status','user_id'));
     }
     public function candidates_show(){
         $email = Auth::user()->email;
@@ -126,5 +144,13 @@ class CandidateController extends Controller
             $jobpost->status_id=$request->status_id;
             $jobpost->update();
             return redirect('admin/candidates');
+    }
+    public function assign_job_save(Request $request){
+        // return $request->all();
+        $assign=new Job_Assign();
+        $assign->applicant_id=$request->job_applicatins_id;
+        $assign->job_post_id=$request->job;
+        $assign->save();
+        return redirect('admin/candidates');
     }
 }

@@ -2,91 +2,19 @@
 @section('content')
 <meta name="csrf-token" content="{{ csrf_token() }}" />
 <div class="toast bg-success text-light" role="alert" aria-live="assertive" aria-atomic="true">
-       
-            <div class="toast-body">
-            Careeer Page Upadeted Successfully
-            </div>
-        </div>
-<section>
-    <nav class="navbar navbar-expand-lg navbar-light bg-white">
-        
-        <div class="container-fluid">
-            
-            <!-- <a class="navbar-brand" href="#">Navbar</a> -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item active">
-                        <a href="#" class="nav-link ">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" class="feather feather-monitor size-20 mr-2">
-                                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-                                <line x1="8" y1="21" x2="16" y2="21"></line>
-                                <line x1="12" y1="17" x2="12" y2="21"></line>
-                            </svg>
-                            Desktop
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round" class="feather feather-smartphone size-20 mr-2">
-                                <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
-                                <line x1="12" y1="18" x2="12.01" y2="18"></line>
-                            </svg>
-                            Mobile
-                        </a>
-                    </li>
-                </ul>
-                <form class="d-flex">
 
-                    <ul id="navbarToggle" class="nav nav-right collapse navbar-collapse">
-                        <li class="nav-item mr-md-1">
-                            <a href="#" class="nav-link change-toggler text-dark">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" class="feather feather-maximize-2 size-20 mr-2 mr-md-0">
-                                    <polyline points="15 3 21 3 21 9"></polyline>
-                                    <polyline points="9 21 3 21 3 15"></polyline>
-                                    <line x1="21" y1="3" x2="14" y2="10"></line>
-                                    <line x1="3" y1="21" x2="10" y2="14"></line>
-                                </svg>
-                                <span class="d-md-none">Toggle editor</span>
-                            </a>
-                        </li>
-                        <li class="nav-item mr-md-2">
-                            <a href="#" class="nav-link view-section text-dark">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" class="feather feather-eye size-20 mr-2 mr-md-0">
-                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                                    <circle cx="12" cy="12" r="3"></circle>
-                                </svg>
-                                <span class="d-md-none">View job</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link btn btn-primary btn-sm saveallData">
-                                Save changes
-                            </a>
-                        </li>
-                    </ul>
+    <div class="toast-body">
+        Careeer Page Upadeted Successfully
+    </div>
+</div>
+<style>
+.card1 {
+    background: #FFFFFF;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.27);
+    border-radius: 10px;
 
-                </form>
-
-            </div>
-
-        </div>
-
-    </nav>
-
-</section>
+}
+</style>
 <section>
     <div class="row">
         <div class="col-md-12 ">
@@ -95,9 +23,9 @@
                     <div class="row">
                         <div class="col-md-5"></div>
                         <div class="col-md-2">
-                          
-                            <img src="{{asset('image/logo.png')}}" class="img-fluid" alt="logo">
-                          
+
+                            <img src="{{asset('img/careerhollic.png')}}" class="img-fluid" alt="logo">
+
                         </div>
                         <div class="col-md-5"></div>
                         <div class="col-md-12">
@@ -105,9 +33,11 @@
                                 <div class="col-md-2"></div>
                                 <div class="col-md-8">
                                     <div class="text-center mt-5">
-                                   
-                                    <h1 class="mb-4" style="font-size: 40px; font-weight: 700; letter-spacing: 1px; color: rgb(49, 49, 49);"id="titleData">{{$data->content->title}}</h1>
-                                    @if($data->content->subtitle == null)
+
+                                        <h1 class="mb-4"
+                                            style="font-size: 40px; font-weight: 700; letter-spacing: 1px; color: rgb(49, 49, 49);"
+                                            id="titleData">{{$data->content->title}}</h1>
+                                        @if($data->content->subtitle == null)
                                         <div class="subtitleData">
                                             <p class="mb-4"
                                                 style="font-size: 30px; font-weight: 300; letter-spacing: 1px; color: rgb(175, 177, 182);">
@@ -120,9 +50,9 @@
                                         @else
 
                                         @endif
-                                    
-                                        
-                                        
+
+
+
 
 
                                     </div>
@@ -146,78 +76,125 @@
                                 </div>
                             </div>
                         </div>
-                      
+
                         <div class="col-md-12">
                             <div class="row">
                                 <div class="col-md-9"></div>
                                 <div class="col-md-3">
                                     <div class="row">
                                         <div class="col-md-4">
-                                        <div class="addAllData displayNone">
-                                        <button type="button" class="btn text-primary AddBodyData">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus">
-                                                <line x1="12" y1="5" x2="12" y2="19"></line>
-                                                <line x1="5" y1="12" x2="19" y2="12"></line>
-                                            </svg>
-                                            <section></section>
-                                        </button>
-                                    </div>
+                                            <div class="addAllData displayNone">
+                                                <button type="button" class="btn text-primary AddBodyData">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                        viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                        class="feather feather-plus">
+                                                        <line x1="12" y1="5" x2="12" y2="19"></line>
+                                                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                                                    </svg>
+                                                    <section></section>
+                                                </button>
+                                            </div>
                                         </div>
                                         <div class="col-md-4">
-                                        <button type="button" class="btn editData text-primary">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit">
-                                            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
-                                            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
-                                        </svg>
-                                    </button>
+                                            <button type="button" class="btn editData text-primary">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                    viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                    class="feather feather-edit">
+                                                    <path
+                                                        d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7">
+                                                    </path>
+                                                    <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z">
+                                                    </path>
+                                                </svg>
+                                            </button>
                                         </div>
                                         <div class="col-md-4">
-                                        <button type="button" class="btn text-primary savebodyData">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check">
-                                            <polyline points="20 6 9 17 4 12"></polyline>
-                                        </svg>
-                                    </button>
+                                            <button type="button" class="btn text-primary savebodyData">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                    viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                                    class="feather feather-check">
+                                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                                </svg>
+                                            </button>
                                         </div>
-                                        
-                                   
-                                   
+
+
+
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class="col-md-12" id="bodyData">
-                            @foreach($data->content->bodySection as $body)
-                            <div class="mb-5 databody">
-                               <div class="headingData">
-                               <h5 style="font-size: 27px; font-weight: 600; letter-spacing: 0px; color: rgb(49, 49, 49);"
-                                    data-id="headings">{{$body->headings}}</h5>
-                               </div>
-                                    <div  class="Addheading displayNone mt-2">
-                                    <input type="text" name="headings_body" class="form-control" value="{{$body->headings}}">
+                            <div class="row">
+                                @foreach($data->content->bodySection as $body)
+                                <div class="col-md-6">
+                                    <div class="card card1">
+                                        <div class="card-body">
+                                            <div class="mb-5 databody">
+                                                <div class="headingData">
+                                                    <h5 style="font-size: 20px; font-weight: 600; letter-spacing: 0px; color: rgb(49, 49, 49);"
+                                                        data-id="headings">{{$body->headings}}</h5>
+                                                    <hr>
+                                                </div>
+                                                <div class="Addheading displayNone mt-2">
+                                                    <input type="text" name="headings_body" class="form-control"
+                                                        value="{{$body->headings}}">
+                                                    <hr>
+                                                </div>
+                                                <div class="descriptionBody">
+                                                    <p class="text-dark" data-id="description">{{$body->description}}
+                                                    </p>
+                                                    <hr>
+                                                </div>
+                                                <div class="adddescriptionBody displayNone mt-3">
+                                                    <textarea name="description_body" id="" cols="30" rows="10"
+                                                        class="form-control">{{$body->description}}</textarea>
+                                                    <hr>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                <div class="descriptionBody">
-                                <p class="text-dark" data-id="description">{{$body->description}}</p>
                                 </div>
-                                <div  class="adddescriptionBody displayNone mt-3">
-                                    <textarea name="description_body" id="" cols="30" rows="10" class="form-control">{{$body->description}}</textarea>
-                                </div>
+                                @endforeach
                             </div>
-                            @endforeach
+
 
                         </div>
-                            
-                      
+
+
                         <div class="col-md-12">
-                            <div class="mb-5">
-                                <h5
-                                    style="font-size: 27px; font-weight: 600; letter-spacing: 0px; color: rgb(49, 49, 49);">
-                                    Job Openings
-                                </h5>
+                            <div class="mb-5 mt-5">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h4>
+                                            Job Openings
+                                        </h4>
+                                    </div>
+                                    <div class="col-md-6">
+                                    <!-- <input id="myInput" class="form-control" type="text" placeholder="Search.."> -->
+                                    <form method="post" action="{{ url('admin/career_page/') }}">
+    @csrf
+    <div class="row">
+        <div class="col-md-10">
+            <input type="text" name="search" value="{{$search}}" placeholder="Enter First Name" class="form-control">
+        </div>
+        <div class="col-md-2">
+              <input type="submit" class="btn btn-primary" name="submit">
+        </div>
+    </div>
+    
+  
+</form>
+                                    </div>
+                                </div>
                                 <hr>
                             </div>
 
-                            <div class="row">
+                            <div class="row" id="myTable">
                                 @foreach($jobpost as $post)
                                 <div class="col-12 mb-primary col-md-6 col-xl-4 mt-3">
                                     <div class="job-card">
@@ -241,29 +218,32 @@
                                 @endforeach
 
                             </div>
-
+                            <div class="row">
+        <div class="col-md-10"></div>
+        <div class="col-md-12 mt-5">
+            <div class="text-right">
+                {{ $jobpost->links() }}
+            </div>
+        </div>
+    </div>
 
 
 
                         </div>
                         <div class="col-md-12">
-                            <div class="text-center py-4">
-                            
-                            <img width="40%" src="{{asset('image/logo.png')}}" class="candidate-viewable-logo img-fluid d-block mx-auto" alt="logo">
                          
-                            </div>
-                           
+
                             <div class="text-center py-4">
                                 Copyright @ 2021 by Career Hollic
                             </div>
-                          
-                           
+
+
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-      
+
     </div>
 </section>
 
@@ -271,20 +251,21 @@
 
 @endsection
 <style>
-    .toast {
-  position: absolute;
-  top: 30px;
-  right: 380px;
-  border-radius: 12px;
-  background: #fff;
-  padding: 20px 35px 20px 25px;
-  box-shadow: 0 6px 20px -5px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  transform: translateX(calc(100% + 30px));
-  /* transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.35); */
-  /* z-index: 1; */
+.toast {
+    position: absolute;
+    top: 30px;
+    right: 380px;
+    border-radius: 12px;
+    background: #fff;
+    padding: 20px 35px 20px 25px;
+    box-shadow: 0 6px 20px -5px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transform: translateX(calc(100% + 30px));
+    /* transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.35); */
+    /* z-index: 1; */
 }
-.tostData{
+
+.tostData {
     z-index: 1;
 }
 
@@ -321,6 +302,12 @@
 
 <script>
 $(document).ready(function() {
+    $("#myInput").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $("#myTable .job-card").filter(function() {
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+    });
     $('#addSubtile').click(function() {
         $('.subtitleData').addClass('displayNone');
         $('.subtitle').removeClass('displayNone');
@@ -347,19 +334,19 @@ $(document).ready(function() {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
-    $('.editData').click(function(){
-            $('.headingData').addClass('displayNone');
-            $('.descriptionBody').addClass('displayNone');
-            $('.Addheading').removeClass('displayNone');
-            $('.adddescriptionBody').removeClass('displayNone');
-            $('.addAllData').removeClass('displayNone');
+    $('.editData').click(function() {
+        $('.headingData').addClass('displayNone');
+        $('.descriptionBody').addClass('displayNone');
+        $('.Addheading').removeClass('displayNone');
+        $('.adddescriptionBody').removeClass('displayNone');
+        $('.addAllData').removeClass('displayNone');
     });
-    $('.savebodyData').click(function(){
+    $('.savebodyData').click(function() {
         $('.headingData').removeClass('displayNone');
-            $('.descriptionBody').removeClass('displayNone');
-            $('.Addheading').addClass('displayNone');
-            $('.adddescriptionBody').addClass('displayNone');
-            $('.addAllData').addClass('displayNone');
+        $('.descriptionBody').removeClass('displayNone');
+        $('.Addheading').addClass('displayNone');
+        $('.adddescriptionBody').addClass('displayNone');
+        $('.addAllData').addClass('displayNone');
         // let bodyarr=[];
         // $('#bodyData .databody').each(function() {
         //     let bodyobj = {};
@@ -468,17 +455,18 @@ $(document).ready(function() {
             },
             success: function(data) {
                 // console.log(data.success);
-               setTimeout(() => {
-                $('.toast').addClass('tostData');
-                var toastElList = [].slice.call(document.querySelectorAll('.toast'))
-                var toastList = toastElList.map(function(toastEl) {
-                    return new bootstrap.Toast(toastEl)
-                })
-                toastList.forEach(toast => toast.show())
                 setTimeout(() => {
-                    window.location.href="career_page#";
+                    $('.toast').addClass('tostData');
+                    var toastElList = [].slice.call(document.querySelectorAll(
+                        '.toast'))
+                    var toastList = toastElList.map(function(toastEl) {
+                        return new bootstrap.Toast(toastEl)
+                    })
+                    toastList.forEach(toast => toast.show())
+                    setTimeout(() => {
+                        window.location.href = "career_page#";
+                    }, 1000);
                 }, 1000);
-               }, 1000);
             }
         });
 

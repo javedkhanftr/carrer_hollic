@@ -191,80 +191,8 @@ tbody tr td {
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
-                               @foreach(($data_basic) as $item)
-                            <div class="col-md-6">
-                            <div class="rounded border mb-5">
-                                <div
-                                    class="bg-off-light d-flex align-items-center justify-content-between p-4 allcolorprimary">
-                                    <div class="d-flex align-items-center ">
-                                        <div>
-                                            <!-- <label
-                                                class="custom-control d-inline border-switch mb-0 mr-3 form-check form-switch">
-                                                @if($item->isVisible == 'true')
-                                                <input type="checkbox" name="section_isVisible" id="section_isVisible"
-                                                    class="form-check-input" value="true" checked>
-                                                @else
-                                                <input type="checkbox" name="section_isVisible" id="section_isVisible"
-                                                    class="form-check-input" value="true">
-                                                @endif
-                                                <span class="border-switch-control-indicator"></span>
-                                            </label> -->
-                                        </div>
-                                        <h6 class="mb-0">
-                                            <label class="mb-0">{{$item->title}}</label>
-                                        </h6>
-                                    </div>
-                                </div>
-                                <div class="p-4">
-                                    <div class="d-flex align-items-center justify-content-between mb-2">
-                                        <div class="d-inline-flex align-items-center">
-                                            <div
-                                                class="width-30 height-30 text-white rounded d-inline-flex align-items-center justify-content-center mr-2 bg-primary">
-                                                <i class="fa fa-{{$item->icon}} bg-primary p-1"></i>
-
-                                            </div>
-                                            <p class="text-muted mb-0">
-                                                @foreach($item->fields as $data)
-
-                                                {{$data->name}}<sup>*</sup>,
-                                                @endforeach
-                                            </p>
-                                        </div>
-                                        <a href="{{url('admin/job-setting/get_application/'.$item->key)}}" class="btn btn-sm btn-primary "
-                                            data-name="{{$item->title}}">
-                                            <i class="fa fa-edit"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            </div>
-                            @endforeach 
-                            </div>
-                            
-                            <button type="button"
-                                class="btn primary-text-color d-inline-flex align-items-center px-0 mb-primary"><svg
-                                    xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" class="feather feather-plus size-14 mr-2">
-                                    <line x1="12" y1="5" x2="12" y2="19"></line>
-                                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                                </svg>
-                                Add more section
-                            </button>
-                            <div class="d-flex justify-content-start align-items-center"><a href="#"
-                                    class="btn btn-success d-inline-flex align-items-center justify-content-center"><svg
-                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                        stroke-linejoin="round" class="feather feather-save size-17 mr-2">
-                                        <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z">
-                                        </path>
-                                        <polyline points="17 21 17 13 7 13 7 21"></polyline>
-                                        <polyline points="7 3 7 8 15 8"></polyline>
-                                    </svg>
-                                    Save changes
-                                </a>
-                            </div>
+                          
+                      
                         </div>
                     </div>
 

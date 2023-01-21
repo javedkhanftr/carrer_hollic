@@ -68,6 +68,16 @@
                 </a>
             </li>
             <li class="">
+                <a class="" href="{{url('admin/attendance')}}" >
+                    <div class="nav_icon_small">
+                        <img src="{{asset('img/menu-icon/dashboard.svg')}}" alt="">
+                    </div>
+                    <div class="nav_title">
+                        <span>Attendance</span>
+                    </div>
+                </a>
+            </li>
+            <li class="">
                 <a class="" href="{{url('admin/jobPost')}}" >
                     <div class="nav_icon_small">
                         <img src="{{asset('img/menu-icon/13.svg')}}" alt="">

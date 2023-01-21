@@ -44,9 +44,9 @@
                                 </thead>
                                 <tbody>
                                     @inject('condidateData', 'App\Http\Controllers\MasterController')
-                                    @foreach($user as $item1)
+                                    @if($user_id != '')
                                     @foreach($candidates_list as $candidates)
-                                    @if($item1->permision == '1')
+                                   
                                  
                                     <tr>
                                         <td>
@@ -127,7 +127,7 @@
                                             {{ $condidateData::getstage($candidates->current_stage_id) }}
                                         </td>
                                         <td class="allbtn">
-                                            <span class="badge  btn-success">Single</span>
+                                            <span class="badge  btn-success">{{ $condidateData::getjobapplication($candidates->applicant_id) }}</span>
                                         </td>
                                         <td class="allbtn">
                                             <a href="{{url('admin/candidates/edit/'.$candidates->applicant_id)}}"
@@ -149,11 +149,11 @@
                                         </td>
 
                                     </tr>
-
+                                    @endforeach
+                                   @else
+                                   @foreach($candidates_list as $candidates)
                                    
-                                    @else
-                                        @if($item1->user_id == $candidates->user_id)
-                                        <tr>
+                                    <tr>
                                         <td>
                                             <div class="row">
                                                 
@@ -232,7 +232,9 @@
                                             {{ $condidateData::getstage($candidates->current_stage_id) }}
                                         </td>
                                         <td class="allbtn">
-                                            <span class="badge  btn-success">Single</span>
+                                          
+                                        
+                                            <span class="badge  btn-success">{{ $condidateData::getjobapplication($candidates->applicant_id) }}</span>
                                         </td>
                                         <td class="allbtn">
                                             <a href="{{url('admin/candidates/edit/'.$candidates->applicant_id)}}"
@@ -254,11 +256,11 @@
                                         </td>
 
                                     </tr>
-                                        @endif
-                    
+                                    
+                                    @endforeach
                                     @endif
-                                    @endforeach
-                                    @endforeach
+                                 
+                                   
                                 </tbody>
                             </table>
                         </div>
